@@ -1,0 +1,53 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <display-name>My Jersey App</display-name>
+    <servlet>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+
+        <!-- Configura il package dei servizi rest -->
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.smi.xxx.rest.base.Application</param-value>
+        </init-param>
+
+        <!-- Configura il supporto alle risorse JSON -->
+        <init-param>
+            <param-name>jersey.config.server.provider.classnames</param-name>
+            <param-value>org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <url-pattern>/app/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- JWT FILTER -->
+    <filter>
+        <filter-name>jwt</filter-name>
+        <filter-class>com.smi.xxx.rest.base.JwtFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>jwt</filter-name>
+        <url-pattern>/app/api/*</url-pattern>
+    </filter-mapping>
+
+    <!-- CORS FILTER -->
+    <filter>
+        <filter-name>cors</filter-name>
+        <filter-class>com.smi.xxx.rest.base.CorsFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>cors</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>

@@ -1,0 +1,86 @@
+
+plugins {
+    id 'java'
+    id 'war'
+    id 'eclipse'
+    id 'idea'
+}
+
+wrapper {
+    gradleVersion = "8.6"
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+eclipse.project {
+    natures "org.eclipse.buildship.core.gradleprojectnature"
+}
+
+
+version '1.0-SNAPSHOT'
+
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+sourceCompatibility = 21
+targetCompatibility = 21
+project.webAppDirName = 'src/main/WebContent'
+
+
+dependencies {
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2+'
+    compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: "9+"
+
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: "2+"
+    implementation(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "${JERSEY_VERSION}")
+    implementation(group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version: "${JERSEY_VERSION}")
+    implementation(group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: "${JERSEY_VERSION}")
+    implementation(group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: "${JERSEY_VERSION}")
+
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2+'
+    implementation(group: 'com.google.code.gson', name: 'gson', version: "2+")
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.0"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.0"
+    testImplementation group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "2+"
+
+
+//    implementation group: 'com.smi', name: 'smi-commons-gson', version: "${SMI_COMMONS}"
+//    implementation group: 'com.smi', name: 'smi-commons-jersey', version: "${SMI_COMMONS}"
+//    implementation group: 'com.smi', name: 'smi-commons-yaml', version: "${SMI_COMMONS}"
+//    implementation group: 'com.smi', name: 'smi-commons-lang', version: "${SMI_COMMONS}"
+//    implementation group: 'com.smi', name: 'smi-commons-singleton', version: "${SMI_COMMONS}"
+//    implementation group: 'com.smi', name: 'smi-commons-pool', version: "${SMI_COMMONS}"
+
+}
+
+test {
+    useJUnitPlatform {
+        exclude("**/integration/**")
+    }
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+task cleanEclipse(type: Delete, overwrite: true) {
+    delete '.project'
+    delete '.classpath'
+    delete '.settings'
+    delete "bin"
+}
+
+tasks.register('integrationTest', Test) {
+    group = 'verification'
+    useJUnitPlatform {
+        include("**/integration/**")
+    }
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}

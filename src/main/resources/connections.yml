@@ -1,0 +1,9 @@
+datasources:
+  default:
+    dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
+    connectionTestQuery: SELECT 1
+    dataSource:
+      user: root
+      password: root
+      url: jdbc:postgresql://localhost:5432/databaseName
+
