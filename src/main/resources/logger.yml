@@ -1,4 +1,3 @@
----
 # Must be one of ("trace", "debug", "info", "warn", or "error").
 # If not specified, defaults to "info".
 defaultLogLevel: info
@@ -21,4 +20,3 @@ showShortLogName: true
 #logFile: ../logs/out.log
 #  params:
 #    com.smi: debug
-...

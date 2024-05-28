@@ -6,4 +6,3 @@ datasources:
       user: root
       password: root
       url: jdbc:postgresql://localhost:5432/databaseName
-
