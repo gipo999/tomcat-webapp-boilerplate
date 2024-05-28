@@ -15,6 +15,12 @@ repositories {
 }
 
 
+java {
+    toolchain {
+	languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 eclipse.project {
     natures "org.eclipse.buildship.core.gradleprojectnature"
 }
