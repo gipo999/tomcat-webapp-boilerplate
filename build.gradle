@@ -3,7 +3,11 @@ plugins {
     id 'war'
     id 'eclipse'
     id 'idea'
+    id 'application'
 }
+
+// no main method
+// https://stackoverflow.com/questions/8630496/main-class-of-a-tomcat-web-application
 
 repositories {
     mavenCentral()
@@ -13,11 +17,14 @@ eclipse.project {
     natures "org.eclipse.buildship.core.gradleprojectnature"
 }
 
-version '1.0-SNAPSHOT'
-
+def _groupID = 'io.github.gipo999'
+def _artifactID = 'rest.base'
+def _mainClass = 'Application'
 
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
+
+mainClassName = "com.smi.xxx.rest.base.Application"
 
 sourceCompatibility = 21
 targetCompatibility = 21
@@ -52,10 +59,35 @@ dependencies {
 
 }
 
+ext {
+   javaMainClass = "com.smi.xxx.rest.base.Application"
+    // javaMainClass = _groupID + "." + _artifactID + "." + _mainClass
+}
+
+jar {
+  manifest {
+    attributes(
+      // 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+      'Main-Class': 'com.smi.xxx.rest.base.Application'
+    )
+  }
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
 test {
     useJUnitPlatform {
         exclude("**/integration/**")
     }
+
     testLogging {
         events "passed", "skipped", "failed"
     }
@@ -63,23 +95,22 @@ test {
 
 task cleanEclipse(type: Delete, overwrite: true) {
     delete '.project'
+
     delete '.classpath'
+
     delete '.settings'
+
     delete "bin"
 }
 
 tasks.register('integrationTest', Test) {
     group = 'verification'
+
     useJUnitPlatform {
         include("**/integration/**")
     }
+
     testLogging {
         events "passed", "skipped", "failed"
     }
-}
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
 }
