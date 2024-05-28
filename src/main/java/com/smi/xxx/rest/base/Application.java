@@ -9,11 +9,14 @@ import javax.ws.rs.ApplicationPath;
  */
 @ApplicationPath("/")
 public class Application extends javax.ws.rs.core.Application {
+
   @Override
   public Set<Class<?>> getClasses() {
     final Set<Class<?>> classes = new HashSet<Class<?>>();
+
     // register root resource
     classes.add(BaseService.class);
+
     return classes;
   }
 }

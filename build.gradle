@@ -3,7 +3,7 @@ plugins {
     id 'war'
     id 'eclipse'
     id 'idea'
-    id 'application'
+    // id 'application'
 }
 
 // no main method
@@ -24,12 +24,18 @@ def _mainClass = 'Application'
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
-mainClassName = "com.smi.xxx.rest.base.Application"
+// mainClassName = "com.smi.xxx.rest.base.Application"
 
 sourceCompatibility = 21
 targetCompatibility = 21
 project.webAppDirName = 'src/main/WebContent'
 
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
 
 dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2+'
@@ -59,29 +65,23 @@ dependencies {
 
 }
 
-ext {
-   javaMainClass = "com.smi.xxx.rest.base.Application"
-    // javaMainClass = _groupID + "." + _artifactID + "." + _mainClass
-}
+// ext {
+//    javaMainClass = "com.smi.xxx.rest.base.Application"
+//     // javaMainClass = _groupID + "." + _artifactID + "." + _mainClass
+// }
 
-jar {
-  manifest {
-    attributes(
-      // 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-      'Main-Class': 'com.smi.xxx.rest.base.Application'
-    )
-  }
-}
+// jar {
+//   manifest {
+//     attributes(
+//       // 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+//       'Main-Class': 'com.smi.xxx.rest.base.Application'
+//     )
+//   }
+// }
 
-application {
-    mainClassName = javaMainClass
-}
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-}
+// application {
+//     mainClassName = javaMainClass
+// }
 
 test {
     useJUnitPlatform {

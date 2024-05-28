@@ -1,0 +1,10 @@
+GET http://localhost:8080/
+
+---
+POST http://localhost:8080/webapp-boilerplate/
+
+---
+GET http://localhost:8080/webapp-boilerplate/
+
+---
+POST http://localhost:8080/webapp-boilerplate/health
