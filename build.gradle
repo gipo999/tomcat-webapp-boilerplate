@@ -5,19 +5,13 @@ plugins {
     id 'idea'
 }
 
-// wrapper {
-//     gradleVersion = "8.7"
-// }
-
 repositories {
     mavenCentral()
 }
 
-
 eclipse.project {
     natures "org.eclipse.buildship.core.gradleprojectnature"
 }
-
 
 version '1.0-SNAPSHOT'
 
