@@ -1,4 +1,3 @@
-
 plugins {
     id 'java'
     id 'war'
@@ -6,9 +5,9 @@ plugins {
     id 'idea'
 }
 
-wrapper {
-    gradleVersion = "8.6"
-}
+// wrapper {
+//     gradleVersion = "8.7"
+// }
 
 repositories {
     mavenCentral()
@@ -83,4 +82,10 @@ tasks.register('integrationTest', Test) {
     testLogging {
         events "passed", "skipped", "failed"
     }
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
 }

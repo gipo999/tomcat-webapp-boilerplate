@@ -1,6 +1,5 @@
-hmacSha512Key: sruihdshgshdsfghjdshjdshjgerhltsusdgs
-clientId: 234jkwerk3242sfhdtrs3dferqeef
-clientSecret: 340s8fas8df9a89adsf89er8qw9rwerweq
+hmacSha512Key:
+clientId:
+clientSecret:
 issuer: xxx
 validity: 1
-

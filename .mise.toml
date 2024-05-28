@@ -1,0 +1,4 @@
+[tools]
+java = "21"
+python = "3.12.3"
+node = "22.1.0"
