@@ -14,6 +14,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 public class BaseService {
 
   @GET
+  @Path("/")
   public Response get() {
 
     return Response.ok("Hello World!").build();

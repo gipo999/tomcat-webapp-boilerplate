@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'war'
+
     id 'eclipse'
     id 'idea'
     // id 'application'
@@ -8,14 +9,15 @@ plugins {
 
 // no main method
 // https://stackoverflow.com/questions/8630496/main-class-of-a-tomcat-web-application
+// https://gist.github.com/Antowka/b99b6259376a7eb44c22
 
 repositories {
     mavenCentral()
 }
 
-eclipse.project {
-    natures "org.eclipse.buildship.core.gradleprojectnature"
-}
+// eclipse.project {
+//     natures "org.eclipse.buildship.core.gradleprojectnature"
+// }
 
 def _groupID = 'io.github.gipo999'
 def _artifactID = 'rest.base'
@@ -32,9 +34,9 @@ project.webAppDirName = 'src/main/WebContent'
 
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+    toolchain {
+	languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 dependencies {

@@ -7,4 +7,13 @@ POST http://localhost:8080/webapp-boilerplate/
 GET http://localhost:8080/webapp-boilerplate/
 
 ---
+GET http://localhost:8080/webapp-boilerplate/app
+
+---
+GET http://localhost:8080/webapp-boilerplate/
+
+---
+GET http://localhost:8080/app/
+
+---
 POST http://localhost:8080/webapp-boilerplate/health

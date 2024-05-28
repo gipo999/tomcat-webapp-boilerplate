@@ -15,13 +15,19 @@ public class JwtFilter implements Filter {
   @Override
   public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
       throws IOException, ServletException {
+
     HttpServletRequest request = (HttpServletRequest) req;
+
     HttpServletResponse response = (HttpServletResponse) res;
+
     String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+
     if (authHeader != null && authHeader.startsWith("Bearer ")) {
+
       chain.doFilter(req, res);
     } else {
       response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+
       return;
     } // try - catch
   } // doFilter
