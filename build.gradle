@@ -19,9 +19,9 @@ repositories {
 //     natures "org.eclipse.buildship.core.gradleprojectnature"
 // }
 
-def _groupID = 'io.github.gipo999'
-def _artifactID = 'rest.base'
-def _mainClass = 'Application'
+// def _groupID = 'io.github.gipo999'
+// def _artifactID = 'rest.base'
+// def _mainClass = 'Application'
 
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
@@ -30,7 +30,7 @@ compileTestJava.options.encoding = "UTF-8"
 
 sourceCompatibility = 21
 targetCompatibility = 21
-project.webAppDirName = 'src/main/WebContent'
+project.webAppDirName = 'src/main/webapp'
 
 
 java {
