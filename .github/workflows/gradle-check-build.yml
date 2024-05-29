@@ -1,0 +1,32 @@
+name: Gradle Check and Build Workflow
+on:
+  pull_request:
+    branches: ["dev"]
+  workflow_dispatch: {}
+jobs:
+  build-linux:
+    if: github.event.pull_request.draft == false
+    name: Lint and Build on Linux Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources Step
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: ./.github/actions/ci-setup
+        name: Setup CI environment
+      - name: Build with Gradle Wrapper Step
+        run: ./gradlew build
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@125fc84a9a348dbcf27191600683ec096ec9021c # v4.4.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+  build-windows:
+    if: github.event.pull_request.draft == false
+    name: Lint and Build on Windows Job
+    runs-on: windows-latest
+    steps:
+      - name: Checkout sources Step
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: ./.github/actions/ci-setup
+        name: Setup CI environment
+      - name: Build with Gradle Wrapper Step
+        run: ./gradlew build

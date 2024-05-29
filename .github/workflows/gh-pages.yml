@@ -1,0 +1,31 @@
+name: GH Pages Workflow
+on:
+  push:
+    branches: ["dev"]
+  workflow_dispatch: {}
+jobs:
+  pitest-linux:
+    if: github.event.pull_request.draft == false
+    permissions:
+      contents: write
+    name: Pitest Report and Deploy to GH Pages Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources Step
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: ./.github/actions/ci-setup
+        name: Setup CI environment
+      - name: Build Pitest Report Step
+        run: ./gradlew pitest
+      - name: Build javadoc Step
+        run: ./gradlew javadoc
+      - name: Move Pitest step
+        run: mv ./build/reports/pitest ./docs/gh-pages/pit
+      - name: Move javadoc step
+        run: mv ./build/docs/javadoc ./docs/gh-pages/docs
+      - name: Deploy Pitest to GitHub Pages Step
+        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4
+        if: github.ref == 'refs/heads/dev'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/gh-pages

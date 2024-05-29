@@ -40,6 +40,9 @@ repos:
         stages: [commit]
         args: ["--baseline", ".secrets.baseline"]
         exclude: package.lock.json
+  #
+  # TODO: make sure the war executes the check and lint?
+  # or put it in the test stage? since we hot reload the war
   - repo: local
     hooks:
       - id: commit-lint

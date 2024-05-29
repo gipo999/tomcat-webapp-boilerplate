@@ -1,0 +1,28 @@
+root:
+  - changed-files:
+      - any-glob-to-any-file: "*"
+Documentation:
+  - changed-files:
+      - any-glob-to-any-file: docs/**
+Gradle:
+  - changed-files:
+      - any-glob-to-any-file: [gradle/**, build.gradle]
+Actions:
+  - changed-files:
+      - any-glob-to-any-file: .github/workflows/**
+source:
+  - all:
+      - changed-files:
+          - any-glob-to-any-file: "src/main/**/*"
+          - all-globs-to-all-files: "!src/docs/*"
+tests:
+  - all:
+      - changed-files:
+          - any-glob-to-any-file: "src/test/**/*"
+          - all-globs-to-all-files: "!src/docs/*"
+feature:
+  - head-branch: ["^feature", "feature"]
+issue:
+  - head-branch: ["^[0-9]", "issue"]
+release:
+  - base-branch: "main"

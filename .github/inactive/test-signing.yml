@@ -1,0 +1,32 @@
+# https://github.com/gradle/actions/blob/main/docs/setup-gradle.md
+# we are separating the pr and push for the dependency graph
+# https://github.com/gradle/actions/blob/main/docs/setup-gradle.md#github-dependency-graph-support
+name: Gradle Check and Build Workflow
+on:
+  # allow manual execution of the workflow while testing
+  workflow_dispatch: {}
+jobs:
+  build-linux:
+    if: github.event.pull_request.draft == false
+    name: Lint and Build on Linux Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources Step
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: actions/setup-java@99b8673ff64fbf99d8d325f52d9a5bdedb8483e9 # v4
+        name: Setup Java Step
+        with:
+          distribution: temurin
+          java-version: 17.0.2
+      - name: Setup Gradle Step
+        uses: gradle/actions/setup-gradle@db19848a5fa7950289d3668fb053140cf3028d43 # v3
+        with:
+          gradle-version: 8.1.1
+      - name: Build with Gradle Wrapper Step
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          GPG_PRIVATE: ${{ secrets.GPG_PRIVATE }}
+          GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
+        run: ./gradlew publish

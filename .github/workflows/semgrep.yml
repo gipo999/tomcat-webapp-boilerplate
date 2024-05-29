@@ -1,0 +1,32 @@
+on:
+  workflow_dispatch: {}
+  # pull_request:
+  #   branches: ["dev"]
+  push:
+    branches:
+      - dev
+  schedule:
+    - cron: 11 2 * * *
+name: Semgrep Workflow
+jobs:
+  semgrep:
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+    if: github.event.pull_request.draft == false && github.actor != 'dependabot[bot]'
+    name: Semgrep Job
+    runs-on: ubuntu-latest
+    env:
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+    container:
+      image: semgrep/semgrep@sha256:cffeb57efaaffe57811b7fd740e4ee6313dbfaf6b364bb5cce52a8e506d35f42
+    steps:
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - run: semgrep ci --sarif > semgrep.sarif
+      - name: Upload SARIF file for GitHub Advanced Security Dashboard
+        uses: github/codeql-action/upload-sarif@9fdb3e49720b44c48891d036bb502feb25684276 # v3
+        with:
+          sarif_file: semgrep.sarif
+        if: always()

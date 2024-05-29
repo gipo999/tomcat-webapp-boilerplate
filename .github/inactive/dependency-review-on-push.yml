@@ -1,0 +1,21 @@
+# works only for PRs
+name: Dependency Review Vulnerability Check On Push Workflow
+on:
+  push:
+    branches: ["dev"]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "Log level"
+        default: "warning"
+      tags:
+        description: "Test scenario tags"
+permissions:
+  contents: read
+jobs:
+  dependency-review:
+    name: Dependency Review on push Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dependency Review on push Step
+        uses: actions/dependency-review-action@v4

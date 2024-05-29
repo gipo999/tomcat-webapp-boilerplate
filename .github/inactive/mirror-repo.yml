@@ -1,0 +1,38 @@
+# TODO: Move this file to the .github/workflows directory to activate it
+# after completing the necessary configurations
+#
+# action used to mirror the repo to an alternate cloud repo
+# for backup purposes
+name: Mirror Repos Workflow
+on:
+  push:
+    branches:
+      - main
+      - dev
+      # You can add more triggers, such as scheduled events
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push to destination repository
+        run: |
+          # git config --global user.email "your email"
+          # git config --global user.name "your user name"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          git clone https://${{ env.ORG_NAME }}:${{ secrets.PAT }}@github.com/${{ env.ORG_NAME }}/destination-repo.git
+          cd destination-repo
+          git remote add ${{ env.ORIGINAL_REPO_NAME }} https://${{ env.ORG_NAME }}:${{ secrets.PAT }}@github.com/${{ env.ORG_NAME }}/${{ env.ORIGINAL_REPO_NAME }}.git
+          git remote update
+          git merge ${{ env.ORIGINAL_REPO_NAME }}/main
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          ORIGINAL_REPO_NAME: ${{ github.event.repository.name }}
+          ORG_NAME: Your workspace name

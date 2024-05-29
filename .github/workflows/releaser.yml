@@ -1,0 +1,37 @@
+name: Release Workflow
+run-name: ${{ github.actor }} is automatically releasing 🚀
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - next
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  release:
+    if: github.event.pull_request.draft == false
+    name: Release Job
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+    steps:
+      - name: Checkout Step
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        with:
+          fetch-depth: 0 # get all history for git tags
+          persist-credentials: false # <<<--- This line is needed for security
+      - uses: ./.github/actions/ci-setup
+        name: Setup CI environment
+      - name: Build with Gradle Wrapper Step
+        run: ./gradlew javadoc
+      - name: Create Zip archive Step
+        run: zip -r javadoc ./build/docs/javadoc
+      - name: Release Step
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }} # personal access token for triggering the github_publish workflow and bypassing branch protection rules
+        run: npx semantic-release@23.1.1

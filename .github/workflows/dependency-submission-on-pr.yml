@@ -1,0 +1,20 @@
+name: Dependency Submission on PR Workflow
+on:
+  pull_request:
+    branches: ["dev"]
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  dependency-submission-on-pr:
+    name: Dependency Submission on PR job
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    steps:
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: ./.github/actions/ci-setup
+        name: Setup CI environment
+      - name: Generate and save dependency graph step
+        uses: gradle/actions/dependency-submission@db19848a5fa7950289d3668fb053140cf3028d43 # v3
+        with:
+          dependency-graph: generate-and-upload

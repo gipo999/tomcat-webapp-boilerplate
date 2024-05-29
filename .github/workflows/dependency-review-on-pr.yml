@@ -1,0 +1,20 @@
+name: Dependency Review Vulnerability Check On PR Workflow
+on:
+  pull_request:
+    branches: [dev]
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  dependency-review:
+    name: Dependency Review on PR Job
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    steps:
+      - name: Checkout Repository Job
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - name: Dependency Review on PR Step
+        uses: actions/dependency-review-action@0c155c5e8556a497adf53f2c18edabf945ed8e70 # v4
+        with:
+          retry-on-snapshot-warnings: true
+          retry-on-snapshot-warnings-timeout: 600

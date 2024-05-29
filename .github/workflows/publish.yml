@@ -1,0 +1,32 @@
+name: Publish Package Workflow
+on:
+  release:
+    types: [published]
+  workflow_dispatch: {}
+jobs:
+  publish-release:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    name: Publish release Job
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - uses: ./.github/actions/ci-setup
+        name: Setup CI environment
+      - name: Publish artifact Step
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # for com.vanniktech.maven.publish.SonatypeHost
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.GPG_PRIVATE }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.GPG_PASSWORD }}
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_PASSWORD }}
+        run: |
+          NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3 | cut -d "v" -f2-) # 1.0.0-dev.1
+          echo "New version: ${NEW_VERSION}"
+          echo "Github username: ${GITHUB_ACTOR}"
+          ./gradlew -Pversion=${NEW_VERSION} publishAndReleaseToMavenCentral --no-configuration-cache
+          ./gradlew -Pversion=${NEW_VERSION} publishAllPublicationsToGitHubPackagesRepository
