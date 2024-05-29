@@ -20,13 +20,20 @@ FROM eclipse-temurin:21
 
 # ENV PORT=8080
 
-RUN mkdir -p /home/app
+# create a user to run the app to prevent filesystem access conflicts
 
-WORKDIR /home/app
+RUN addgroup --system webapp-boilerplate && \
+    adduser --system -G webapp-boilerplate webapp-boilerplate
 
-COPY . /home/app
+RUN mkdir -p /home/webapp-boilerplate
 
-WORKDIR /home/app
+COPY . /home/webapp-boilerplate
+RUN chown -R its-battistar-be-go:its-battistar-be-go .
+
+
+WORKDIR /home/webapp-boilerplate
+
+USER webapp-boilerplate
 
 # RUN ./gradlew war
 

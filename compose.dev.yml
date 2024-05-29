@@ -1,6 +1,6 @@
 services:
   webapp-boilerplate:
-    environment:
+    # environment:
     image: tomcat:9-jdk21-temurin-jammy
     container_name: webapp-boilerplate
     network_mode: host
