@@ -1,3 +1,6 @@
+# TODO: check how to inject ENV vars in the project
+# take a look at https://github.com/mewebstudio/java-spring-boot-boilerplate
+# https://github.com/Genc/spring-boot-boilerplate
 datasources:
   default:
     dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
