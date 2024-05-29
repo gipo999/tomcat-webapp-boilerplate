@@ -1,5 +1,6 @@
 # https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
 # https://docs.docker.com/build/ci/github-actions/manage-tags-labels/
+# https://docs.docker.com/build/ci/github-actions/push-multi-registries/
 name: Publish Docker Image Workflow
 on:
   release:
@@ -14,6 +15,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      attestations: write
     name: Publish Docker Job
     steps:
       - name: Checkout latest code
@@ -31,6 +33,7 @@ jobs:
           # list of Docker images to use as base name for tags
           images: |
             ghcr.io/gipo999/tomcat-webapp-boilerplate
+            gipo999/tomcat-webapp-boilerplate
           # generate Docker tags based on the following events/attributes
           tags: |
             type=schedule
@@ -82,5 +85,16 @@ jobs:
           # TODO: tag with release version
           # tags: ${{ steps.meta.outputs.tags }}, ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
           # TODO: add latest tag
-          tags: ${{ steps.meta.outputs.tags }}, ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+          tags: |
+            ${{ steps.meta.outputs.tags }}
+            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+            ${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
           labels: ${{ steps.meta.outputs.labels }}
+    #
+    # TODO: provenance
+    # - name: Generate artifact attestation
+    #   uses: actions/attest-build-provenance@v1
+    #   with:
+    #     subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+    #     subject-digest: ${{ steps.push.outputs.digest }}
+    #     push-to-registry: true
