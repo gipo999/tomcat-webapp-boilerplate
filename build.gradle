@@ -4,7 +4,6 @@ plugins {
 
     id 'eclipse'
     id 'idea'
-    // id 'application'
 }
 
 // no main method
@@ -32,12 +31,12 @@ sourceCompatibility = 21
 targetCompatibility = 21
 project.webAppDirName = 'src/main/webapp'
 
-def JERSEY_VERSION = "2+"
 // IMP: compatibliity with tomcat 9?
 // jersey 2+ works only with tomcat 9+
 // jersey 3+ works only with tomcat 10+
 // check docke compose file
 // https://stackoverflow.com/questions/62595510/severe-servlet-jersey-web-application-in-web-application-restapp-threw-loa
+def JERSEY_VERSION = "2+"
 def TOMCAT_VERSION = "9+"
 
 java {
@@ -49,7 +48,7 @@ java {
 dependencies {
     implementation(group: 'org.slf4j', name: 'slf4j-api', version: '2+')
 
-    // requires tomcat 9? why is this a dependency if it's a war to be deployed on tomcat?
+    // NOTE: why require tomcat 9? why is this a dependency if it's a war to be deployed on an external tomcat?
     compileOnly(group: 'org.apache.tomcat', name: 'tomcat-catalina', version: "${TOMCAT_VERSION}")
 
     implementation('javax.xml.bind:jaxb-api:2.3.1')
@@ -80,24 +79,6 @@ dependencies {
 //    implementation group: 'com.smi', name: 'smi-commons-pool', version: "${SMI_COMMONS}"
 
 }
-
-// ext {
-//    javaMainClass = "com.smi.xxx.rest.base.Application"
-//     // javaMainClass = _groupID + "." + _artifactID + "." + _mainClass
-// }
-
-// jar {
-//   manifest {
-//     attributes(
-//       // 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-//       'Main-Class': 'com.smi.xxx.rest.base.Application'
-//     )
-//   }
-// }
-
-// application {
-//     mainClassName = javaMainClass
-// }
 
 test {
     useJUnitPlatform {
