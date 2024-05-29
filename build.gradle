@@ -249,4 +249,3 @@ tasks.register('integrationTest', Test) {
 		events "passed", "skipped", "failed"
 	}
 }
-
