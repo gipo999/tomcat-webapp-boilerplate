@@ -1,3 +1,4 @@
+# TODO: possibly use only compose with 1 container with nodemon and tomcat
 services:
   tomcat-webapp-boilerplate:
     # environment:
