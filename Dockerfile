@@ -14,6 +14,8 @@ FROM eclipse-temurin:21 as BUILD_IMAGE
 
 # VULN: should probably not run as root
 
+# VULN: should probably move to alpine, preferably embedding tomcat in the app
+
 # initialize defaults for overriding through --env
 
 # example

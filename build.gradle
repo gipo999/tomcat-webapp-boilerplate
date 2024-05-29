@@ -56,8 +56,11 @@ dependencies {
     implementation(group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: "2+")
 
     implementation(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "${JERSEY_VERSION}")
+
     implementation(group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version: "${JERSEY_VERSION}")
+
     implementation(group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: "${JERSEY_VERSION}")
+
     implementation(group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: "${JERSEY_VERSION}")
 
     implementation(group: 'org.slf4j', name: 'slf4j-simple', version: '2+')
