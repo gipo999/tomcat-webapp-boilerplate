@@ -22,18 +22,18 @@ FROM eclipse-temurin:21
 
 # create a user to run the app to prevent filesystem access conflicts
 
-RUN addgroup --system webapp-boilerplate && \
-    adduser --system -G webapp-boilerplate webapp-boilerplate
+RUN addgroup --system tomcat-webapp-boilerplate && \
+    adduser --system -G tomcat-webapp-boilerplate tomcat-webapp-boilerplate
 
-RUN mkdir -p /home/webapp-boilerplate
+RUN mkdir -p /home/tomcat-webapp-boilerplate
 
-COPY . /home/webapp-boilerplate
+COPY . /home/tomcat-webapp-boilerplate
 RUN chown -R its-battistar-be-go:its-battistar-be-go .
 
 
-WORKDIR /home/webapp-boilerplate
+WORKDIR /home/tomcat-webapp-boilerplate
 
-USER webapp-boilerplate
+USER tomcat-webapp-boilerplate
 
 # RUN ./gradlew war
 
