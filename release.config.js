@@ -39,16 +39,20 @@ module.exports = {
         },
       },
     ],
-    //   [
-    //     "@semantic-release/github",
-    //     {
-    //       assets: [
-    //         {
-    //           path: "javadoc.zip",
-    //           label: "javadoc folder added to release",
-    //         },
-    //       ],
-    //     },
-    //   ],
+    [
+      "@semantic-release/github",
+      {
+        assets: [
+          {
+            path: "javadoc.zip",
+            label: "javadoc folder added to release",
+          },
+          {
+            path: "build/libs/*.war",
+            label: "war app added to release",
+          },
+        ],
+      },
+    ],
   ],
 };

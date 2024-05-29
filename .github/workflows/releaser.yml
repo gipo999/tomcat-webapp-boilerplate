@@ -27,8 +27,10 @@ jobs:
           persist-credentials: false # <<<--- This line is needed for security
       - uses: ./.github/actions/ci-setup
         name: Setup CI environment
-      - name: Build with Gradle Wrapper Step
+      - name: Build Javadoc with Gradle Wrapper Step
         run: ./gradlew javadoc
+      - name: Build War with Gradle Wrapper Step
+        run: ./gradlew war
       - name: Create Zip archive Step
         run: zip -r javadoc ./build/docs/javadoc
       - name: Release Step
