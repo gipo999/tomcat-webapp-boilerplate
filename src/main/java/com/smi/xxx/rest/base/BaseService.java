@@ -17,7 +17,7 @@ public class BaseService {
   @Path("/")
   public Response get() {
 
-    return Response.ok("Hello World!").build();
+    return Response.ok("Hello World 2!").build();
   } // get
 
   @POST

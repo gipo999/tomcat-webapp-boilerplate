@@ -1,44 +1,130 @@
 # TODO: should be single docker image with tomcat as base image for the app
 # or embed tomcat in the app
 services:
-  # db:
-  #   image: mysql:5.7
+  #
+  #
+  # this is the ./gradelw war builder, builds the war in build/libs
+  # must provide volume to output the war
+  # webapp-boilerplate-builder:
+  #   build:
+  #     dockerfile: ./docker/builder.Dockerfile
+  #   container_name: webapp-boilerplate-builder
+  #   develop:
+  #     watch:
+  #       - action: sync+restart
+  #         path: .
+  #         target: /home/app
+  #         ignore:
+  #           - build
+  #           - .idea
+  #           - .git
+  #           - node_modules
+  #           - .settings
+  #           - .gradle
+  #   command: ./gradlew war
   #   volumes:
-  #     - /opt/test:/var/lib/mysql
-  #     - ./mysql-dump:/docker-entrypoint-initdb.d
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: testdb1
-  #     MYSQL_USER: testuser
-  #     MYSQL_PASSWORD: root
-  #   ports:
-  #     - 3306:3306
-  # phpmyadmin:
-  #   depends_on:
-  #     - db
-  #   image: phpmyadmin/phpmyadmin
-  #   ports:
-  #     - "8081:80"
-  #   environment:
-  #     PMA_HOST: db
-  #     MYSQL_ROOT_PASSWORD: root
-  tomcat:
+  #     - ./build/libs:/home/app/build/libs
+  #
+  #
+  # this is the tomcat server, runs the synced war in build/libs
+  webapp-boilerplate:
+    # env_file: ./.env
+    image: tomcat:9-jdk21-temurin-jammy
+    # depends_on:
+    #   - webapp-boilerplate-builder
+    environment:
+      # set and .env file in the same path or pass env vars
+      - INFISICAL_TOKEN=''
+    # user: node
     # develop:
     #   watch:
-    #     - action: sync
+    #     - action: sync+restart
     #       path: ./build/libs
     #       target: /usr/local/tomcat/webapps
-    # depends_on:
-    #   - db
-    image: tomcat:9-jdk21-temurin-jammy
-    volumes:
-      # - ./target/LoginWebApp-1.war:/usr/local/tomcat/webapps/LoginWebApp-1.war
-      - ./build/libs/:/usr/local/tomcat/webapps/
+    # build:
+    # context: .
+    # dockerfile: ./docker/tomcat.Dockerfile
+    # args:
+    #     - 'DOC_NODE_PW=${DOC_NODE_PW}'
+    container_name: webapp-boilerplate
+    # command: catalina.sh run
+    network_mode: host
     ports:
-      - "8080:8080"
-    environment:
-      - TOMCAT_USERNAME=admin
-      - TOMCAT_PASSWORD=admin
+      - 127.0.0.1:8080:8080
+      #
+    volumes:
+      - ./build/libs/:/usr/local/tomcat/webapps/
+#
+#
+# app:
+#   # env_file: ./.env
+#   environment:
+#     # set and .env file in the same path or pass env vars
+#     - INFISICAL_TOKEN=''
+#   # user: node
+#   develop:
+#     watch:
+#       - action: rebuild
+#         path: .
+#         ignore:
+#           - build
+#           - .idea
+#           - .git
+#           - node_modules
+#           - .settings
+#           - .gradle
+#           # target: /home/node/app/src
+#   build:
+#     context: .
+#     # dockerfile: Dockerfile
+#     # args:
+#     #     - 'DOC_NODE_PW=${DOC_NODE_PW}'
+#     #     - 'DOC_ROOT_PW=${DOC_ROOT_PW}'
+#     #     - APP
+#   container_name: webapp-boilerplate
+#   # command: tail -F anything # this keeps the container up to enter shell
+#   network_mode: host
+#   ports:
+#     - 127.0.0.1:8080:8080
+#     #
+#     # volumes:
+#     #   # - .:/home/docker/app # if we change anything in my folder, --reload app, overrides copy  behavior on dockerfile, sycs this folder to app folder
+#     #
+#     #   # exclude node modules from watch and rebuild
+#     #   - /home/node/app/node_modules/
+#
+#
+# db:
+#   image: mysql:5.7
+#   volumes:
+#     - /opt/test:/var/lib/mysql
+#     - ./mysql-dump:/docker-entrypoint-initdb.d
+#   environment:
+#     MYSQL_ROOT_PASSWORD: root
+#     MYSQL_DATABASE: testdb1
+#     MYSQL_USER: testuser
+#     MYSQL_PASSWORD: root
+#   ports:
+#     - 3306:3306
+#
+#
+# tomcat:
+#   # develop:
+#   #   watch:
+#   #     - action: sync
+#   #       path: ./build/libs
+#   #       target: /usr/local/tomcat/webapps
+#   # depends_on:
+#   #   - db
+#   image: tomcat:9-jdk21-temurin-jammy
+#   volumes:
+#     # - ./target/LoginWebApp-1.war:/usr/local/tomcat/webapps/LoginWebApp-1.war
+#     - ./build/libs/:/usr/local/tomcat/webapps/
+#   ports:
+#     - "127.0.0.1:8080:8080"
+#   environment:
+#     - TOMCAT_USERNAME=admin
+#     - TOMCAT_PASSWORD=admin
 #   MYSQL_ROOT_PASSWORD: root
 #   MYSQL_DATABASE: testdb1
 #   MYSQL_USER: testuser

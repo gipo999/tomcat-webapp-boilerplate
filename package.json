@@ -1,0 +1,15 @@
+{
+  "name": "dev",
+  "version": "1.0.0",
+  "description": "working with `./gradlew war`",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docker compose -f compose.tomcat.yml up --no-recreate --watch & nodemon --watch . --ext '.java' --exec './gradlew war'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  }
+}
