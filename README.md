@@ -1,3 +1,9 @@
+both images at:
+
+<https://github.com/gipo999/tomcat-webapp-boilerplate/pkgs/container/tomcat-webapp-boilerplate>
+
+<https://hub.docker.com/r/gipo999/tomcat-webapp-boilerplate>
+
 working with `./gradlew war`
 
 compose up -d
