@@ -1,3 +1,5 @@
+# TODO: should be single docker image with tomcat as base image for the app
+# or embed tomcat in the app
 services:
   # db:
   #   image: mysql:5.7
@@ -21,11 +23,11 @@ services:
   #     PMA_HOST: db
   #     MYSQL_ROOT_PASSWORD: root
   tomcat:
-    develop:
-      watch:
-        - action: sync
-          path: ./build/libs
-          target: /usr/local/tomcat/webapps
+    # develop:
+    #   watch:
+    #     - action: sync
+    #       path: ./build/libs
+    #       target: /usr/local/tomcat/webapps
     # depends_on:
     #   - db
     image: tomcat
@@ -34,8 +36,10 @@ services:
       - ./build/libs/:/usr/local/tomcat/webapps/
     ports:
       - "8080:8080"
-    # environment:
-    #   MYSQL_ROOT_PASSWORD: root
-    #   MYSQL_DATABASE: testdb1
-    #   MYSQL_USER: testuser
-    #   MYSQL_PASSWORD: root
+    environment:
+      - TOMCAT_USERNAME=admin
+      - TOMCAT_PASSWORD=admin
+#   MYSQL_ROOT_PASSWORD: root
+#   MYSQL_DATABASE: testdb1
+#   MYSQL_USER: testuser
+#   MYSQL_PASSWORD: root
