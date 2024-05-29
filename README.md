@@ -1,3 +1,12 @@
 working with `./gradlew war`
 
 compose up -d
+
+# env vars
+
+SEMGREP_APP_TOKEN
+DOCKERHUB_TOKEN
+DOCKERHUB_USERNAME
+SNYK_TOKEN
+PAT
+CODECOV_TOKEN
