@@ -11,7 +11,8 @@ const cmds = {
   check: `${cmd} check`,
   spotless: `${cmd} spotlessApply`,
   rewrite: `${cmd} rewriteRun`,
-  build: `${cmd} build`,
+  test: `${cmd} test`,
+  build: `${cmd} war`,
 };
 
 if (args.includes("--format")) {
@@ -23,6 +24,9 @@ if (args.includes("--lint")) {
 }
 if (args.includes("--build")) {
   execCmd(cmds.build);
+}
+if (args.includes("--test")) {
+  execCmd(cmds.test);
 }
 if (args.length === 0) {
   execCmd(`${cmds.build}`);
