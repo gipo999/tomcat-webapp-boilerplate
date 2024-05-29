@@ -1,26 +1,22 @@
 plugins {
-    id 'java'
-    id 'war'
+	id 'java'
+	id 'war'
 
-    id 'eclipse'
-    id 'idea'
+	id 'eclipse'
+	id 'idea'
+
+	id 'jacoco'
+	id 'com.diffplug.spotless' version '6.25.0'
+	id 'checkstyle'
+	id 'org.openrewrite.rewrite' version '6.15.1'
+	id "com.github.spotbugs" version "6.0.15"
+
+	id "name.remal.sonarlint" version "4.2.2"
+
+	id 'info.solidsoft.pitest' version '1.15.0'
+
+	id 'groovy'
 }
-
-// no main method
-// https://stackoverflow.com/questions/8630496/main-class-of-a-tomcat-web-application
-// https://gist.github.com/Antowka/b99b6259376a7eb44c22
-
-repositories {
-    mavenCentral()
-}
-
-// eclipse.project {
-//     natures "org.eclipse.buildship.core.gradleprojectnature"
-// }
-
-// def _groupID = 'io.github.gipo999'
-// def _artifactID = 'rest.base'
-// def _mainClass = 'Application'
 
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
@@ -39,78 +35,218 @@ project.webAppDirName = 'src/main/webapp'
 def JERSEY_VERSION = "2+"
 def TOMCAT_VERSION = "9+"
 
-java {
-    toolchain {
-	languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
 dependencies {
-    implementation(group: 'org.slf4j', name: 'slf4j-api', version: '2+')
+	// tools
+	rewrite("org.openrewrite.recipe:rewrite-static-analysis:1.8.1")
 
-    // NOTE: why require tomcat 9? why is this a dependency if it's a war to be deployed on an external tomcat?
-    compileOnly(group: 'org.apache.tomcat', name: 'tomcat-catalina', version: "${TOMCAT_VERSION}")
+	rewrite("org.openrewrite.recipe:rewrite-java-security:2.8.1")
 
-    implementation('javax.xml.bind:jaxb-api:2.3.1')
+	// app
+	implementation(group: 'org.slf4j', name: 'slf4j-api', version: '2+')
 
-    implementation(group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: "2+")
+	// NOTE: why require tomcat 9? why is this a dependency if it's a war to be deployed on an external tomcat?
+	compileOnly(group: 'org.apache.tomcat', name: 'tomcat-catalina', version: "${TOMCAT_VERSION}")
 
-    implementation(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "${JERSEY_VERSION}")
+	implementation('javax.xml.bind:jaxb-api:2.3.1')
 
-    implementation(group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version: "${JERSEY_VERSION}")
+	implementation(group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: "2+")
 
-    implementation(group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: "${JERSEY_VERSION}")
+	implementation(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "${JERSEY_VERSION}")
 
-    implementation(group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: "${JERSEY_VERSION}")
+	implementation(group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version: "${JERSEY_VERSION}")
 
-    implementation(group: 'org.slf4j', name: 'slf4j-simple', version: '2+')
+	implementation(group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: "${JERSEY_VERSION}")
 
-    implementation(group: 'com.google.code.gson', name: 'gson', version: "2+")
+	implementation(group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: "${JERSEY_VERSION}")
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+	implementation(group: 'org.slf4j', name: 'slf4j-simple', version: '2+')
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+	implementation(group: 'com.google.code.gson', name: 'gson', version: "2+")
 
-    testImplementation(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "${JERSEY_VERSION}")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+
+	testImplementation(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "${JERSEY_VERSION}")
 
 
-//    implementation group: 'com.smi', name: 'smi-commons-gson', version: "${SMI_COMMONS}"
-//    implementation group: 'com.smi', name: 'smi-commons-jersey', version: "${SMI_COMMONS}"
-//    implementation group: 'com.smi', name: 'smi-commons-yaml', version: "${SMI_COMMONS}"
-//    implementation group: 'com.smi', name: 'smi-commons-lang', version: "${SMI_COMMONS}"
-//    implementation group: 'com.smi', name: 'smi-commons-singleton', version: "${SMI_COMMONS}"
-//    implementation group: 'com.smi', name: 'smi-commons-pool', version: "${SMI_COMMONS}"
-
+	//    implementation group: 'com.smi', name: 'smi-commons-gson', version: "${SMI_COMMONS}"
+	//    implementation group: 'com.smi', name: 'smi-commons-jersey', version: "${SMI_COMMONS}"
+	//    implementation group: 'com.smi', name: 'smi-commons-yaml', version: "${SMI_COMMONS}"
+	//    implementation group: 'com.smi', name: 'smi-commons-lang', version: "${SMI_COMMONS}"
+	//    implementation group: 'com.smi', name: 'smi-commons-singleton', version: "${SMI_COMMONS}"
+	//    implementation group: 'com.smi', name: 'smi-commons-pool', version: "${SMI_COMMONS}"
 }
+
+
+// no main method
+// https://stackoverflow.com/questions/8630496/main-class-of-a-tomcat-web-application
+// https://gist.github.com/Antowka/b99b6259376a7eb44c22
+
+repositories {
+	mavenCentral()
+}
+
+// eclipse.project {
+//     natures "org.eclipse.buildship.core.gradleprojectnature"
+// }
+
+// def _groupID = 'io.github.gipo999'
+// def _artifactID = 'rest.base'
+// def _mainClass = 'Application'
+
+// ### CHECKSTYLE
+checkstyle {
+	toolVersion '10.17.0'
+
+	ignoreFailures = false
+
+	maxWarnings = 0
+}
+
+// ### REWRITE
+rewrite {
+	activeRecipe("org.openrewrite.staticanalysis.CodeCleanup")
+
+	activeRecipe("org.openrewrite.java.security.PartialPathTraversalVulnerability")
+
+	activeRecipe("org.openrewrite.java.security.JavaSecurityBestPractices")
+
+	activeRecipe("org.openrewrite.java.security.RegularExpressionDenialOfService")
+}
+
+
+// ### SPOTLESS
+spotless {
+	format 'misc', {
+		target '*.gradle', '.gitattributes', '.gitignore'
+
+		targetExclude 'build/**/*', 'node_modules/**/*', 'target/**/*', 'out/**/*', 'dist/**/*', 'bin/**/*'
+
+		trimTrailingWhitespace()
+
+		indentWithTabs()
+
+		endWithNewline()
+	}
+
+	format 'xml', {
+		target '**/*.xml'
+
+		targetExclude 'build/**/*', 'node_modules/**/*', 'target/**/*', 'out/**/*', 'dist/**/*', 'bin/**/*'
+
+		eclipseWtp('xml')
+	}
+
+	format 'styling', {
+		targetExclude 'build/**/*', 'node_modules/**/*', 'target/**/*', 'out/**/*', 'dist/**/*', 'bin/**/*'
+
+		target  '**/*.json', '**/*.yaml', '**/*.toml', '**/*.js', '**/*.cjs', '**/*.mjs'
+
+		prettier(['prettier-plugin-toml': '2.0.1']).config(['plugins': ['prettier-plugin-toml']])
+	}
+
+	groovy {
+		importOrder()
+
+		removeSemicolons()
+
+		greclipse()
+
+		// Add a license header to all files
+		// licenseHeader('/* (C) $YEAR */') // or licenseHeaderFile
+	}
+
+	groovyGradle {
+		// targetExclude 'build/**', 'node_modules/**', 'target/**', 'out/**', 'dist/**', 'bin/**'
+
+		target '*.gradle'
+
+		greclipse()
+	}
+
+	java {
+		importOrder()
+
+		removeUnusedImports()
+
+		cleanthat()
+
+		trimTrailingWhitespace()
+
+		endWithNewline()
+
+		googleJavaFormat()
+
+		formatAnnotations()
+
+		// licenseHeader '/* (C) $YEAR */' // or licenseHeaderFile
+	}
+}
+
+
+// ### PIT
+pitest {
+	junit5PluginVersion = '1.2.1'
+
+	pitestVersion = '1.15.2'
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
 
 test {
-    useJUnitPlatform {
-        exclude("**/integration/**")
-    }
+	// dependsOn 'check'
 
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
+	finalizedBy jacocoTestReport
+
+	useJUnitPlatform {
+		exclude("**/integration/**")
+	}
+
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
 }
 
+// ## JACOCO report for test coverage and codecov
+
+jacocoTestReport {
+	dependsOn test
+
+	reports {
+		xml.required = true // required for codecov
+	}
+}
+
+
+// war {
+//     dependsOn 'test'
+// }
+
 task cleanEclipse(type: Delete, overwrite: true) {
-    delete '.project'
+	delete '.project'
 
-    delete '.classpath'
+	delete '.classpath'
 
-    delete '.settings'
+	delete '.settings'
 
-    delete "bin"
+	delete "bin"
 }
 
 tasks.register('integrationTest', Test) {
-    group = 'verification'
+	group = 'verification'
 
-    useJUnitPlatform {
-        include("**/integration/**")
-    }
+	useJUnitPlatform {
+		include("**/integration/**")
+	}
 
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
 }
+
