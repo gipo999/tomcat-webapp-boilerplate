@@ -32,6 +32,13 @@ sourceCompatibility = 21
 targetCompatibility = 21
 project.webAppDirName = 'src/main/webapp'
 
+def JERSEY_VERSION = "2+"
+// IMP: compatibliity with tomcat 9?
+// jersey 2+ works only with tomcat 9+
+// jersey 3+ works only with tomcat 10+
+// check docke compose file
+// https://stackoverflow.com/questions/62595510/severe-servlet-jersey-web-application-in-web-application-restapp-threw-loa
+def TOMCAT_VERSION = "9+"
 
 java {
     toolchain {
@@ -40,22 +47,29 @@ java {
 }
 
 dependencies {
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2+'
-    compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: "9+"
+    implementation(group: 'org.slf4j', name: 'slf4j-api', version: '2+')
 
-    implementation 'javax.xml.bind:jaxb-api:2.3.1'
-    implementation group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: "2+"
+    // requires tomcat 9? why is this a dependency if it's a war to be deployed on tomcat?
+    compileOnly(group: 'org.apache.tomcat', name: 'tomcat-catalina', version: "${TOMCAT_VERSION}")
+
+    implementation('javax.xml.bind:jaxb-api:2.3.1')
+
+    implementation(group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: "2+")
+
     implementation(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "${JERSEY_VERSION}")
     implementation(group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet-core', version: "${JERSEY_VERSION}")
     implementation(group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: "${JERSEY_VERSION}")
     implementation(group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: "${JERSEY_VERSION}")
 
-    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2+'
+    implementation(group: 'org.slf4j', name: 'slf4j-simple', version: '2+')
+
     implementation(group: 'com.google.code.gson', name: 'gson', version: "2+")
 
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.0"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.0"
-    testImplementation group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "2+"
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+
+    testImplementation(group: 'org.glassfish.jersey.core', name: 'jersey-client', version: "${JERSEY_VERSION}")
 
 
 //    implementation group: 'com.smi', name: 'smi-commons-gson', version: "${SMI_COMMONS}"

@@ -30,7 +30,7 @@ services:
     #       target: /usr/local/tomcat/webapps
     # depends_on:
     #   - db
-    image: tomcat
+    image: tomcat:9-jdk21-temurin-jammy
     volumes:
       # - ./target/LoginWebApp-1.war:/usr/local/tomcat/webapps/LoginWebApp-1.war
       - ./build/libs/:/usr/local/tomcat/webapps/
