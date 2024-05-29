@@ -116,6 +116,8 @@ rewrite {
 }
 
 
+// TODO: make sure we are not checking and formatting useless files
+
 // ### SPOTLESS
 spotless {
 	format 'misc', {
