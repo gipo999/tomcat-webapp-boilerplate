@@ -4,12 +4,31 @@
   "description": "working with `./gradlew war`",
   "main": "index.js",
   "scripts": {
-    "dev": "docker compose -f compose.tomcat.yml up --no-recreate --watch & nodemon --watch . --ext '.java' --exec './gradlew war'"
+    "dev": "docker compose -f compose.tomcat.yml up --no-recreate --watch & nodemon --watch . --ext '.java' --exec './gradlew war'",
+    "commit": "git cz",
+    "prepare": "node scripts/install-hooks.cjs",
+    "commitlint": "commitlint --edit",
+    "format": "node scripts/gradlew.cjs --format",
+    "lint": "node scripts/gradlew.cjs --lint",
+    "build": "node scripts/gradlew.cjs --build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.2"
-  }
+    "nodemon": "^3.1.2",
+    "@commitlint/cli": "19.3.0",
+    "@commitlint/config-conventional": "19.2.2",
+    "commitizen": "4.3.0",
+    "cz-conventional-changelog": "3.3.0",
+    "cz-git": "1.9.2",
+    "prettier": "3.2.5",
+    "prettier-plugin-toml": "2.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
+  "packageManager": "npm@10.8.0+sha512.c21f77b91733829ec70e73cc88b5dc0a4bf685a81d252d3327d293ff7d5dd05a173f4dbeaa037600ec29696f397f14569229e5dab10b7cfc3e0a30575b8f3f8d"
 }

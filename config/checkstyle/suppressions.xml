@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- https://checkstyle.org/filters/suppressionfilter.html -->
+
+<!-- this file will add global suppressions for checkstyle -->
+<!-- won't need to inline them in the code -->
+
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+	<suppress checks="JavadocType" files=".*Test\.java" />
+	<suppress checks="MissingJavadocType" files=".*Test\.java" />
+	<suppress checks="SummaryJavadoc" files=".*Test\.java" />
+	<suppress checks="JavadocMethod" files=".*Test\.java" />
+	<suppress checks="SingleLineJavadoc" files=".*Test\.java" />
+	<suppress checks="MissingJavadocMethod" files=".*Test\.java" />
+	<suppress checks="InvalidJavadocPosition" files=".*Test\.java" />
+	<suppress checks="JavadocParagraph" files=".*Test\.java" />
+	<suppress checks="JavadocTagContinuationIndentation"
+		files=".*Test\.java" />
+
+	<!-- Suppress all checks for archives, classes and other binary files: -->
+	<suppress files=".+\.(?:jar|zip|war|class|tar|bin)$"
+		checks=".*" />
+	<!-- Suppress all checks for hidden files and folders: -->
+	<suppress files="[/\\]\..+" checks=".*" />
+	<!-- Suppress all checks for archives, classes and other binary files: -->
+	<suppress files=".+\.(?:jar|zip|war|class|tar|bin)$"
+		checks=".*" />
+
+	<!-- Suppress all javadoc checks for test folder: -->
+	<suppress files="[/\\]test[/\\]" checks="Javadoc.*" />
+
+	<!-- Suppress all checks for non-java files: -->
+	<suppress
+		files=".+\.(?:txt|xml|csv|sh|thrift|html|sql|eot|ttf|woff|css|png)$"
+		checks=".*" />
+
+	<!-- suppress all checks for folders not in src -->
+	<suppress files="^((?!src).)*$" checks=".*" />
+
+</suppressions>

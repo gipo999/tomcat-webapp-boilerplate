@@ -1,0 +1,61 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: d0293ebc40f6c0606d624ee4c638c7597f8044d2 # pragma: allowlist secret
+    hooks:
+      - id: trailing-whitespace
+        stages: [commit]
+      - id: check-yaml
+        stages: [commit]
+      - id: check-xml
+        stages: [commit]
+      - id: check-toml
+        stages: [commit]
+      - id: check-json
+        stages: [commit]
+      - id: end-of-file-fixer
+        stages: [commit]
+      - id: check-added-large-files
+        stages: [commit]
+      - id: check-case-conflict
+        stages: [commit]
+      - id: check-illegal-windows-names
+        stages: [commit]
+      - id: check-executables-have-shebangs
+        stages: [commit]
+      - id: check-merge-conflict
+        stages: [commit]
+      - id: check-shebang-scripts-are-executable
+        stages: [commit]
+      - id: detect-private-key
+        stages: [commit]
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 79cac73f7267f4a48f4bc73db11e105a6098a836 # pragma: allowlist secret
+    hooks:
+      - id: gitleaks
+        stages: [commit]
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: 52759b86b8e311a8ba0e8d464001b1bf353f54f8 # pragma: allowlist secret
+    hooks:
+      - id: detect-secrets
+        stages: [commit]
+        args: ["--baseline", ".secrets.baseline"]
+        exclude: package.lock.json
+  - repo: local
+    hooks:
+      - id: commit-lint
+        name: commit-lint
+        entry: npm run commitlint
+        language: system
+        stages: [commit-msg]
+      - id: gradle-check
+        name: gradle-check
+        entry: node scripts/gradlew.cjs --lint
+        pass_filenames: false
+        language: system
+        stages: [commit]
+      - id: gradle-check-build
+        name: gradle-check-build
+        entry: node scripts/gradlew.cjs --build
+        pass_filenames: false
+        language: system
+        stages: [push]
