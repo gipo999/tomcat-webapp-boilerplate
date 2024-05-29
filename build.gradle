@@ -238,6 +238,8 @@ task cleanEclipse(type: Delete, overwrite: true) {
 	delete "bin"
 }
 
+// TODO: make war start the test command, test start the check command
+
 tasks.register('integrationTest', Test) {
 	group = 'verification'
 
