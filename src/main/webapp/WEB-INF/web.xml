@@ -12,7 +12,7 @@
 		<!-- Configura il package dei servizi rest -->
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>com.smi.xxx.rest.base.Application</param-value>
+			<param-value>com.smi.xxx.rest.base.App</param-value>
 		</init-param>
 
 		<!-- Configura il supporto alle risorse JSON -->

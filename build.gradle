@@ -21,7 +21,7 @@ plugins {
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
-// mainClassName = "com.smi.xxx.rest.base.Application"
+// mainClassName = "com.smi.xxx.rest.base.App"
 
 sourceCompatibility = 21
 targetCompatibility = 21
@@ -91,7 +91,7 @@ repositories {
 
 // def _groupID = 'io.github.gipo999'
 // def _artifactID = 'rest.base'
-// def _mainClass = 'Application'
+// def _mainClass = 'App'
 
 // ### CHECKSTYLE
 checkstyle {
