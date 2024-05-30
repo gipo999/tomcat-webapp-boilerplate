@@ -28,7 +28,7 @@ jobs:
       # prepare tags
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81 # v5
         with:
           # list of Docker images to use as base name for tags
           images: |
@@ -45,11 +45,11 @@ jobs:
             type=sha
       ## DOCKER BUILD AND PUSH to GHCR
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@68827325e0b33c7199eb31dd4e31fbe9023e06e3 # v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@d70bba72b1f3fd22344832f00baa16ece964efeb # v3
       - name: Login to GHCR
-        uses: docker/login-action@v3
+        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3
         if: github.event_name != 'pull_request'
         with:
           registry: ghcr.io
@@ -57,7 +57,7 @@ jobs:
           password: ${{secrets.GITHUB_TOKEN}}
       - name: Login to Docker Hub
         if: github.event_name != 'pull_request'
-        uses: docker/login-action@v3
+        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -75,7 +75,7 @@ jobs:
           echo "Github username: ${GITHUB_ACTOR}"
           echo "NEW_VERSION=${NEW_VERSION}" >> $GITHUB_ENV
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@2cdde995de11925a030ce8070c3d77a52ffcf1c0 # v5
         with:
           context: .
           file: ./Dockerfile
