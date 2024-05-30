@@ -234,7 +234,7 @@ jacocoTestReport {
 
 
 war {
-    dependsOn 'test'
+	dependsOn 'test'
 }
 
 task cleanEclipse(type: Delete, overwrite: true) {
