@@ -1,16 +1,30 @@
 # TODO: possibly use only compose with 1 container with nodemon and tomcat
 services:
+  # tomcat-webapp-boilerplate:
+  #   # environment:
+  #   # image: tomcat:9-jdk21-temurin-jammy
+  #   build:
+  #     dockerfile: ./docker/tomcat.Dockerfile
+  #   container_name: tomcat-webapp-boilerplate
+  #   develop:
+  #     watch:
+  #       - action: sync+restart
+  #         path: "build/libs/"
+  #         target: "/usr/local/tomcat/webapps/"
+  #   network_mode: host
+  #   ports:
+  #     - 127.0.0.1:8080:8080
   tomcat-webapp-boilerplate:
     # environment:
     # image: tomcat:9-jdk21-temurin-jammy
     build:
-      dockerfile: ./docker/tomcat.Dockerfile
+      dockerfile: ./alpine.Dockerfile
     container_name: tomcat-webapp-boilerplate
-    develop:
-      watch:
-        - action: sync+restart
-          path: "build/libs/"
-          target: "/usr/local/tomcat/webapps/"
+    # develop:
+    #   watch:
+    #     - action: sync+restart
+    #       path: "build/libs/"
+    #       target: "/usr/local/tomcat/webapps/"
     network_mode: host
     ports:
       - 127.0.0.1:8080:8080

@@ -3,6 +3,9 @@ plugins {
 	id 'war'
 	id 'application'
 
+	// https://stackoverflow.com/questions/55142587/how-to-make-gradle-to-package-all-dependency-jar
+	// https://imperceptiblethoughts.com/shadow/getting-started/#default-java-groovy-tasks
+	// fat jar for single jar deployment
 	id 'com.github.johnrengelman.shadow' version '8.1.1'
 
 	id 'eclipse'
@@ -233,6 +236,11 @@ jacocoTestReport {
 		xml.required = true // required for codecov
 	}
 }
+
+// shadowJar {
+//    include 'src/main/resources/**/*'
+//    include 'src/main/webapp/**/*'
+// }
 
 jar {
 	manifest {

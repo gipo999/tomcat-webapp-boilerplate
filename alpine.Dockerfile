@@ -1,37 +1,46 @@
-# steps: 
-# 1. build image on java image
-# 2. move war to tomcat image
-# 3. run tomcat image
+FROM eclipse-temurin:21-alpine
 
-FROM eclipse-temurin:21 as BUILD_IMAGE
-
-# VULN: should probably not run as root
-
-# VULN: should probably move to alpine, preferably embedding tomcat in the app
-
-# initialize defaults for overriding through --env
-
-# example
-ENV INFISICAL_TOKEN='' 
-
+# example run envs
 ENV PORT=8080
+ENV HOST="localhost"
 
-RUN mkdir -p /home/app
 
-WORKDIR /home/app
+RUN addgroup --system tomcat-webapp-boilerplate && \
+    adduser --system -G tomcat-webapp-boilerplate tomcat-webapp-boilerplate
 
-COPY . /home/app
+RUN mkdir -p /home/tomcat-webapp-boilerplate/app/build/libs
+RUN mkdir -p /home/tomcat-webapp-boilerplate/app/src/main
 
-WORKDIR /home/app
+# COPY . /home/tomcat-webapp-boilerplate
 
-RUN ./gradlew war
+COPY build/libs/tomcat-webapp-boilerplate-all.jar /home/tomcat-webapp-boilerplate/app/build/libs
+COPY src/main/resources /home/tomcat-webapp-boilerplate/app/src/main/resources
+COPY src/main/webapp /home/tomcat-webapp-boilerplate/app/src/main/webapp
+# COPY . /home/tomcat-webapp-boilerplate/app
 
-## MULTI STAGE
+WORKDIR /home/tomcat-webapp-boilerplate/app
 
-FROM tomcat:9-jdk21-temurin-jammy
+RUN chown -R tomcat-webapp-boilerplate:tomcat-webapp-boilerplate /home/tomcat-webapp-boilerplate/app
 
-COPY --from=BUILD_IMAGE /home/app/build/libs/* /usr/local/tomcat/webapps
+# FIXME: must run as non-root user
+USER tomcat-webapp-boilerplate
+
+
+# WORKDIR /app
+#
+# RUN addgroup --system its-battistar-angular && \
+#     adduser --system -G its-battistar-angular its-battistar-angular
+#
+# COPY dist/apps/its-battistar-angular its-battistar-angular
+# RUN chown -R its-battistar-angular:its-battistar-angular .
+
+# You can remove this install step if you build with `--bundle` option.
+# The bundled output will include external dependencies.
+# RUN npm --prefix its-battistar-angular --omit=dev -f install
+
 
 EXPOSE ${PORT}
 
-CMD ["catalina.sh", "run"]
+CMD ["java", "-jar", "build/libs/tomcat-webapp-boilerplate-all.jar"]
+# CMD ["java", "-jar", "/home/tomcat-webapp-boilerplate/app/build/libs/tomcat-webapp-boilerplate-all.jar"]
+
