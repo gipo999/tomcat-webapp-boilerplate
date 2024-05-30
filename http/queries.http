@@ -1,5 +1,39 @@
 ---
+GET http://localhost:8080/
+
+---
+GET http://localhost:8080/api/base
+
+---
+GET http://localhost:8080/go
+
+---
+GET http://localhost:8080/application
+
+---
+GET http://localhost:8080/app/base
+
+---
+GET http://localhost:8080/tomcat-webapp-boilerplate
+
+---
+GET http://localhost:8080/tomcat-webapp-boilerplate/base
+
+---
+POST http://localhost:8080/tomcat-webapp-boilerplate/base/health
+
+---
+GET http://localhost:8080/tomcat-webapp-boilerplate/app
+
+---
 GET http://localhost:8080/tomcat-webapp-boilerplate/app/base
 
 ---
 POST http://localhost:8080/tomcat-webapp-boilerplate/app/base/health
+
+# working app
+---
+GET http://localhost:8080/app/
+
+---
+POST http://localhost:8080/app/health

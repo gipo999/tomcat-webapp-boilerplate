@@ -8,9 +8,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.glassfish.jersey.media.multipart.FormDataParam;
 
-@Path("/base")
+// @Path("/base")
+@Path("/")
 public class BaseService {
 
   @GET
@@ -30,15 +30,18 @@ public class BaseService {
     return Response.ok("Bearer " + username + "__" + password).build();
   } // login
 
-  @POST
-  @Consumes(MediaType.MULTIPART_FORM_DATA)
-  @Produces({MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON})
-  @Path("/login")
-  public Response loginFormData(
-      @FormDataParam("username") String username, @FormDataParam("password") String password) {
+  // BUG: formdataparam not supported with embedded
 
-    return Response.ok("Bearer " + username + "__" + password).build();
-  } // login
+  // @POST
+  // @Consumes(MediaType.MULTIPART_FORM_DATA)
+  // @Produces({MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON})
+  // @Path("/login")
+  // public Response loginFormData(
+  // @FormDataParam("username") String username, @FormDataParam("password") String
+  // password) {
+  //
+  // return Response.ok("Bearer " + username + "__" + password).build();
+  // } // login
 
   @POST
   @Consumes(MediaType.APPLICATION_JSON)

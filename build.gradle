@@ -1,6 +1,7 @@
 plugins {
 	id 'java'
 	id 'war'
+	id 'application'
 
 	id 'eclipse'
 	id 'idea'
@@ -21,7 +22,7 @@ plugins {
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
-// mainClassName = "com.smi.xxx.rest.base.Application"
+mainClassName = "com.smi.xxx.rest.base.App"
 
 sourceCompatibility = 21
 targetCompatibility = 21
@@ -45,7 +46,13 @@ dependencies {
 	implementation(group: 'org.slf4j', name: 'slf4j-api', version: '2+')
 
 	// NOTE: why require tomcat 9? why is this a dependency if it's a war to be deployed on an external tomcat?
-	compileOnly(group: 'org.apache.tomcat', name: 'tomcat-catalina', version: "${TOMCAT_VERSION}")
+	// compileOnly(group: 'org.apache.tomcat', name: 'tomcat-catalina', version: "${TOMCAT_VERSION}")
+
+	implementation('org.apache.tomcat.embed:tomcat-embed-core:' + TOMCAT_VERSION)
+	implementation('org.apache.tomcat.embed:tomcat-embed-jasper:' + TOMCAT_VERSION)
+	// implementation('org.apache.tomcat.embed:tomcat-embed-el:' + TOMCAT_VERSION)
+	// implementation('org.apache.tomcat.embed:tomcat-annotations-api:' + TOMCAT_VERSION)
+	// implementation('org.apache.tomcat.embed:tomcat-logging-juli:' + TOMCAT_VERSION)
 
 	implementation('javax.xml.bind:jaxb-api:2.3.1')
 
