@@ -1,5 +1,6 @@
 package com.smi.xxx.rest.base;
 
+/** Login Model. */
 public class LoginModel {
   String username;
   String password;

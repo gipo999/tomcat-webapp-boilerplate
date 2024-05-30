@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
+/** Base service. */
 @Path("/base")
 public class BaseService {
 
@@ -27,7 +28,7 @@ public class BaseService {
   public Response login(
       @FormParam("username") String username, @FormParam("password") String password) {
 
-    return Response.ok("Bearer " + username + "__" + password).build();
+    return Response.ok(createToken(username, password)).build();
   } // login
 
   @POST
@@ -37,7 +38,7 @@ public class BaseService {
   public Response loginFormData(
       @FormDataParam("username") String username, @FormDataParam("password") String password) {
 
-    return Response.ok("Bearer " + username + "__" + password).build();
+    return Response.ok(createToken(username, password)).build();
   } // login
 
   @POST
@@ -46,7 +47,7 @@ public class BaseService {
   @Path("/login")
   public Response loginByModel(LoginModel datas) {
 
-    return Response.ok("Bearer " + datas.username + "__" + datas.password).build();
+    return Response.ok(createToken(datas.username, datas.password)).build();
   } // loginByModel
 
   @POST
@@ -55,4 +56,8 @@ public class BaseService {
 
     return Response.ok().build();
   } // health
+
+  private String createToken(String username, String password) {
+    return "Bearer " + username + "__" + password;
+  }
 } // LoginService
