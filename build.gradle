@@ -41,10 +41,8 @@ dependencies {
 
 	rewrite("org.openrewrite.recipe:rewrite-java-security:2.8.1")
 
-	// app
 	implementation(group: 'org.slf4j', name: 'slf4j-api', version: '2+')
 
-	// NOTE: why require tomcat 9? why is this a dependency if it's a war to be deployed on an external tomcat?
 	compileOnly(group: 'org.apache.tomcat', name: 'tomcat-catalina', version: "${TOMCAT_VERSION}")
 
 	implementation('javax.xml.bind:jaxb-api:2.3.1')
@@ -225,9 +223,9 @@ jacocoTestReport {
 	}
 }
 
-
 war {
-    dependsOn 'test'
+	dependsOn 'check'
+	dependsOn 'test'
 }
 
 task cleanEclipse(type: Delete, overwrite: true) {
