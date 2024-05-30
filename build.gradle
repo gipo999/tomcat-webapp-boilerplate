@@ -3,6 +3,8 @@ plugins {
 	id 'war'
 	id 'application'
 
+	id 'com.github.johnrengelman.shadow' version '8.1.1'
+
 	id 'eclipse'
 	id 'idea'
 
@@ -232,6 +234,14 @@ jacocoTestReport {
 	}
 }
 
+jar {
+	manifest {
+		attributes 'Main-Class': "$mainClassName"
+	}
+	// from {
+	// 	configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	// }
+}
 
 war {
 	dependsOn 'test'
