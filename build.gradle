@@ -226,9 +226,9 @@ jacocoTestReport {
 }
 
 
-// war {
-//     dependsOn 'test'
-// }
+war {
+    dependsOn 'test'
+}
 
 task cleanEclipse(type: Delete, overwrite: true) {
 	delete '.project'

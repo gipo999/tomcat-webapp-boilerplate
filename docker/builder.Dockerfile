@@ -4,13 +4,6 @@ FROM eclipse-temurin:21
 
 # TODO: must provide gradle otherwise it downloads every restart??
 
-# TODO: fix label
-# LABEL org.opencontainers.image.source https://github.com/gipo355/template-fastify
-
-# TODO: provide watch mode for development
-# the cmd is ./gradlew war on file change
-# which outputs to build/libs/*.war
-
 # VULN: should probably not run as root
 
 # initialize defaults for overriding through --env
