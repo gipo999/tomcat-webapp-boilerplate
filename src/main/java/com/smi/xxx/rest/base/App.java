@@ -5,14 +5,21 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 
 /**
- * @author Pavel Bucek
+ * Main application class.
+ *
+ * @author Pavel Bucek.
  */
 @ApplicationPath("/")
-public class Application extends javax.ws.rs.core.Application {
+public class App extends javax.ws.rs.core.Application {
 
+  /**
+   * Set of classes that are root resources.
+   *
+   * @return set of classes
+   */
   @Override
   public Set<Class<?>> getClasses() {
-    final Set<Class<?>> classes = new HashSet<Class<?>>();
+    final Set<Class<?>> classes = new HashSet<>();
 
     // register root resource
     classes.add(BaseService.class);
