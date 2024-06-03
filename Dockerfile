@@ -45,6 +45,7 @@ RUN adduser tomcat
 
 RUN chown -R tomcat:tomcat  /usr/local/tomcat/webapps
 
+# FIXME: this should be run in the compose or cli command to run
 # HEALTHCHECK --interval=30s --timeout=10s --retries=5 --start-period=30s \
 #     CMD curl --fail http://localhost:8080/tomcat-webapp-boilerplate/api/base/health || exit 1
 # HEALTHCHECK --interval=30s --timeout=10s --retries=5 --start-period=30s \

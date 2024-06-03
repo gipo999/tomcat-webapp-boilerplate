@@ -59,6 +59,9 @@ jobs:
           command: |
             curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
 
+# pen test and put comment in pr with the results now using PR image
+# we will replicate the pen test with cron on another action on the dev branch tag released image
+
 #
 #
 # we don't care about windows for this app since it only runs on linux
