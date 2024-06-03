@@ -2,6 +2,8 @@ name: Gradle Check and Build Workflow
 on:
   pull_request:
     branches: ["dev"]
+  push:
+    branches: ["app-start-test"]
   workflow_dispatch: {}
 jobs:
   build-linux:
@@ -11,8 +13,9 @@ jobs:
     steps:
       - name: Checkout sources Step
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
-      - uses: ./.github/actions/ci-setup
-        name: Setup CI environment
+      - name: Setup CI environment
+        uses: ./.github/actions/ci-setup
+        # run the gradle check and build tasks
       - name: Build with Gradle Wrapper Step
         # buildWar runs check, test, war tasks
         # at this point we won't know if the app will run in a container
@@ -21,6 +24,29 @@ jobs:
         uses: codecov/codecov-action@125fc84a9a348dbcf27191600683ec096ec9021c # v4.4.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+      # test the docker image
+      - name: Setup DOCKER environment
+        uses: ./.github/actions/docker-setup
+      - name: Build and export to docker
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          context: .
+          file: ./Dockerfile
+          load: true # load the image after building so it can be used in the next steps
+          platforms: linux/arm64
+          tags: gipo999/tomcat-webapp-boilerplate:latest
+      # - name: Test docker image
+      #   run: |
+      #     docker run --rm ${{ env.TEST_TAG }}
+      - name: Run docker image
+        run: |
+          docker run -d -p 8080:8080 gipo999/tomcat-webapp-boilerplate:latest
+      - name: Verify docker image endpoint
+        # it returns 200 with json {"status":"UP"}
+        run: |
+          curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
+
 #
 #
 # we don't care about windows for this app since it only runs on linux

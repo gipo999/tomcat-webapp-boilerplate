@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+  workflow_dispatch: {}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,10 +19,21 @@ jobs:
       #   run: curl -s http://localhost:8080 | grep "Hello World"
       - name: Setup DOCKER environment
         uses: ./.github/actions/docker-setup
-      - name: Build docker image
+      - name: Build and export to docker
         uses: docker/build-push-action@v5
         with:
           push: false
           context: .
           file: ./Dockerfile
+          load: true # load the image after building so it can be used in the next steps
           platforms: linux/arm64
+          tags: gipo999/tomcat-webapp-boilerplate:latest
+      # - name: Test docker image
+      #   run: |
+      #     docker run --rm ${{ env.TEST_TAG }}
+      - name: Run docker image
+        run: |
+          docker run -d -p 8080:8080 gipo999/tomcat-webapp-boilerplate:latest
+      - name: Verify docker image endpoint
+        run: |
+          curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "Hello World"
