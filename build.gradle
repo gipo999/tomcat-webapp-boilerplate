@@ -30,7 +30,7 @@ project.webAppDirName = 'src/main/webapp'
 // IMP: compatibliity with tomcat 9?
 // jersey 2+ works only with tomcat 9+
 // jersey 3+ works only with tomcat 10+
-// check docke compose file
+// check docker compose file
 // https://stackoverflow.com/questions/62595510/severe-servlet-jersey-web-application-in-web-application-restapp-threw-loa
 def JERSEY_VERSION = "2+"
 def TOMCAT_VERSION = "9+"
@@ -133,7 +133,7 @@ spotless {
 	format 'xml', {
 		target '**/*.xml'
 
-		targetExclude 'build/**/*', 'node_modules/**/*', 'target/**/*', 'out/**/*', 'dist/**/*', 'bin/**/*'
+		targetExclude 'build/**/*', 'node_modules/**/*', 'target/**/*', 'out/**/*', 'dist/**/*', 'bin/**/*', 'tomcat/**/*'
 
 		eclipseWtp('xml')
 	}

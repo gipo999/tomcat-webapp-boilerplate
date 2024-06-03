@@ -14,7 +14,7 @@ services:
       # watch allows to sync files from host to container
       watch:
         - action: sync+restart
-          path: "build/libs/"
+          path: "./build/libs/"
           target: "/usr/local/tomcat/webapps/"
     network_mode: host
     ports:
