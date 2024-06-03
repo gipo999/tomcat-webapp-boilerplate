@@ -54,6 +54,7 @@ public class BaseService {
     return Response.ok(createToken(datas.username, datas.password)).build();
   } // loginByModel
 
+  /** Health check. */
   @GET
   @Produces({MediaType.APPLICATION_JSON})
   @Path("/health")
