@@ -3,6 +3,7 @@ package com.smi.xxx.rest.base;
 import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
 /**
  * Main application class.
@@ -10,7 +11,7 @@ import javax.ws.rs.ApplicationPath;
  * @author Pavel Bucek.
  */
 @ApplicationPath("/")
-public class App extends javax.ws.rs.core.Application {
+public class App extends Application {
 
   /**
    * Set of classes that are root resources.

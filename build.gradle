@@ -223,9 +223,15 @@ jacocoTestReport {
 	}
 }
 
-war {
-	dependsOn 'check'
-	dependsOn 'test'
+// war {
+// 	dependsOn 'check'
+// 	dependsOn 'test'
+// }
+
+tasks.register("buildWar") {
+	dependsOn "check"
+	dependsOn "test"
+	dependsOn "war"
 }
 
 task cleanEclipse(type: Delete, overwrite: true) {

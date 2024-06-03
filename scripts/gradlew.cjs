@@ -12,7 +12,7 @@ const cmds = {
   spotless: `${cmd} spotlessApply`,
   rewrite: `${cmd} rewriteRun`,
   test: `${cmd} test`,
-  build: `${cmd} war`,
+  build: `${cmd} buildWar`,
 };
 
 if (args.includes("--format")) {
