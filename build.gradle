@@ -223,6 +223,8 @@ jacocoTestReport {
 	}
 }
 
+// we provide another command as we need to run war in CI without running the tests
+// check requires nodejs
 // war {
 // 	dependsOn 'check'
 // 	dependsOn 'test'

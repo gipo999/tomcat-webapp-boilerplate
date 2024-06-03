@@ -4,7 +4,7 @@
   "description": "working with `./gradlew war`",
   "main": "index.js",
   "scripts": {
-    "dev": "docker compose -f compose.dev.yml up --no-recreate --watch & nodemon --watch . --ext '.java' --exec './gradlew war'",
+    "dev": "docker compose -f docker/compose.dev.yml up --no-recreate --watch & nodemon --watch . --ext '.java' --exec './gradlew war'",
     "commit": "git cz",
     "prepare": "node scripts/install-hooks.cjs",
     "commitlint": "commitlint --edit",
