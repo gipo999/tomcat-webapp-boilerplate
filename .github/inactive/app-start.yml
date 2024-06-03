@@ -1,0 +1,33 @@
+# this workflow will build the docker file and verify the image gets up and running
+name: App Start Workflow
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # - name: Build Docker Image
+      #   run: docker build -t myapp .
+      # - name: Run Docker Image
+      #   run: docker run -d -p 8080:8080 myapp
+      # - name: Verify Docker Image
+      #   run: curl -s http://localhost:8080 | grep "Hello World"
+      - name: Cache Docker images.
+        uses: ScribeMD/docker-cache@0.5.0
+        with:
+          key: docker-${{ runner.os }}-${{ hashFiles('Dockerfile') }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build docker image
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          context: .
+          file: ./Dockerfile
+          platforms: linux/arm64

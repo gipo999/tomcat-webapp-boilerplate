@@ -1,5 +1,7 @@
 package com.smi.xxx.rest.base;
 
+import com.google.gson.Gson;
+import java.util.HashMap;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -13,6 +15,8 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 /** Base service. */
 @Path("/base")
 public class BaseService {
+
+  private static final Gson GSON = new Gson();
 
   @GET
   @Path("/")
@@ -50,11 +54,16 @@ public class BaseService {
     return Response.ok(createToken(datas.username, datas.password)).build();
   } // loginByModel
 
-  @POST
+  @GET
+  @Produces({MediaType.APPLICATION_JSON})
   @Path("/health")
   public Response health() {
+    var resJson = new HashMap<String, String>();
+    resJson.put("status", "UP");
 
-    return Response.ok().build();
+    var json = GSON.toJson(resJson);
+
+    return Response.ok(json).build();
   } // health
 
   private String createToken(String username, String password) {

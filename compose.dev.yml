@@ -2,12 +2,17 @@
 #
 # this is a dev only compose file that will be used to start the services needed
 # and provide live reload for the tomcat webapp by running npm run dev
+#
+# network mode exposes the service directly to the host, no mapping needed
+# requires ports available on the host
+
 services:
   tomcat-webapp-boilerplate:
     # environment:
     # image: tomcat:9-jdk21-temurin-jammy
     build:
-      dockerfile: ./docker/tomcat.Dockerfile
+      # dockerfile: ./docker/tomcat.Dockerfile
+      dockerfile: ./Dockerfile
     container_name: tomcat-webapp-boilerplate
     env_file: ./.env
     develop:
@@ -17,18 +22,18 @@ services:
           path: "./build/libs/"
           target: "/usr/local/tomcat/webapps/"
     network_mode: host
-    ports:
-      - 127.0.0.1:8080:8080
-      ########## postgres
+    # ports:
+    #   - 127.0.0.1:8080:8080
+    ########## postgres
   postgresdev:
     env_file: ./.env
     image: postgres:latest
     # restart: unless-stopped
     # user: postgres
     network_mode: host
-    ports:
-      - 127.0.0.1:5432:5432
-      # - 5432:5432
+    # ports:
+    #   - 127.0.0.1:5432:5432
+    # - 5432:5432
     container_name: postgresdev
     volumes:
       #     - ~/data/postgres:/var/lib/postgresql/data
@@ -57,8 +62,6 @@ services:
     image: redis/redis-stack:latest
     # user: redis
     # restart: unless-stopped
-    #
-    # network mode exposes the service to the host, no mapping needed
     network_mode: host
     # ports:
     #   - 127.0.0.1:6379:6379
