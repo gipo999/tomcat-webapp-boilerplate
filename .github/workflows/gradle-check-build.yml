@@ -85,7 +85,7 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.10.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           # docker_name: ${{ env.TEST_TAG }}
           target: "http://localhost:8080/tomcat-webapp-boilerplate"
           # rules_file_name: ".zap/rules.tsv"
