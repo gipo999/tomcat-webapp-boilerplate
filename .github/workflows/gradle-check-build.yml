@@ -81,6 +81,14 @@ jobs:
           #   uses: github/codeql-action/upload-sarif@v3
           #   with:
           #     sarif_file: snyk.sarif
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.10.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: ${{ env.TEST_TAG }}
+          target: "http://localhost:8080"
+          # rules_file_name: ".zap/rules.tsv"
+          cmd_options: "-a"
 # pen test and put comment in pr with the results now using PR image
 # we will replicate the pen test with cron on another action on the dev branch tag released image
 
