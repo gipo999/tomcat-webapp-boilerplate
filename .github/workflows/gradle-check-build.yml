@@ -36,7 +36,7 @@ jobs:
           context: .
           file: ./Dockerfile
           load: true # load the image after building so it can be used in the next steps
-          platforms: linux/arm64
+          platforms: linux/amd64
           tags: ${{ env.TEST_TAG }}
       # - name: Test docker image
       #   run: |
