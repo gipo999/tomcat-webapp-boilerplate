@@ -9,7 +9,7 @@ FROM eclipse-temurin:21@sha256:2e387a63a9086232a53fb668f78bcda1f233118f234326fcb
 # initialize defaults for overriding through --env
 
 # example
-# ENV INFISICAL_TOKEN='' 
+# ENV INFISICAL_TOKEN=''
 
 # ENV PORT=8080
 
@@ -21,7 +21,7 @@ RUN addgroup --system tomcat-webapp-boilerplate && \
 RUN mkdir -p /home/tomcat-webapp-boilerplate
 
 COPY . /home/tomcat-webapp-boilerplate
-RUN chown -R its-battistar-be-go:its-battistar-be-go .
+RUN chown -R tomcat-webapp-boilerplate:tomcat-webapp-boilerplate /home/tomcat-webapp-boilerplate
 
 
 WORKDIR /home/tomcat-webapp-boilerplate

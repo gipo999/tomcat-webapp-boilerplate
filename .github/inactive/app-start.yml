@@ -1,0 +1,39 @@
+# this workflow will build the docker file and verify the image gets up and running
+name: App Start Workflow
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch: {}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # - name: Build Docker Image
+      #   run: docker build -t myapp .
+      # - name: Run Docker Image
+      #   run: docker run -d -p 8080:8080 myapp
+      # - name: Verify Docker Image
+      #   run: curl -s http://localhost:8080 | grep "Hello World"
+      - name: Setup DOCKER environment
+        uses: ./.github/actions/docker-setup
+      - name: Build and export to docker
+        uses: docker/build-push-action@v5
+        with:
+          push: false
+          context: .
+          file: ./Dockerfile
+          load: true # load the image after building so it can be used in the next steps
+          platforms: linux/amd64
+          tags: gipo999/tomcat-webapp-boilerplate:latest
+      # - name: Test docker image
+      #   run: |
+      #     docker run --rm ${{ env.TEST_TAG }}
+      - name: Run docker image
+        run: |
+          docker run -d -p 8080:8080 gipo999/tomcat-webapp-boilerplate:latest
+      - name: Verify docker image endpoint
+        run: |
+          curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "Hello World"

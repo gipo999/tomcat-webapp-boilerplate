@@ -1,16 +1,75 @@
 # TODO: possibly use only compose with 1 container with nodemon and tomcat
+#
+# this is a dev only compose file that will be used to start the services needed
+# and provide live reload for the tomcat webapp by running npm run dev
+#
+# network mode exposes the service directly to the host, no mapping needed
+# requires ports available on the host
+
 services:
   tomcat-webapp-boilerplate:
     # environment:
     # image: tomcat:9-jdk21-temurin-jammy
     build:
-      dockerfile: ./docker/tomcat.Dockerfile
+      # dockerfile: ./docker/tomcat.Dockerfile
+      dockerfile: ./Dockerfile
     container_name: tomcat-webapp-boilerplate
+    env_file: ./.env
     develop:
+      # watch allows to sync files from host to container
       watch:
         - action: sync+restart
-          path: "build/libs/"
+          path: "./build/libs/"
           target: "/usr/local/tomcat/webapps/"
     network_mode: host
-    ports:
-      - 127.0.0.1:8080:8080
+    # ports:
+    #   - 127.0.0.1:8080:8080
+    ########## postgres
+  postgresdev:
+    env_file: ./.env
+    image: postgres:latest
+    # restart: unless-stopped
+    # user: postgres
+    network_mode: host
+    # ports:
+    #   - 127.0.0.1:5432:5432
+    # - 5432:5432
+    container_name: postgresdev
+    volumes:
+      #     - ~/data/postgres:/var/lib/postgresql/data
+      - /tmp/db/psql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${PSQL_USER} # default
+      POSTGRES_PASSWORD: ${PSQL_PASSWORD}
+      POSTGRES_DB: ${PSQL_DATABASE_NAME}
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4:latest
+    # restart: unless-stopped
+    network_mode: host
+    depends_on:
+      - postgresdev
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com #pragma: allowlist secret
+      PGADMIN_DEFAULT_PASSWORD: admin #pragma: allowlist secret
+      # PGADMIN_LISTEN_PORT: 9001
+    # ports:
+    #   - 127.0.0.1:9001:80
+    # - 9001:80
+  ########## redis
+  redisdev:
+    env_file: ./.env
+    image: redis/redis-stack:latest
+    # user: redis
+    # restart: unless-stopped
+    network_mode: host
+    # ports:
+    #   - 127.0.0.1:6379:6379
+    #   - 127.0.0.1:9002:8001 # redis insight
+    container_name: redisdev
+    # volumes:
+    #     - ~/data/redis:/data
+    # - /tmp/db/redis:/data
+    environment:
+      # default user is: default
+      - REDIS_ARGS=--save 60 1000 --appendonly yes --loglevel warning --requirepass ${REDIS_PASSWORD}

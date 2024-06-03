@@ -10,9 +10,32 @@ compose up -d
 
 # env vars
 
-SEMGREP_APP_TOKEN
-DOCKERHUB_TOKEN
-DOCKERHUB_USERNAME
-SNYK_TOKEN
-PAT
-CODECOV_TOKEN
+- SEMGREP_APP_TOKEN
+- DOCKERHUB_TOKEN
+- DOCKERHUB_USERNAME
+- SNYK_TOKEN
+- PAT
+- CODECOV_TOKEN
+
+# feats
+
+- gradle
+
+- docker
+
+- compose
+  auto restart on src change
+
+- pre commit
+
+- post commit
+
+- pre push
+
+- on pr
+  test, check, war, tomcat /health
+  vulnerability checks on container and image
+
+- on dev push
+
+- cron
