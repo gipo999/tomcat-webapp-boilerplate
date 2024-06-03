@@ -86,7 +86,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # docker_name: ${{ env.TEST_TAG }}
-          target: "http://localhost:8080"
+          target: "http://localhost:8080/tomcat-webapp-boilerplate"
           # rules_file_name: ".zap/rules.tsv"
           cmd_options: "-a"
 # pen test and put comment in pr with the results now using PR image
