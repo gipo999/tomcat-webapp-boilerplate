@@ -43,7 +43,7 @@ jobs:
       #     docker run --rm ${{ env.TEST_TAG }}
       - name: Run docker image
         run: |
-          docker run -d -p 8080:8080 gipo999/tomcat-webapp-boilerplate:latest
+          docker run -d -p 8080:8080 gipo999/tomcat-webapp-boilerplate:${{ env.TEST_TAG }}
       # - name: Verify docker image endpoint
       #   # it returns 200 with json {"status":"UP"}
       #   run: |
