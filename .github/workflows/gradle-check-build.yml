@@ -1,4 +1,6 @@
 name: Gradle Check and Build Workflow
+env:
+  TEST_TAG: gipo999/tomcat-webapp-boilerplate:test
 on:
   pull_request:
     branches: ["dev"]
@@ -35,17 +37,27 @@ jobs:
           file: ./Dockerfile
           load: true # load the image after building so it can be used in the next steps
           platforms: linux/arm64
-          tags: gipo999/tomcat-webapp-boilerplate:latest
+          tags: ${{ env.TEST_TAG }}
       # - name: Test docker image
       #   run: |
       #     docker run --rm ${{ env.TEST_TAG }}
       - name: Run docker image
         run: |
           docker run -d -p 8080:8080 gipo999/tomcat-webapp-boilerplate:latest
-      - name: Verify docker image endpoint
-        # it returns 200 with json {"status":"UP"}
-        run: |
-          curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
+      # - name: Verify docker image endpoint
+      #   # it returns 200 with json {"status":"UP"}
+      #   run: |
+      #     curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
+      - name: Test docker image endpoint
+        # Use the retry action
+        uses: nick-fields/retry@v3
+        with:
+          max_attempts: 5
+          retry_on: error
+          timeout_seconds: 10
+          # You can specify the shell commands you want to retry here
+          command: |
+            curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
 
 #
 #
