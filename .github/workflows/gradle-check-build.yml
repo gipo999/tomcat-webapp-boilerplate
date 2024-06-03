@@ -10,6 +10,11 @@ on:
   workflow_dispatch: {}
 jobs:
   build-linux:
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
     if: github.event.pull_request.draft == false
     name: Lint and Build on Linux Job
     runs-on: ubuntu-latest
