@@ -30,7 +30,7 @@ jobs:
       - name: Setup DOCKER environment
         uses: ./.github/actions/docker-setup
       - name: Build and export to docker
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@2cdde995de11925a030ce8070c3d77a52ffcf1c0 # v5
         with:
           push: false
           context: .
@@ -50,7 +50,7 @@ jobs:
       #     curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
       - name: Test docker image endpoint
         # Use the retry action
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
         with:
           max_attempts: 5
           retry_on: error
