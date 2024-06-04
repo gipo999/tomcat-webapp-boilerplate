@@ -4,9 +4,9 @@ env:
 on:
   pull_request:
     branches: ["dev"]
-  push:
-    # TODO: remove this when the action is ready for dev
-    branches: ["app-start-test"]
+  # push:
+  #   # TODO: remove this when the action is ready for dev
+  #   branches: ["app-start-test"]
   workflow_dispatch: {}
 jobs:
   build-linux:
