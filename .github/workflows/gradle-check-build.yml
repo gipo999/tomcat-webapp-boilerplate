@@ -65,31 +65,33 @@ jobs:
           # You can specify the shell commands you want to retry here
           command: |
             curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
-      # init scanning for vulnerabilities
-      - name: Run Snyk to check Docker image for vulnerabilities
-        # Snyk can be used to break the build when it detects vulnerabilities.
-        # In this case we want to upload the issues to GitHub Code Scanning
-        continue-on-error: true
-        uses: snyk/actions/docker@master
-        # FIXME: snyk token can't be used from forks
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          image: ${{ env.TEST_TAG }}
-          # sarif: true # default
-          args: --file=Dockerfile
-          # - name: Upload result to GitHub Code Scanning
-          #   uses: github/codeql-action/upload-sarif@v3
-          #   with:
-          #     sarif_file: snyk.sarif
-      - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.10.0
-        with:
-          token: ${{ secrets.PAT }}
-          # docker_name: ${{ env.TEST_TAG }}
-          target: "http://localhost:8080/tomcat-webapp-boilerplate"
-          # rules_file_name: ".zap/rules.tsv"
-          cmd_options: "-a"
+    # init scanning for vulnerabilities
+    # - name: Run Snyk to check Docker image for vulnerabilities
+    #   # Snyk can be used to break the build when it detects vulnerabilities.
+    #   # In this case we want to upload the issues to GitHub Code Scanning
+    #   continue-on-error: true
+    #   uses: snyk/actions/docker@master
+    #   # FIXME: snyk token can't be used from forks
+    #   env:
+    #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    #   with:
+    #     image: ${{ env.TEST_TAG }}
+    #     # sarif: true # default
+    #     args: --file=Dockerfile
+    #     # - name: Upload result to GitHub Code Scanning
+    #     #   uses: github/codeql-action/upload-sarif@v3
+    #     #   with:
+    #     #     sarif_file: snyk.sarif
+    # - name: ZAP Scan
+    #   uses: zaproxy/action-full-scan@v0.10.0
+    #   with:
+    #     token: ${{ secrets.PAT }}
+    #     # docker_name: ${{ env.TEST_TAG }}
+    #     target: "http://localhost:8080/tomcat-webapp-boilerplate"
+    #     # rules_file_name: ".zap/rules.tsv"
+    #     cmd_options: "-a"
+    #
+
 # pen test and put comment in pr with the results now using PR image
 # we will replicate the pen test with cron on another action on the dev branch tag released image
 
