@@ -38,37 +38,13 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       # test the docker image
-      - name: Setup DOCKER environment
-        uses: ./.github/actions/docker-setup
-      - name: Build and export to docker
-        uses: docker/build-push-action@2cdde995de11925a030ce8070c3d77a52ffcf1c0 # v5
+      - name: Build, run and test container
+        uses: ./.github/actions/build-run-testcontainer
         with:
+          docker-tag: ${{ env.TEST_TAG }}
+          port-maps: "8080:8080"
+          load: true
           push: false
-          context: .
-          file: ./Dockerfile
-          load: true # load the image after building so it can be used in the next steps
-          platforms: linux/amd64
-          tags: ${{ env.TEST_TAG }}
-      # - name: Test docker image
-      #   run: |
-      #     docker run --rm ${{ env.TEST_TAG }}
-      - name: Run docker image
-        run: |
-          docker run -d -p 8080:8080 ${{ env.TEST_TAG }}
-      # - name: Verify docker image endpoint
-      #   # it returns 200 with json {"status":"UP"}
-      #   run: |
-      #     curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
-      - name: Test docker image endpoint
-        # Use the retry action
-        uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
-        with:
-          max_attempts: 5
-          retry_on: error
-          timeout_seconds: 10
-          # You can specify the shell commands you want to retry here
-          command: |
-            curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
       # attack
       - name: Attack container CI
         uses: ./.github/actions/attack
