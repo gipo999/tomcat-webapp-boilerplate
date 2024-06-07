@@ -24,19 +24,21 @@ runs:
     # must create node action to run docker container
     # check zap action for reference
     # https://github.com/zaproxy/action-full-scan
-    - name: Nmap Scan
-      uses: gipo355/vuln-docker-scanners@v1.0.0
-      with:
-        target: "localhost"
-        vulners: true
-        port: "8080"
-        generate-reports: true
+    # - name: Nmap Scan
+    #   uses: gipo355/vuln-docker-scanners@v1.0.0
+    #   with:
+    #     target: "localhost"
+    #     vulners: true
+    #     port: "8080"
+    #     generate-reports: true
     # init scanning for vulnerabilities
     - name: Set up Snyk CLI to check for security issues
       uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
     - name: login to snyk
+      shell: bash
       run: snyk auth ${{ env.SNYK_TOKEN }}
     - name: run snyk container
+      shell: bash
       run: snyk container test ${{ env.TEST_TAG }} --file=Dockerfile --sarif > snyk-container.sarif || true
     # - name: Run Snyk to check Docker image for vulnerabilities
     #   # Snyk can be used to break the build when it detects vulnerabilities.
