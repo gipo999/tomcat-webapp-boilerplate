@@ -1,0 +1,40 @@
+# TODO: make this composite a standalone action
+name: Attack container CI
+runs:
+  using: composite
+  steps:
+    - name: ZAP Scan
+      # FIXME: ZAP emits json or creates an issue only
+      # possibly creatte an action
+      uses: zaproxy/action-full-scan@v0.10.0
+      with:
+        token: ${{ secrets.PAT }}
+        # docker_name: ${{ env.TEST_TAG }}
+        target: "http://localhost:8080/tomcat-webapp-boilerplate"
+        # rules_file_name: ".zap/rules.tsv"
+        cmd_options: "-a"
+    # TODO: create custom action to convert zap json to sarif
+    #
+    # run custom container with nmap
+    # TODO: add  self actions
+    # FIXME: not working, broken action
+    # inputs not passed correctly as flags
+    # BUG: can't use docker action with scanners
+    # docker actions don't pass the --network=host  flag
+    # must create node action to run docker container
+    # check zap action for reference
+    # https://github.com/zaproxy/action-full-scan
+    - name: Nmap Scan
+      uses: gipo355/vuln-docker-scanners@v1.0.0
+      with:
+        target: "localhost"
+        vulners: true
+        port: "8080"
+        generate-reports: true
+#
+# TODO: add load test, wapiti, and other scanners
+#
+# TODO: how to scan? on PR? on release?
+#
+# pen test and put comment in pr with the results now using PR image
+# we will replicate the pen test with cron on another action on the dev branch tag released image

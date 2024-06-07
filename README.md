@@ -1,14 +1,71 @@
-both images at:
+# Tomcat Webapp Boilerplate
 
-<https://github.com/gipo999/tomcat-webapp-boilerplate/pkgs/container/tomcat-webapp-boilerplate>
+Proof of concept for a tomcat webapp boilerplate with gradle, docker, compose, pre commit, post commit, pre push, on pr, on dev push, cron, security and Dynamic Application Security Testing (DAST).
 
-<https://hub.docker.com/r/gipo999/tomcat-webapp-boilerplate>
+It performs tests on the code and the container, and checks for vulnerabilities.
 
-working with `./gradlew war`
+## Features
 
-compose up -d
+## Basics
 
-# env vars
+### Development
+
+- Live environment with a `tomcat` docker image
+- Auto-restart on src change with `npm run dev` utilizing compose and nodemon
+- Linting with `npm run lint`
+- Fixing linting issues with `npm run fix`
+
+### Git Hooks
+
+- pre-commit
+- post-commit
+- pre-push
+
+### Github Actions
+
+Must be buildable and pass all checks with `gradlew buildWaf`
+
+Verifies the war is runnable with a health check http request on the container.
+
+- on pr
+- on dev push
+- cron jobs
+
+### Release
+
+- Automatic release with `semantic-release` and `commitizen`
+
+### Static code analyzers
+
+- semgrep
+- sonarqube
+- codeql
+- dependency review
+- dependabot security alerts
+- snyk
+
+### Dynamic Application Security Testing (DAST)
+
+- OWASP ZAP (Zed Attack Proxy)
+- snyk
+- Custom actions:
+  👷 In progress: custom actions
+  Using self built cli tool with cobra and go @ <https://github.com/gipo355/docker-vuln-scanners> to be run in container
+  Used in actions like <https://github.com/gipo355/docker-vuln-scanners-nmap-action>
+
+  - nmap
+  - load tester with wrk
+  - wapiti
+  - others
+
+### Auto upload images
+
+- dockerhub (gipo999/tomcat-webapp-boilerplate)
+  <https://github.com/gipo999/tomcat-webapp-boilerplate/pkgs/container/tomcat-webapp-boilerplate>
+- github packages (gipo999/tomcat-webapp-boilerplate)
+  <https://hub.docker.com/r/gipo999/tomcat-webapp-boilerplate>
+
+## env vars needed in github secrets
 
 - SEMGREP_APP_TOKEN
 - DOCKERHUB_TOKEN
@@ -17,30 +74,9 @@ compose up -d
 - PAT
 - CODECOV_TOKEN
 
-# feats
+## Notes (will move to /docs)
 
-- gradle
-
-- docker
-
-- compose
-  auto restart on src change
-
-- pre commit
-
-- post commit
-
-- pre push
-
-- on pr
-  test, check, war, tomcat /health
-  vulnerability checks on container and image
-
-- on dev push
-
-- cron
-
-# security and Dynamic Application Security Testing (DAST)
+### security and Dynamic Application Security Testing (DAST)
 
 <https://owasp.org/www-community/Free_for_Open_Source_Application_Security_Tools>
 
