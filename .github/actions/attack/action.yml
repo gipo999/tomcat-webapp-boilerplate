@@ -1,8 +1,14 @@
 # TODO: make this composite a standalone action
 name: Attack container CI
 inputs:
-  docker-tag:
+  docker_tag:
     description: "docker tag to attack"
+    required: true
+  snyk_token:
+    description: snyk token
+    requried: true
+  pat:
+    description: "personal access token for zap"
     required: true
 runs:
   using: composite
@@ -12,7 +18,7 @@ runs:
       # possibly creatte an action
       uses: zaproxy/action-full-scan@v0.10.0
       with:
-        token: ${{ env.PAT }}
+        token: ${{ inputs.pat }}
         # docker_name: ${{ env.TEST_TAG }}
         target: "http://localhost:8080/tomcat-webapp-boilerplate"
         # rules_file_name: ".zap/rules.tsv"
@@ -42,7 +48,7 @@ runs:
       uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
     - name: login to snyk
       shell: bash
-      run: snyk auth ${{ env.SNYK_TOKEN }}
+      run: snyk auth ${{ inputs.snyk_token }}
     # FIXME: sarif output doesn't work
     # BUG: this sarif is broken, requires post-processing?
     # TODO: post-processing the snyk report to remove nulls
@@ -51,7 +57,7 @@ runs:
     #   # In this case we want to upload the issues to GitHub Code Scanning
     - name: run snyk container
       shell: bash
-      run: snyk container test ${{ inputs.docker-tag }} --file=Dockerfile --sarif > snyk-container.sarif || true
+      run: snyk container test ${{ inputs.docker_tag }} --file=Dockerfile --sarif > snyk-container.sarif || true
     - name: display json output
       shell: bash
       run: cat snyk-container.sarif

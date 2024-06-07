@@ -8,10 +8,10 @@ inputs:
     description: "Push the Docker image."
     required: false
     default: false
-  docker-tag:
+  docker_tag:
     description: "The tags for the Docker image."
     required: true
-  port-maps:
+  port_maps:
     description: "The port to expose the Docker image."
     required: true
 runs:
@@ -25,10 +25,10 @@ runs:
         file: ./Dockerfile
         load: ${{ inputs.load }}
         platforms: linux/amd64
-        tags: ${{ inputs.docker-tag }}
+        tags: ${{ inputs.docker_tag }}
     - name: Run docker image
       run: |
-        docker run -d -p ${{inputs.port-maps }} ${{ inputs.docker-tag }}
+        docker run -d -p ${{inputs.port_maps }} ${{ inputs.docker_tag }}
     - name: Test docker image endpoint
       # Use the retry action
       uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
