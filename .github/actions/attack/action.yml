@@ -16,21 +16,20 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: ZAP Scan
-      # FIXME: ZAP emits json or creates an issue only
-      # possibly create an action
-      # /usr/bin/touch report_json.json report_md.md report_html.html
-      # /usr/bin/chmod a+w report_json.json report_md.md report_html.html
-      #
-      #
-      # uses: zaproxy/action-full-scan@v0.10.0
-      # with:
-      #   token: ${{ inputs.pat }}
-      #   # docker_name: ${{ env.TEST_TAG }}
-      #   target: "http://localhost:8080/tomcat-webapp-boilerplate"
-      #   # rules_file_name: ".zap/rules.tsv"
-      #   cmd_options: "-a"
-      # TODO: post-processing: create custom action to convert zap json to sarif
+    # FIXME: ZAP emits json or creates an issue only
+    # possibly create an action
+    # /usr/bin/touch report_json.json report_md.md report_html.html
+    # /usr/bin/chmod a+w report_json.json report_md.md report_html.html
+    #
+    # - name: ZAP Scan
+    # uses: zaproxy/action-full-scan@v0.10.0
+    # with:
+    #   token: ${{ inputs.pat }}
+    #   # docker_name: ${{ env.TEST_TAG }}
+    #   target: "http://localhost:8080/tomcat-webapp-boilerplate"
+    #   # rules_file_name: ".zap/rules.tsv"
+    #   cmd_options: "-a"
+    # TODO: post-processing: create custom action to convert zap json to sarif
     # check trivy, snyk actions for reference on parsing
     #
     # run custom container with nmap
