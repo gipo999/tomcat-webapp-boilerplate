@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - dev
-      - app-start-test
 permissions:
   contents: read
 jobs:
@@ -32,45 +31,19 @@ jobs:
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
       - name: run snyk open source
         run: snyk test --all-projects --sarif > snyk-os.sarif || true
-      # init scanning for vulnerabilities
-      - name: run snyk container
-        run: snyk container test ${{ env.TEST_TAG }} --file=Dockerfile --sarif > snyk-container.sarif || true
-      # - name: Run Snyk to check Docker image for vulnerabilities
-      #   # Snyk can be used to break the build when it detects vulnerabilities.
-      #   # In this case we want to upload the issues to GitHub Code Scanning
-      #   continue-on-error: true
-      #   uses: snyk/actions/docker@master
-      #   # FIXME: sarif output doesn't work
-      #   env:
-      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      #   with:
-      #     image: ${{ env.TEST_TAG }}
-      #     # sarif: true # default
-      #     args: --file=Dockerfile
-      #     # - name: Upload result to GitHub Code Scanning
-      #     #   uses: github/codeql-action/upload-sarif@v3
-      #     #   with:
-      #     #     sarif_file: snyk.sarif
       - name: Snyk Code test
         run: snyk code test --sarif > snyk-code.sarif  || true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: display json output
+        run: cat snyk-os.sarif
       - name: Upload snyk code result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
         with:
           sarif_file: snyk-code.sarif
       - name: display json output
-        run: cat snyk-os.sarif
+        run: cat snyk-code.sarif
       - name: Upload snyk open source result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
         with:
           sarif_file: snyk-os.sarif
-      - name: display json output
-        run: cat snyk-container.sarif
-      # BUG: this sarif is broken for post-processing
-      - name: display json output
-        run: cat snyk-container.sarif
-      - name: Upload snyk container result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
-        with:
-          sarif_file: snyk-container.sarif

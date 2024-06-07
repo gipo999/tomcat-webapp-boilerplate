@@ -4,7 +4,9 @@ env:
   TEST_TAG: gipo999/tomcat-webapp-boilerplate:test
 on:
   pull_request:
-    branches: ["dev"]
+    branches:
+      - "dev"
+      - "app-start-test"
   workflow_dispatch: {}
 jobs:
   build-linux:
@@ -63,5 +65,7 @@ jobs:
           # You can specify the shell commands you want to retry here
           command: |
             curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
-
+      # attack
+      - name: Attack container CI
+        uses: ./.github/actions/attack
 # we don't care about windows for this app since it only runs on linux

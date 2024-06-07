@@ -31,6 +31,32 @@ runs:
         vulners: true
         port: "8080"
         generate-reports: true
+    # init scanning for vulnerabilities
+    - name: run snyk container
+      run: snyk container test ${{ env.TEST_TAG }} --file=Dockerfile --sarif > snyk-container.sarif || true
+    # - name: Run Snyk to check Docker image for vulnerabilities
+    #   # Snyk can be used to break the build when it detects vulnerabilities.
+    #   # In this case we want to upload the issues to GitHub Code Scanning
+    #   continue-on-error: true
+    #   uses: snyk/actions/docker@master
+    #   # FIXME: sarif output doesn't work
+    #   env:
+    #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    #   with:
+    #     image: ${{ env.TEST_TAG }}
+    #     # sarif: true # default
+    #     args: --file=Dockerfile
+    #     # - name: Upload result to GitHub Code Scanning
+    #     #   uses: github/codeql-action/upload-sarif@v3
+    #     #   with:
+    #     #     sarif_file: snyk.sarif
+    # BUG: this sarif is broken for post-processing
+    - name: display json output
+      run: cat snyk-container.sarif
+    - name: Upload snyk container result to GitHub Code Scanning
+      uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
+      with:
+        sarif_file: snyk-container.sarif
 #
 # TODO: add load test, wapiti, and other scanners
 #
