@@ -1,5 +1,6 @@
 name: Gradle Check and Build Workflow
 on:
+  # FIXME: secrets not available from pull_request forks
   pull_request:
     branches:
       - "dev"
