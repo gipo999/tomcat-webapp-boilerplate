@@ -1,7 +1,4 @@
 name: Gradle Check and Build Workflow
-env:
-  # required for local testing without risking pulling the wrong image
-  TEST_TAG: gipo999/tomcat-webapp-boilerplate:test
 on:
   pull_request:
     branches:
@@ -12,6 +9,11 @@ on:
   workflow_dispatch: {}
 jobs:
   build-linux:
+    env:
+      # required for local testing without risking pulling the wrong image
+      TEST_TAG: gipo999/tomcat-webapp-boilerplate:test
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      PAT: ${{ secrets.PAT }}
     permissions:
       security-events: write
       packages: read

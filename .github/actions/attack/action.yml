@@ -8,7 +8,7 @@ runs:
       # possibly creatte an action
       uses: zaproxy/action-full-scan@v0.10.0
       with:
-        token: ${{ secrets.PAT }}
+        token: ${{ env.PAT }}
         # docker_name: ${{ env.TEST_TAG }}
         target: "http://localhost:8080/tomcat-webapp-boilerplate"
         # rules_file_name: ".zap/rules.tsv"
@@ -32,6 +32,10 @@ runs:
         port: "8080"
         generate-reports: true
     # init scanning for vulnerabilities
+    - name: Set up Snyk CLI to check for security issues
+      uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
+    - name: login to snyk
+      run: snyk auth ${{ env.SNYK_TOKEN }}
     - name: run snyk container
       run: snyk container test ${{ env.TEST_TAG }} --file=Dockerfile --sarif > snyk-container.sarif || true
     # - name: Run Snyk to check Docker image for vulnerabilities
@@ -52,6 +56,7 @@ runs:
     #     #     sarif_file: snyk.sarif
     # BUG: this sarif is broken for post-processing
     - name: display json output
+      shell: bash
       run: cat snyk-container.sarif
     - name: Upload snyk container result to GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
