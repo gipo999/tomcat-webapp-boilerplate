@@ -1,5 +1,9 @@
 # TODO: make this composite a standalone action
 name: Attack container CI
+inputs:
+  docker-tag:
+    description: "docker tag to attack"
+    required: true
 runs:
   using: composite
   steps:
@@ -13,10 +17,11 @@ runs:
         target: "http://localhost:8080/tomcat-webapp-boilerplate"
         # rules_file_name: ".zap/rules.tsv"
         cmd_options: "-a"
-    # TODO: create custom action to convert zap json to sarif
+        # TODO: post-processing: create custom action to convert zap json to sarif
+    # check trivy, snyk actions for reference on parsing
     #
     # run custom container with nmap
-    # TODO: add  self actions
+    # TODO: add  self actions: finish nmap
     # FIXME: not working, broken action
     # inputs not passed correctly as flags
     # BUG: can't use docker action with scanners
@@ -24,6 +29,7 @@ runs:
     # must create node action to run docker container
     # check zap action for reference
     # https://github.com/zaproxy/action-full-scan
+    #
     # - name: Nmap Scan
     #   uses: gipo355/vuln-docker-scanners@v1.0.0
     #   with:
@@ -37,26 +43,15 @@ runs:
     - name: login to snyk
       shell: bash
       run: snyk auth ${{ env.SNYK_TOKEN }}
-    - name: run snyk container
-      shell: bash
-      run: snyk container test ${{ env.TEST_TAG }} --file=Dockerfile --sarif > snyk-container.sarif || true
-    # - name: Run Snyk to check Docker image for vulnerabilities
+    # FIXME: sarif output doesn't work
+    # BUG: this sarif is broken, requires post-processing?
+    # TODO: post-processing the snyk report to remove nulls
+    #
     #   # Snyk can be used to break the build when it detects vulnerabilities.
     #   # In this case we want to upload the issues to GitHub Code Scanning
-    #   continue-on-error: true
-    #   uses: snyk/actions/docker@master
-    #   # FIXME: sarif output doesn't work
-    #   env:
-    #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-    #   with:
-    #     image: ${{ env.TEST_TAG }}
-    #     # sarif: true # default
-    #     args: --file=Dockerfile
-    #     # - name: Upload result to GitHub Code Scanning
-    #     #   uses: github/codeql-action/upload-sarif@v3
-    #     #   with:
-    #     #     sarif_file: snyk.sarif
-    # BUG: this sarif is broken for post-processing
+    - name: run snyk container
+      shell: bash
+      run: snyk container test ${{ inputs.docker-tag }} --file=Dockerfile --sarif > snyk-container.sarif || true
     - name: display json output
       shell: bash
       run: cat snyk-container.sarif

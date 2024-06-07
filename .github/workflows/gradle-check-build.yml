@@ -72,4 +72,6 @@ jobs:
       # attack
       - name: Attack container CI
         uses: ./.github/actions/attack
+        with:
+          docker-tag: ${{ env.TEST_TAG }}
 # we don't care about windows for this app since it only runs on linux
