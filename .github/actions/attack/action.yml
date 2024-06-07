@@ -16,27 +16,25 @@ inputs:
 runs:
   using: composite
   steps:
-    # FIXME: ZAP emits json or creates an issue only
+    #
+    - name: ZAP Scan
+      uses: zaproxy/action-full-scan@v0.10.0
+      with:
+        token: ${{ inputs.pat }}
+        # docker_name: ${{ env.TEST_TAG }}
+        target: "http://localhost:8080/tomcat-webapp-boilerplate"
+        # rules_file_name: ".zap/rules.tsv"
+        cmd_options: "-a"
+    # TODO: ZAP emits json or creates an issue only
     # possibly create an action
     # /usr/bin/touch report_json.json report_md.md report_html.html
     # /usr/bin/chmod a+w report_json.json report_md.md report_html.html
-    #
-    # - name: ZAP Scan
-    # uses: zaproxy/action-full-scan@v0.10.0
-    # with:
-    #   token: ${{ inputs.pat }}
-    #   # docker_name: ${{ env.TEST_TAG }}
-    #   target: "http://localhost:8080/tomcat-webapp-boilerplate"
-    #   # rules_file_name: ".zap/rules.tsv"
-    #   cmd_options: "-a"
     # TODO: post-processing: create custom action to convert zap json to sarif
     # check trivy, snyk actions for reference on parsing
     #
     # run custom container with nmap
     # TODO: add  self actions: finish nmap
-    # FIXME: not working, broken action
-    # inputs not passed correctly as flags
-    # BUG: can't use docker action with scanners
+    # WARN: can't use docker action with scanners
     # docker actions don't pass the --network=host  flag
     # must create node action to run docker container
     # check zap action for reference
@@ -58,29 +56,28 @@ runs:
     - name: login to snyk
       shell: bash
       run: snyk auth ${{ inputs.snyk_token }}
-    # FIXME: sarif output doesn't work
-    # BUG: this sarif is broken, requires post-processing?
-    # TODO: post-processing the snyk report to remove nulls
-    #
-    # Error: Code Scanning could not process the submitted SARIF file:
-    # could not convert rules: invalid security severity value, is not a number: null
-    # ConfigurationError: Code Scanning could not process the submitted SARIF file:
-    # could not convert rules: invalid security severity value, is not a number: null
-    #     at run (/home/runner/work/_actions/github/codeql-action/f079b8493333aace61c81488f8bd40919487bd9f/lib/upload-sarif-action.js:70:15)
-    #     at async runWrapper (/home/runner/work/_actions/github/codeql-action/f079b8493333aace61c81488f8bd40919487bd9f/lib/upload-sarif-action.js:84:9)
-    #
-    #   # Snyk can be used to break the build when it detects vulnerabilities.
-    #   # In this case we want to upload the issues to GitHub Code Scanning
-    - name: run snyk container
-      shell: bash
-      run: snyk container test ${{ inputs.docker_tag }} --file=Dockerfile --sarif > snyk-container.sarif || true
-    - name: display json output
-      shell: bash
-      run: cat snyk-container.sarif
-    - name: Upload snyk container result to GitHub Code Scanning
-      uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
-      with:
-        sarif_file: snyk-container.sarif
+      # FIXME: sarif output doesn't work
+      # TODO: post-processing the snyk report to remove nulls
+      #
+      # Error: Code Scanning could not process the submitted SARIF file:
+      # could not convert rules: invalid security severity value, is not a number: null
+      # ConfigurationError: Code Scanning could not process the submitted SARIF file:
+      # could not convert rules: invalid security severity value, is not a number: null
+      #     at run (/home/runner/work/_actions/github/codeql-action/f079b8493333aace61c81488f8bd40919487bd9f/lib/upload-sarif-action.js:70:15)
+      #     at async runWrapper (/home/runner/work/_actions/github/codeql-action/f079b8493333aace61c81488f8bd40919487bd9f/lib/upload-sarif-action.js:84:9)
+      #
+      #   # Snyk can be used to break the build when it detects vulnerabilities.
+      #   # In this case we want to upload the issues to GitHub Code Scanning
+      # - name: run snyk container
+      #   shell: bash
+      #   run: snyk container test ${{ inputs.docker_tag }} --file=Dockerfile --sarif > snyk-container.sarif || true
+      # - name: display json output
+      #   shell: bash
+      #   run: cat snyk-container.sarif
+      # - name: Upload snyk container result to GitHub Code Scanning
+      #   uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
+      #   with:
+      #     sarif_file: snyk-container.sarif # :FIXME: <-- this is broken, post-process
 #
 # TODO: add load test, wapiti, and other scanners
 #
