@@ -12,9 +12,9 @@ jobs:
     env:
       # required for local testing without risking pulling the wrong image
       TEST_TAG: gipo999/tomcat-webapp-boilerplate:test
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      PAT: ${{ secrets.PAT }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      # PAT: ${{ secrets.PAT }}
+      # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       security-events: write
       packages: read
@@ -51,6 +51,7 @@ jobs:
         uses: ./.github/actions/attack
         with:
           docker_tag: ${{ env.TEST_TAG }}
-          pat: ${{ env.PAT }}
-          snyk_token: ${{ env.SNYK_TOKEN }}
+          pat: ${{ secrets.PAT }}
+          snyk_token: ${{ secrets.SNYK_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 # we don't care about windows for this app since it only runs on linux

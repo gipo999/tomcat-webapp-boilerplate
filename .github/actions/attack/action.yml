@@ -10,6 +10,9 @@ inputs:
   pat:
     description: "personal access token for zap"
     required: true
+  github_token:
+    description: "github token"
+    required: true
 runs:
   using: composite
   steps:
@@ -43,7 +46,7 @@ runs:
     - name: Nmap Scan
       uses: gipo355/vuln-docker-scanners-nmap-action@v1.0.1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ inputs.github_token }}
         target: "localhost"
         vulners: true
         vulscan: true
