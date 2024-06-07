@@ -27,6 +27,7 @@ runs:
         platforms: linux/amd64
         tags: ${{ inputs.docker_tag }}
     - name: Run docker image
+      shell: bash
       run: |
         docker run -d -p ${{inputs.port_maps }} ${{ inputs.docker_tag }}
     - name: Test docker image endpoint
