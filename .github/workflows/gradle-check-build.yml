@@ -6,6 +6,8 @@ on:
   pull_request:
     branches:
       - "dev"
+  push:
+    branches:
       - "app-start-test"
   workflow_dispatch: {}
 jobs:
