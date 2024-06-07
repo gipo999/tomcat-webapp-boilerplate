@@ -3,6 +3,7 @@
 Proof of concept for a tomcat webapp boilerplate with gradle, docker, compose, pre commit, post commit, pre push, on pr, on dev push, cron, security and Dynamic Application Security Testing (DAST).
 
 It performs tests on the code and the container, and checks for vulnerabilities.
+test
 
 ## Features
 
