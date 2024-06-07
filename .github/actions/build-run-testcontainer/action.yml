@@ -1,4 +1,4 @@
-name: Setup DOCKER
+name: Build, Run and Test Docker Container
 inputs:
   load:
     description: "Load the Docker image."
@@ -26,16 +26,9 @@ runs:
         load: ${{ inputs.load }}
         platforms: linux/amd64
         tags: ${{ inputs.docker-tag }}
-    # - name: Test docker image
-    #   run: |
-    #     docker run --rm ${{ env.TEST_TAG }}
     - name: Run docker image
       run: |
         docker run -d -p ${{inputs.port-maps }} ${{ inputs.docker-tag }}
-    # - name: Verify docker image endpoint
-    #   # it returns 200 with json {"status":"UP"}
-    #   run: |
-    #     curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
     - name: Test docker image endpoint
       # Use the retry action
       uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
