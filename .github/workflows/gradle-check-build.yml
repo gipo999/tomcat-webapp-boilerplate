@@ -4,9 +4,10 @@ on:
   pull_request:
     branches:
       - "dev"
-  # push:
-  #   branches:
-  #     - "app-start-test"
+  push:
+    branches:
+      # - "app-start-test"
+      - "dev"
   workflow_dispatch: {}
 jobs:
   build-linux:
@@ -47,6 +48,7 @@ jobs:
       # attack
       - name: Attack container CI
         uses: ./.github/actions/attack
+        if: github.event_name == 'push'
         with:
           docker_tag: ${{ env.TEST_TAG }}
           pat: ${{ secrets.PAT }}
