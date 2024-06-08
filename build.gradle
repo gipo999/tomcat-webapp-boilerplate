@@ -37,7 +37,7 @@ def TOMCAT_VERSION = "9+"
 
 dependencies {
 	// tools
-	rewrite("org.openrewrite.recipe:rewrite-static-analysis:1.8.1")
+	rewrite("org.openrewrite.recipe:rewrite-static-analysis:1.9.0")
 
 	rewrite("org.openrewrite.recipe:rewrite-java-security:2.9.0")
 
