@@ -39,7 +39,7 @@ dependencies {
 	// tools
 	rewrite("org.openrewrite.recipe:rewrite-static-analysis:1.8.1")
 
-	rewrite("org.openrewrite.recipe:rewrite-java-security:2.8.1")
+	rewrite("org.openrewrite.recipe:rewrite-java-security:2.9.0")
 
 	implementation(group: 'org.slf4j', name: 'slf4j-api', version: '2+')
 
