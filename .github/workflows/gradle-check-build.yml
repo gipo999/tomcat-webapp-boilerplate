@@ -1,14 +1,25 @@
 name: Gradle Check and Build Workflow
-env:
-  TEST_TAG: gipo999/tomcat-webapp-boilerplate:test
 on:
+  # FIXME: secrets not available from pull_request forks
   pull_request:
-    branches: ["dev"]
-  # push:
-  #   branches: ["app-start-test"]
+    branches:
+      - "dev"
+  push:
+    branches:
+      # - "app-start-test"
+      - "dev"
   workflow_dispatch: {}
 jobs:
   build-linux:
+    env:
+      # required for local testing without risking pulling the wrong image
+      TEST_TAG: gipo999/tomcat-webapp-boilerplate:test
+    permissions:
+      security-events: write
+      packages: read
+      issues: write
+      actions: read
+      contents: read
     if: github.event.pull_request.draft == false
     name: Lint and Build on Linux Job
     runs-on: ubuntu-latest
@@ -27,53 +38,20 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       # test the docker image
-      - name: Setup DOCKER environment
-        uses: ./.github/actions/docker-setup
-      - name: Build and export to docker
-        uses: docker/build-push-action@2cdde995de11925a030ce8070c3d77a52ffcf1c0 # v5
+      - name: Build, run and test container
+        uses: ./.github/actions/build-run-testcontainer
         with:
+          docker_tag: ${{ env.TEST_TAG }}
+          port_maps: "8080:8080"
+          load: true
           push: false
-          context: .
-          file: ./Dockerfile
-          load: true # load the image after building so it can be used in the next steps
-          platforms: linux/amd64
-          tags: ${{ env.TEST_TAG }}
-      # - name: Test docker image
-      #   run: |
-      #     docker run --rm ${{ env.TEST_TAG }}
-      - name: Run docker image
-        run: |
-          docker run -d -p 8080:8080 ${{ env.TEST_TAG }}
-      # - name: Verify docker image endpoint
-      #   # it returns 200 with json {"status":"UP"}
-      #   run: |
-      #     curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
-      - name: Test docker image endpoint
-        # Use the retry action
-        uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
+      # attack
+      - name: Attack container CI
+        uses: ./.github/actions/attack
+        if: github.event_name == 'push'
         with:
-          max_attempts: 5
-          retry_on: error
-          timeout_seconds: 10
-          # You can specify the shell commands you want to retry here
-          command: |
-            curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
-
-# pen test and put comment in pr with the results now using PR image
-# we will replicate the pen test with cron on another action on the dev branch tag released image
-
-#
-#
+          docker_tag: ${{ env.TEST_TAG }}
+          pat: ${{ secrets.PAT }}
+          snyk_token: ${{ secrets.SNYK_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 # we don't care about windows for this app since it only runs on linux
-# build-windows:
-#   if: github.event.pull_request.draft == false
-#   name: Lint and Build on Windows Job
-#   runs-on: windows-latest
-#   steps:
-#     - name: Checkout sources Step
-#       uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
-#     - uses: ./.github/actions/ci-setup
-#       name: Setup CI environment
-#     - name: Build with Gradle Wrapper Step
-#       # buildWar runs check and test tasks
-#       run: ./gradlew buildWar

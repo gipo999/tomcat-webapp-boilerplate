@@ -1,3 +1,4 @@
+# IMP: snyk token can't be used from forks, so PRs from forks will fail
 name: Snyk Security Scan Workflow
 on:
   # pull_request:
@@ -16,6 +17,9 @@ jobs:
       contents: read
       actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
     runs-on: ubuntu-latest
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      PAT: ${{ secrets.PAT }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
@@ -24,15 +28,21 @@ jobs:
           lfs: true
       - name: Set up Snyk CLI to check for security issues
         uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: login to snyk
-        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+        run: snyk auth ${{ env.SNYK_TOKEN }}
+      - name: run snyk open source
+        run: snyk test --all-projects --sarif > snyk-os.sarif || true
       - name: Snyk Code test
         run: snyk code test --sarif > snyk-code.sarif  || true
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      - name: Upload result to GitHub Code Scanning
+      - name: display json output
+        run: cat snyk-os.sarif
+      - name: Upload snyk code result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
         with:
           sarif_file: snyk-code.sarif
+      - name: display json output
+        run: cat snyk-code.sarif
+      - name: Upload snyk open source result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
+        with:
+          sarif_file: snyk-os.sarif

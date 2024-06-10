@@ -1,0 +1,42 @@
+name: Build, Run and Test Docker Container
+inputs:
+  load:
+    description: "Load the Docker image."
+    required: false
+    default: false
+  push:
+    description: "Push the Docker image."
+    required: false
+    default: false
+  docker_tag:
+    description: "The tags for the Docker image."
+    required: true
+  port_maps:
+    description: "The port to expose the Docker image."
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Build and export to docker
+      uses: docker/build-push-action@2cdde995de11925a030ce8070c3d77a52ffcf1c0 # v5
+      with:
+        push: ${{ inputs.push }}
+        context: .
+        file: ./Dockerfile
+        load: ${{ inputs.load }}
+        platforms: linux/amd64
+        tags: ${{ inputs.docker_tag }}
+    - name: Run docker image
+      shell: bash
+      run: |
+        docker run -d -p ${{inputs.port_maps }} ${{ inputs.docker_tag }}
+    - name: Test docker image endpoint
+      # Use the retry action
+      uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3
+      with:
+        max_attempts: 5
+        retry_on: error
+        timeout_seconds: 10
+        # You can specify the shell commands you want to retry here
+        command: |
+          curl -s http://localhost:8080/tomcat-webapp-boilerplate/app/base/health | grep "UP"
