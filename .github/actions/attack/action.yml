@@ -18,7 +18,7 @@ runs:
   steps:
     #
     - name: ZAP Scan
-      uses: zaproxy/action-full-scan@v0.10.0
+      uses: zaproxy/action-full-scan@d2a07475d467566c9a3e3c700f31f47724aa1060 # v0.10.0
       with:
         token: ${{ inputs.pat }}
         # docker_name: ${{ env.TEST_TAG }}
@@ -41,7 +41,7 @@ runs:
     # https://github.com/zaproxy/action-full-scan
     #
     - name: Nmap Scan
-      uses: gipo355/vuln-docker-scanners-nmap-action@v1.0.7
+      uses: gipo355/vuln-docker-scanners-nmap-action@c73167b458b6657cb2d5870711dddf03e937b59d # v1.0.7
       with:
         github_token: ${{ inputs.github_token }}
         target: "localhost"
