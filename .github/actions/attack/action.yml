@@ -41,7 +41,7 @@ runs:
     # https://github.com/zaproxy/action-full-scan
     #
     - name: Nmap Scan
-      uses: gipo355/vuln-docker-scanners-nmap-action@02c30da757aef65082eb2b9684fc5ab71d80e6b4 # v1.0.11
+      uses: gipo355/vuln-docker-scanners-nmap-action@v1.0.12
       with:
         github_token: ${{ inputs.github_token }}
         target: "localhost"
@@ -78,6 +78,10 @@ runs:
       #   uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
       #   with:
       #     sarif_file: snyk-container.sarif # :FIXME: <-- this is broken, post-process
+    - name: Upload vulner report to GitHub Code Scanning
+      uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
+      with:
+        sarif_file: nmap-reports/vulners/vulners-report.sarif
 #
 # TODO: add load test, wapiti, and other scanners
 #
