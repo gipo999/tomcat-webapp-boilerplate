@@ -1,5 +1,5 @@
 # FROM eclipse-temurin:21 as BUILD_IMAGE
-FROM eclipse-temurin:21@sha256:2e387a63a9086232a53fb668f78bcda1f233118f234326fcb88b0bb2a968ec39
+FROM eclipse-temurin:21@sha256:ac1545309de7e27001a80d91df2d42865c0bacaec75e016cb4482255d7691187
 # FROM tomcat:9-jdk21-temurin-jammy
 
 # TODO: must provide gradle otherwise it downloads every restart??
