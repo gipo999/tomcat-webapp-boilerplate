@@ -3,22 +3,22 @@ module.exports = {
   branches: [
     "main",
     "+([0-9])?(.{+([0-9]),x}).x", // e.g., 1.x, 1.2.x, 1.2.3.x
-    {
-      name: "next",
-      prerelease: true,
-    },
+    // {
+    //   name: "next",
+    //   prerelease: true,
+    // },
     {
       name: "dev",
       prerelease: true,
     },
-    {
-      name: "alpha",
-      prerelease: true,
-    },
-    {
-      name: "beta",
-      prerelease: true,
-    },
+    // {
+    //   name: "alpha",
+    //   prerelease: true,
+    // },
+    // {
+    //   name: "beta",
+    //   prerelease: true,
+    // },
   ],
   plugins: [
     [
