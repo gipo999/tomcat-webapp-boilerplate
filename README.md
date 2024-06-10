@@ -24,7 +24,7 @@ test
 
 ### Github Actions
 
-Must be buildable and pass all checks with `gradlew buildWaf`
+Must be buildable and pass all checks with `gradlew buildWar`
 
 Verifies the war is runnable with a health check http request on the container.
 
@@ -43,7 +43,9 @@ Verifies the war is runnable with a health check http request on the container.
 - codeql
 - dependency review
 - dependabot security alerts
-- snyk
+- snyk open source
+- snyk container
+- snyk code
 
 ### Dynamic Application Security Testing (DAST)
 
@@ -58,6 +60,17 @@ Verifies the war is runnable with a health check http request on the container.
   - load tester with wrk
   - wapiti
   - others
+
+### Sarif Reports
+
+sarif reports can be uploaded to github with the `upload-sarif` action
+
+they provide a standard format for static analysis tools, and can be used in github security tab
+to have a better overview of the vulnerabilities and identify the tools that generated them
+
+👷 In progress: sarif reports
+
+Must convert manually zap, nmap, fix snyk
 
 ### Auto upload images
 
