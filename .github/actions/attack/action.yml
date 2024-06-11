@@ -18,7 +18,7 @@ runs:
   steps:
     #
     # wapiti
-    # emits .wapiti/generated_reports/report.html
+    # emits .wapiti/generated_report/report.html
     # for now, base default scan
     - name: Wapiti Scan
       uses: gipo355/vuln-docker-scanners-wapiti-action@v1.0.3
