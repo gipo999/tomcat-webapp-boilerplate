@@ -17,12 +17,20 @@ runs:
   using: composite
   steps:
     #
+    # wapiti
+    # emits .wapiti/generated_reports/report.html
+    # for now, base default scan
+    - name: Wapiti Scan
+      uses: gipo355/vuln-docker-scanners-wapiti-action@1.0.0
+      with:
+        target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
+        github_token: ${{ inputs.github_token }}
     - name: ZAP Scan
       uses: zaproxy/action-full-scan@d2a07475d467566c9a3e3c700f31f47724aa1060 # v0.10.0
       with:
         token: ${{ inputs.pat }}
         # docker_name: ${{ env.TEST_TAG }}
-        target: "http://localhost:8080/tomcat-webapp-boilerplate"
+        target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         # rules_file_name: ".zap/rules.tsv"
         cmd_options: "-a"
     # TODO: ZAP emits json or creates an issue only
