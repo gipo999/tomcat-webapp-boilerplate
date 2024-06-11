@@ -1,0 +1,50 @@
+Starting Nmap 7.95 ( https://nmap.org ) at 2024-06-11 11:01 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000012s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.7 (Ubuntu Linux; protocol 2.0)
+8080/tcp open  http    Apache Tomcat (language: en)
+8084/tcp open  rtsp
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port8084-TCP:V=7.95%I=7%D=6/11%Time=66682E94%P=x86_64-alpine-linux-musl
+SF:%r(GetRequest,140E,"HTTP/1\.0\x20400\x20Bad\x20request\r\nDate:\x20Tue,
+SF:\x2011\x20Jun\x202024\x2011:01:40\x20GMT\r\nServer:\x20Mono\.WebServer\
+SF:.XSP/4\.7\.1\.0\x20Linux\r\nConnection:\x20close\r\nConnection:\x20clos
+SF:e\r\nDate:\x20Tue,\x2011\x20Jun\x202024\x2011:01:40\x20GMT\r\nContent-T
+SF:ype:\x20text/html;\x20charset=utf-8\r\nContent-Length:\x204890\r\n\r\n<
+SF:\?xml\x20version=\"1\.0\"\x20encoding=\"utf-8\"\?>\n<!DOCTYPE\x20html\x
+SF:20PUBLIC\x20\"-//W3C//DTD\x20XHTML\x201\.0\x20Transitional//EN\"\x20\"h
+SF:ttp://www\.w3\.org/TR/xhtml1/DTD/xhtml1-transitional\.dtd\">\n<html\x20
+SF:xmlns=\"http://www\.w3\.org/1999/xhtml\">\n<head>\n<style\x20type=\"tex
+SF:t/css\">\nbody\x20{\x20background-color:\x20#FFFFFF;\x20font-size:\x20\
+SF:.75em;\x20font-family:\x20Verdana,\x20Helvetica,\x20Sans-Serif;\x20marg
+SF:in:\x200;\x20padding:\x200;\tcolor:\x20#696969;\x20}\na:link\x20{\x20co
+SF:lor:\x20#000000;\x20text-decoration:\x20underline;\x20}\na:visited\x20{
+SF:\x20color:\x20#000000;\x20}\na:hover\x20{\x20color:\x20#000000;\x20text
+SF:-decoration:\x20none;\x20}\na:active\x20{\x20color:\x20#12eb87;\x20}\np
+SF:,\x20ul\x20{\tmargin-bottom:\x2020px;\x20line-height:\x201\.6em;\x20}\n
+SF:pre\x20{\x20font-size:\x201\.2em;\tmargin-left:\x2020px;\x20margin-top:
+SF:\x200px;\x20}\nh1,\x20")%r(FourOhFourRequest,24AD,"HTTP/1\.0\x20500\x20
+SF:Internal\x20Server\x20Error\r\nDate:\x20Tue,\x2011\x20Jun\x202024\x2011
+SF::01:42\x20GMT\r\nServer:\x20Mono\.WebServer\.XSP/4\.7\.1\.0\x20Linux\r\
+SF:nConnection:\x20close\r\nConnection:\x20close\r\nContent-Type:\x20text/
+SF:html;\x20charset=us-ascii\r\nContent-Length:\x209169\r\n\r\n<\?xml\x20v
+SF:ersion=\"1\.0\"\x20encoding=\"utf-8\"\?>\n<!DOCTYPE\x20html\x20PUBLIC\x
+SF:20\"-//W3C//DTD\x20XHTML\x201\.0\x20Transitional//EN\"\x20\"http://www\
+SF:.w3\.org/TR/xhtml1/DTD/xhtml1-transitional\.dtd\">\n<html\x20xmlns=\"ht
+SF:tp://www\.w3\.org/1999/xhtml\">\n<head>\n<style\x20type=\"text/css\">\n
+SF:body\x20{\x20background-color:\x20#FFFFFF;\x20font-size:\x20\.75em;\x20
+SF:font-family:\x20Verdana,\x20Helvetica,\x20Sans-Serif;\x20margin:\x200;\
+SF:x20padding:\x200;\tcolor:\x20#696969;\x20}\na:link\x20{\x20color:\x20#0
+SF:00000;\x20text-decoration:\x20underline;\x20}\na:visited\x20{\x20color:
+SF:\x20#000000;\x20}\na:hover\x20{\x20color:\x20#000000;\x20text-decoratio
+SF:n:\x20none;\x20}\na:active\x20{\x20color:\x20#12eb87;\x20}\np,\x20ul\x2
+SF:0{\tmargin-bottom:\x2020px;\x20line-height:\x201\.6em;\x20}\npre\x20{\x
+SF:20font-size:\x201\.2em;\tmargin-left:\x2020px;\x20margin-top:\x200px;\x
+SF:20}\nh1,\x20h2,\x20h3,\x20h4,\x20h5,\x20h6\x20{\x20fon");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 8.62 seconds
