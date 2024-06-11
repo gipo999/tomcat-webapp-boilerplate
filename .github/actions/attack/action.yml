@@ -45,7 +45,7 @@ runs:
       with:
         github_token: ${{ inputs.github_token }}
         target: "localhost"
-        vulners: true
+        vulner: true
         vulscan: true
         port: "8080"
         flags: "-sV"
@@ -68,9 +68,9 @@ runs:
       #
       #   # Snyk can be used to break the build when it detects vulnerabilities.
       #   # In this case we want to upload the issues to GitHub Code Scanning
-      # - name: run snyk container
-      #   shell: bash
-      #   run: snyk container test ${{ inputs.docker_tag }} --file=Dockerfile --sarif > snyk-container.sarif || true
+    - name: run snyk container
+      shell: bash
+      run: snyk container test ${{ inputs.docker_tag }} --file=Dockerfile --sarif > snyk-container.sarif || true
       # - name: display json output
       #   shell: bash
       #   run: cat snyk-container.sarif
@@ -78,10 +78,10 @@ runs:
       #   uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
       #   with:
       #     sarif_file: snyk-container.sarif # :FIXME: <-- this is broken, post-process
-    - name: Upload vulner report to GitHub Code Scanning
-      uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
-      with:
-        sarif_file: nmap-reports/vulners/vulners-report.sarif
+      # - name: Upload vulner report to GitHub Code Scanning
+      #   uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
+      #   with:
+      #     sarif_file: nmap-reports/vulner/vulner-report.sarif
 #
 # TODO: add load test, wapiti, and other scanners
 #
