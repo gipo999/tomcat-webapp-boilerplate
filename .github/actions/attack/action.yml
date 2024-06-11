@@ -21,7 +21,7 @@ runs:
     # emits .wapiti/generated_reports/report.html
     # for now, base default scan
     - name: Wapiti Scan
-      uses: gipo355/vuln-docker-scanners-wapiti-action@v1.0.0
+      uses: gipo355/vuln-docker-scanners-wapiti-action@v1.0.1
       with:
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         github_token: ${{ inputs.github_token }}
@@ -48,7 +48,8 @@ runs:
     # check zap action for reference
     # https://github.com/zaproxy/action-full-scan
     #
-    # deactivated for now
+    # NOTE: nmap deactivated for now as it possibly exposes github vulns
+    #
     # - name: Nmap Scan
     #   uses: gipo355/vuln-docker-scanners-nmap-action@debeebb1184d79dd8e7f1148aebe58a8b2f86efe # v1.1.4
     #   with:
@@ -59,6 +60,7 @@ runs:
     #     port: "8080"
     #     flags: "-sV"
     #     generate_reports: true
+    #
     # init scanning for vulnerabilities
     - name: Set up Snyk CLI to check for security issues
       uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
