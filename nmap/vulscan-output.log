@@ -1,0 +1,1 @@
+nmap reports are deactivated for now as they potentially expose github runners vulnerabilities
