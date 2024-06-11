@@ -45,7 +45,7 @@ runs:
       with:
         github_token: ${{ inputs.github_token }}
         target: "localhost"
-        vulners: true
+        vulner: true
         vulscan: true
         port: "8080"
         flags: "-sV"
@@ -81,7 +81,7 @@ runs:
     - name: Upload vulner report to GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
       with:
-        sarif_file: nmap-reports/vulners/vulners-report.sarif
+        sarif_file: nmap-reports/vulner/vulner-report.sarif
 #
 # TODO: add load test, wapiti, and other scanners
 #

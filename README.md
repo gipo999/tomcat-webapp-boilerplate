@@ -137,6 +137,10 @@ trivy
 
 ### TODO: take a look at <https://github.com/greenbone/openvas-scanner/actions/runs/9346345737>
 
+- add nmap output.log to gh pages
+- add zap html output to gh pages
+- add wipiti html output to gh pages
+
 ### other static analysis tools
 
 <https://github.com/eclipse/steady>
