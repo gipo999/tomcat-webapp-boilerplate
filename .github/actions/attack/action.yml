@@ -21,7 +21,7 @@ runs:
     # emits .wapiti/generated_reports/report.html
     # for now, base default scan
     - name: Wapiti Scan
-      uses: gipo355/vuln-docker-scanners-wapiti-action@v1.0.1
+      uses: gipo355/vuln-docker-scanners-wapiti-action@v1.0.3
       with:
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         github_token: ${{ inputs.github_token }}
