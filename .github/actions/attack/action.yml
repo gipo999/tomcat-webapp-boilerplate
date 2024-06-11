@@ -41,7 +41,7 @@ runs:
     # https://github.com/zaproxy/action-full-scan
     #
     - name: Nmap Scan
-      uses: gipo355/vuln-docker-scanners-nmap-action@42c939ff72769c6b5b820408fa202e9d02a3ff52 # v1.1.2
+      uses: gipo355/vuln-docker-scanners-nmap-action@debeebb1184d79dd8e7f1148aebe58a8b2f86efe # v1.1.4
       with:
         github_token: ${{ inputs.github_token }}
         target: "localhost"
