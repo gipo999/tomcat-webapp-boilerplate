@@ -8,32 +8,26 @@
 
 services:
   tomcat-webapp-boilerplate:
-    # environment:
-    # image: tomcat:9-jdk21-temurin-jammy
     build:
-      # dockerfile: ./docker/tomcat.Dockerfile
       dockerfile: ./Dockerfile
     container_name: tomcat-webapp-boilerplate
     env_file: ./.env
     develop:
       # watch allows to sync files from host to container
+      # When we run npm run dev, it will start the container and build the war.
+      # on every war change, it will sync the war to the container and tomcat automatically restarts the app
       watch:
         - action: sync+restart
           path: "./build/libs/"
           target: "/usr/local/tomcat/webapps/"
+    # for ease of use, we forward the tomcat port to the host
     network_mode: host
-    # ports:
-    #   - 127.0.0.1:8080:8080
-    ########## postgres
+  ########## postgres
   postgresdev:
     env_file: ./.env
     image: postgres:latest@sha256:1bf73ccae25238fa555100080042f0b2f9be08eb757e200fe6afc1fc413a1b3c
     # restart: unless-stopped
-    # user: postgres
     network_mode: host
-    # ports:
-    #   - 127.0.0.1:5432:5432
-    # - 5432:5432
     container_name: postgresdev
     volumes:
       #     - ~/data/postgres:/var/lib/postgresql/data
@@ -55,7 +49,6 @@ services:
       # PGADMIN_LISTEN_PORT: 9001
     # ports:
     #   - 127.0.0.1:9001:80
-    # - 9001:80
   ########## redis
   redisdev:
     env_file: ./.env
@@ -68,7 +61,6 @@ services:
     #   - 127.0.0.1:9002:8001 # redis insight
     container_name: redisdev
     # volumes:
-    #     - ~/data/redis:/data
     # - /tmp/db/redis:/data
     environment:
       # default user is: default

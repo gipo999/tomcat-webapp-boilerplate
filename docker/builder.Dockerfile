@@ -1,3 +1,7 @@
+# OLD DOCKERFILE
+# keeping it for reference
+# this was meant to be used for development purposes
+
 # FROM eclipse-temurin:21 as BUILD_IMAGE
 FROM eclipse-temurin:21@sha256:ac1545309de7e27001a80d91df2d42865c0bacaec75e016cb4482255d7691187
 # FROM tomcat:9-jdk21-temurin-jammy

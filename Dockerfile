@@ -1,10 +1,9 @@
-# # steps: 
-# # 1. build image on java image
-# # 2. move war to tomcat image
-# # 3. run tomcat image
+# NOTE: initially a multi stage build was used, but it was removed to allow for caching of gradle dependencies
+# Building a war inside the container downloads and reinstalls gradle and all dependencies every single time and it takes an absurd amount of time (4+ minutes added to every run).
+# I will leave it here for reference but the CI actions build in baremetal and copy the outputs inside.
 #
 # # FROM eclipse-temurin:21@sha256:2e387a63a9086232a53fb668f78bcda1f233118f234326fcb88b0bb2a968ec39 as BUILD_IMAGE
-# FROM gradle:8-jdk21 as BUILD_IMAGE
+# FROM gradle:8-jdk21 as BUILD_IMAGE <-- tried using gradle image but it was reinstalling gradle every time too (because of the gradle wrapper and foojay-resolver)
 #
 # # VULN: should probably not run as root
 #
@@ -36,6 +35,8 @@ FROM tomcat:9-jdk21@sha256:701bdd15e1cf25451056932397b582681e5c2afbd5a4bd540835b
 # if we build it outside we can use github action gradle caching 
 # to make the build faster
 
+# TODO: inizialize ENVs to be overridden by --env
+
 ## IF MULTI STAGE
 # COPY --from=BUILD_IMAGE /home/app/build/libs/* /usr/local/tomcat/webapps
 ## else
@@ -43,13 +44,9 @@ COPY build/libs/* /usr/local/tomcat/webapps
 
 RUN adduser tomcat
 
+# Permissions
+# tomcat image allows tomcat user:group to run
 RUN chown -R tomcat:tomcat  /usr/local/tomcat/webapps
-
-# FIXME: this should be run in the compose or cli command to run
-# HEALTHCHECK --interval=30s --timeout=10s --retries=5 --start-period=30s \
-#     CMD curl --fail http://localhost:8080/tomcat-webapp-boilerplate/api/base/health || exit 1
-# HEALTHCHECK --interval=30s --timeout=10s --retries=5 --start-period=30s \
-#     CMD curl --fail http://localhost:8080/wrong || exit 1
 
 USER tomcat
 
