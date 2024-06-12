@@ -3,15 +3,29 @@
 # https://docs.docker.com/build/ci/github-actions/push-multi-registries/
 name: Publish Docker Image Workflow
 on:
+  # publish only after a successful release since we need the version tag
   release:
     types: [published]
   workflow_dispatch: {}
 jobs:
   publish-docker:
+    # don't run the job if the PR is a draft to save resources
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    # https://docs.github.com/en/actions/using-jobs/using-concurrency
+    # concurrency can be used to limit the number of jobs running at the same time for the whole repo
+    # to prevent using too many resources when too many PRs are opened or commits pushed
+    # For example, the ability to run workflows concurrently means that if multiple commits are pushed to a repository in quick succession, each push could trigger a separate workflow run, and these runs will execute concurrently.
+    #
+    # use case: for example, when someone pushes a commit to a PR, the workflow will be triggered again
+    # we want to cancel previous jobs and only run the latest one
     concurrency:
+      # at most there will be 1 job running at the same time for the whole repo
+      # and 1 pending job
+      # previous pending jobs will be cancelled if a new one is triggered
       group: ${{ github.workflow }}-${{ github.ref }}
+      # we can use cancel-in-progress to cancel the previous job if a new one is triggered
+      # cancel-in-progress: true
     permissions:
       contents: read
       packages: write
@@ -20,17 +34,20 @@ jobs:
     steps:
       - name: Checkout latest code
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      # seetup CI using a private composite action
       - name: Setup CI environment
         uses: ./.github/actions/ci-setup
-      # # build and deploy
+      # # build and deploy, no need to run checks and tests since we alrady did that in PR job
       - name: Build project
         run: ./gradlew war
-      # prepare tags
+      # prepare tags for docker
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81 # v5
         with:
           # list of Docker images to use as base name for tags
+          # ghcr for github container registry
+          # gipo999 for docker hub
           images: |
             ghcr.io/gipo999/tomcat-webapp-boilerplate
             gipo999/tomcat-webapp-boilerplate
@@ -44,27 +61,22 @@ jobs:
             type=semver,pattern={{major}}
             type=sha
       ## DOCKER BUILD AND PUSH to GHCR
+      # setup docker environment
       - name: Setup DOCKER environment
         uses: ./.github/actions/docker-setup
+      # authenticate to GHCR and Docker Hub
       - name: Login to GHCR
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3
-        if: github.event_name != 'pull_request'
         with:
           registry: ghcr.io
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
       - name: Login to Docker Hub
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      # TODO: remove context dump
-      - name: dump context for debugging
-        run: echo "$GITHUB_CONTEXT"
-        shell: bash
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+      # get the version from the tag of the release ( we have it thanks to the release event )
       - name: set version as env var
         shell: bash
         run: |
@@ -78,14 +90,24 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
-          push: ${{ github.event_name != 'pull_request' }}
+          load: false
+          push: true
+          sbom: true
+          # push: ${{ github.event_name != 'pull_request' }} # can conditionally push
+          provenance: mode=max
+          #
+          # tags
+          # default tags generated above + latest for both registries
           tags: |
             ${{ steps.meta.outputs.tags }}
             ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
             ${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+          # in docker, labels are needed to store metadata about the image and for provenance
           labels: ${{ steps.meta.outputs.labels }}
     #
-    # TODO: provenance
+    #
+    # this  may not be needed. Looks like as default build-push-action already does this
+    # https://docs.docker.com/build/ci/github-actions/attestations/
     # - name: Generate artifact attestation
     #   uses: actions/attest-build-provenance@v1
     #   with:

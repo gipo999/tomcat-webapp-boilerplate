@@ -12,6 +12,13 @@ jobs:
     name: Analyze (${{ matrix.language }})
     runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
     timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
+    concurrency:
+      # use case: for example, when someone pushes a commit to a PR, the workflow will be triggered again
+      # we want to cancel previous jobs and only run the latest one
+      # TODO: check if this is the correct group to do this
+      # github.ref is the branch name
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.language }}
+      cancel-in-progress: true
     permissions:
       security-events: write
       packages: read
@@ -46,3 +53,5 @@ jobs:
         uses: github/codeql-action/analyze@2e230e8fe0ad3a14a340ad0815ddb96d599d2aff # v3
         with:
           category: "/language:${{matrix.language}}"
+          # we don't want to upload security vulns for code that is not merged yet
+          upload: ${{ github.event_name != 'pull_request' }}

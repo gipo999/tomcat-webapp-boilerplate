@@ -1,20 +1,37 @@
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=gipo999_tomcat-webpapp-boilerplate)](https://sonarcloud.io/summary/new_code?id=gipo999_tomcat-webapp-boilerplate)
+
+[![CodeQL](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/github-code-scanning/codeql)
+[![Tests](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml)
+[![CodeCov](https://codecov.io/gh/gipo999/tomcat-webapp-boilerplate/graph/badge.svg?token=E8EMVN7YWB)](https://codecov.io/gh/gipo999/tomcat-webapp-boilerplate)
+[![Publish Package Workflow](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/publish.yml/badge.svg?branch=dev)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/publish.yml)
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Semantic-release: Commmitizen](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![Active Development](https://img.shields.io/badge/Maintenance%20Level-Actively%20Developed-brightgreen.svg)](https://gist.github.com/cheerfulstoic/d107229326a01ff0f333a1d3476e068d)
+
 # Tomcat Webapp Boilerplate
 
-Proof of concept for a tomcat webapp boilerplate with gradle, docker, compose, pre commit, post commit, pre push, on pr, on dev push, cron, security and Dynamic Application Security Testing (DAST).
+Proof of concept for a tomcat webapp boilerplate with automated testing and security checks.
 
-It performs tests on the code and the container, and checks for vulnerabilities.
-test
+Many features are ported from <https://github.com/gipo999/smispi>
 
 ## Features
+
+- gradle,
+- docker,
+- docker-compose,
+- pre, post commit, pre push git hooks,
+- github actions on pr, on dev push, cron, for health, security, static code analysis and Dynamic Application Security Testing (DAST).
+- code coverage with codecov
 
 ## Basics
 
 ### Development
 
 - Live environment with a `tomcat` docker image
-- Auto-restart on src change with `npm run dev` utilizing compose and nodemon
-- Linting with `npm run lint`
-- Fixing linting issues with `npm run fix`
+- Auto-restart on code change with `npm run dev` utilizing docker-compose and nodemon
+- Linting with `npm run lint` (runs buildWar)
+- Fixing linting issues with `npm run fix` (runs spotless and rewrite)
 
 ### Git Hooks
 
@@ -28,13 +45,33 @@ Must be buildable and pass all checks with `gradlew buildWar`
 
 Verifies the war is runnable with a health check http request on the container.
 
-- on pr
-- on dev push
-- cron jobs
+Vulnerability assessment actions:
+
+- snyk
+- codeql
+- semgrep
+- dependency review
+- Custom made nmap action <https://github.com/gipo355/docker-vuln-scanners-nmap-action>
+  - this utilises a custom made cli tool in a docker container with cobra and go @ <https://github.com/gipo355/docker-vuln-scanners>
+  - WARN: this action is deactivated as it scans the whole github host runner giving insight on possible vulnerabilities
+- Custom made wapiti action <https://github.com/gipo355/docker-vuln-scanners-wapiti-action>
+  - this utilises a custom made docker image (gipo355/wapiti) with wapiti installed
+- OWASP ZAP (Zed Attack Proxy)
+
+Reports that won't generate a sarif are uploaded to github pages or are made available with custom actions at [issues](https://github.com/gipo999/tomcat-webapp-boilerplate/issues)
+_note issues, pr comments, gh pages are considered vulnerabilities since they expose information_
+
+Read more at ![Sarif Reports](#sarif-reports)
 
 ### Release
 
 - Automatic release with `semantic-release` and `commitizen`
+
+Requires commits to be made following the `commitizen` format
+
+Fix: bump patch version
+Feat: bump minor version
+BREAKING CHANGE: bump major version
 
 ### Static code analyzers
 
@@ -50,36 +87,32 @@ Verifies the war is runnable with a health check http request on the container.
 ### Dynamic Application Security Testing (DAST)
 
 - OWASP ZAP (Zed Attack Proxy)
-- snyk
-- Custom actions:
-  👷 In progress: custom actions
-  Using self built cli tool with cobra and go @ <https://github.com/gipo355/docker-vuln-scanners> to be run in container
-  Used in actions like <https://github.com/gipo355/docker-vuln-scanners-nmap-action>
-
-  - nmap
-  - load tester with wrk
-  - wapiti
-  - others
+- nmap
+- load tester with wrk
+- wapiti
+- others can be added with custom actions or adding to the nmap cli tool created
 
 ### Sarif Reports
 
-sarif reports can be uploaded to github with the `upload-sarif` action
+Sarif reports can be uploaded to github with the `upload-sarif` action
 
 they provide a standard format for static analysis tools, and can be used in github security tab
 to have a better overview of the vulnerabilities and identify the tools that generated them
 
-👷 In progress: sarif reports
+Must convert manually zap, nmap, fix snyk.
 
-Must convert manually zap, nmap, fix snyk
+Requires custom actions to parse bugged or missing sarif reports (zap, nmap, wapiti, snyk container).
+
+Please check ![attack action](./.github/actions/attack/action.yml) for more info
 
 ### Auto upload images
 
-- dockerhub (gipo999/tomcat-webapp-boilerplate)
-  <https://github.com/gipo999/tomcat-webapp-boilerplate/pkgs/container/tomcat-webapp-boilerplate>
-- github packages (gipo999/tomcat-webapp-boilerplate)
-  <https://hub.docker.com/r/gipo999/tomcat-webapp-boilerplate>
+After a succesful release, the docker image is uploaded to dockerhub and github packages with tags `latest`, `vX.Y.Z` and `sha`
 
-## env vars needed in github secrets
+- [dockerhub](https://hub.docker.com/r/gipo999/tomcat-webapp-boilerplate)
+- [github packages](https://hub.docker.com/r/gipo999/tomcat-webapp-boilerplate)
+
+## Env vars needed in github secrets
 
 - SEMGREP_APP_TOKEN
 - DOCKERHUB_TOKEN
@@ -88,31 +121,15 @@ Must convert manually zap, nmap, fix snyk
 - PAT
 - CODECOV_TOKEN
 
-## Notes (will move to /docs)
+## Additional Tools and references
 
-### security and Dynamic Application Security Testing (DAST)
+### References
 
 <https://owasp.org/www-community/Free_for_Open_Source_Application_Security_Tools>
 
-zap
+### Alternatives/Additions
 
-OWASP ZAP (Zed Attack Proxy)
-
-snyk
-
-codeql
-
-semgrep
-
-dependency review
-
-sonarqube
-
-dependabot security alerts
-
-## alternatives or additions
-
-### strongest (paid)
+#### Considered Strongest, but paid
 
 nessus
 <https://medium.com/@ben.swain_70016/attack-surface-monitoring-github-actions-nessus-3e3e83d44a34>
@@ -123,11 +140,9 @@ burpsuite
 
 purpleteam
 
-### free
+#### free
 
 nuclei
-
-nmap
 
 flan <https://github.com/cloudflare/flan>
 
@@ -135,12 +150,10 @@ trivy
 
 <https://github.com/topics/vulnerability-assessment>
 
-### TODO: take a look at <https://github.com/greenbone/openvas-scanner/actions/runs/9346345737>
-
-- add nmap output.log to gh pages
-- add zap html output to gh pages
-- add wipiti html output to gh pages
-
-### other static analysis tools
+#### other static analysis tools
 
 <https://github.com/eclipse/steady>
+
+### Find out more
+
+Check [github project](https://github.com/users/gipo999/projects/3/views/1)

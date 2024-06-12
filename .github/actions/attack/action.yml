@@ -1,5 +1,8 @@
-# TODO: make this composite a standalone action
+# NOTE: this is a composite action
+# it could be a public action if moved to an individual public repo
+# it could be a private action for internal use like this one
 name: Attack container CI
+# those inputs are passed to every individual action
 inputs:
   docker_tag:
     description: "docker tag to attack"
@@ -17,32 +20,41 @@ runs:
   using: composite
   steps:
     #
-    # wapiti
+    # Wapiti
     # emits .wapiti/generated_report/report.html
-    # for now, base default scan
+    # for now, base default scan, can be improved alot: https://github.com/wapiti-scanner/wapiti/blob/master/doc/wapiti.ronn
     - name: Wapiti Scan
+      # I cloned their repo and created the docker image, pushing it to my registry
+      # Then i created a githbu action with nodejs to run the docker image since we need --network=host
       uses: gipo355/vuln-docker-scanners-wapiti-action@6147b708e264ce95171ba8c246f0d84a7e6d718a # v1.0.3
       with:
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         github_token: ${{ inputs.github_token }}
+    # ZAP
+    #
+    # can be improved with rules file and cmd_options
+    # TODO: must check how to add addons and extensions, possibly using a custom docker image
+    #
+    # there is an addon to generate a sarif report https://www.zaproxy.org/docs/desktop/addons/report-generation/report-sarif-json/
+    #
+    # ZAP emits json or creates an issue only using theses cmds
+    # /usrreport_json.json report_md.md report_html.html
+    # /usr/bin/chmod a+w report_json.json report_md.md report_html.html
+    # could do post-processing: create custom action to convert zap json to sarif or use zap sarif addon
+    # check trivy, snyk actions for reference on parsing
     - name: ZAP Scan
       uses: zaproxy/action-full-scan@d2a07475d467566c9a3e3c700f31f47724aa1060 # v0.10.0
       with:
+        # pat for creating issues
         token: ${{ inputs.pat }}
+        # docker name only if not pulling from registry
         # docker_name: ${{ env.TEST_TAG }}
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         # rules_file_name: ".zap/rules.tsv"
         cmd_options: "-aj"
-    # TODO: ZAP emits json or creates an issue only
-    # possibly create an action
-    # /usr/bin/touch report_json.json report_md.md report_html.html
-    # /usr/bin/chmod a+w report_json.json report_md.md report_html.html
-    # TODO: post-processing: create custom action to convert zap json to sarif
-    # check trivy, snyk actions for reference on parsing
     #
     # run custom container with nmap
-    # TODO: add  self actions: finish nmap
-    # WARN: can't use docker action with scanners
+    # NOTE: can't use docker action with scanners
     # docker actions don't pass the --network=host  flag
     # must create node action to run docker container
     # check zap action for reference
@@ -61,30 +73,31 @@ runs:
     #     flags: "-sV"
     #     generate_reports: true
     #
-    # init scanning for vulnerabilities
+    # SNYK
     - name: Set up Snyk CLI to check for security issues
       uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
     - name: login to snyk
       shell: bash
       run: snyk auth ${{ inputs.snyk_token }}
-      # FIXME: sarif output doesn't work
-      # TODO: post-processing the snyk report to remove nulls
-      #
-      # Error: Code Scanning could not process the submitted SARIF file:
-      # could not convert rules: invalid security severity value, is not a number: null
-      # ConfigurationError: Code Scanning could not process the submitted SARIF file:
-      # could not convert rules: invalid security severity value, is not a number: null
-      #     at run (/home/runner/work/_actions/github/codeql-action/f079b8493333aace61c81488f8bd40919487bd9f/lib/upload-sarif-action.js:70:15)
-      #     at async runWrapper (/home/runner/work/_actions/github/codeql-action/f079b8493333aace61c81488f8bd40919487bd9f/lib/upload-sarif-action.js:84:9)
-      #
-      #   # Snyk can be used to break the build when it detects vulnerabilities.
-      #   # In this case we want to upload the issues to GitHub Code Scanning
+    # SNYK CONTAINER
+    # Snyk can be used to break the build when it detects vulnerabilities.
+    # In this case we want to upload the issues to GitHub Code Scanning
+    # BUG: sarif output doesn't work, github code scanning can't process it, nulls in the output
+    # TODO: post-processing the snyk report to remove nulls using a custom action
+    #
+    # Error: Code Scanning could not process the submitted SARIF file:
+    # could not convert rules: invalid security severity value, is not a number: null
+    # ConfigurationError: Code Scanning could not process the submitted SARIF file:
+    # could not convert rules: invalid security severity value, is not a number: null
+    #     at run (/home/runner/work/_actions/github/codeql-action/f079b8493333aace61c81488f8bd40919487bd9f/lib/upload-sarif-action.js:70:15)
+    #     at async runWrapper (/home/runner/work/_actions/github/codeql-action/f079b8493333aace61c81488f8bd40919487bd9f/lib/upload-sarif-action.js:84:9)
+    #
     - name: run snyk container
       shell: bash
       run: snyk container test ${{ inputs.docker_tag }} --file=Dockerfile --sarif > snyk-container.sarif || true
-      # - name: display json output
-      #   shell: bash
-      #   run: cat snyk-container.sarif
+      #
+      # UPLOADS TO GITHUB CODE SCANNING
+      # Will be done when sarifs are fixed
       # - name: Upload snyk container result to GitHub Code Scanning
       #   uses: github/codeql-action/upload-sarif@f079b8493333aace61c81488f8bd40919487bd9f # v3
       #   with:
@@ -94,9 +107,9 @@ runs:
       #   with:
       #     sarif_file: nmap-reports/vulner/vulner-report.sarif
 #
-# TODO: add load test, wapiti, and other scanners
+# TODO: add load test with wrk, and other scanners?
 #
-# TODO: how to scan? on PR? on release?
+# NOTE: must decide where and how to scan. PR, release, schedule, push, etc
+# should it block the build or PR? this is quite hard to do since it's an async process and decisions must be human made
 #
-# pen test and put comment in pr with the results now using PR image
-# we will replicate the pen test with cron on another action on the dev branch tag released image
+# NOTE: where to put outputs? GH pages, github code scanning, PR comments, issues, external applicaton etc

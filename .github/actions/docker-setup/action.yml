@@ -1,3 +1,4 @@
+# Privatte composite action to prepare the CI environment for docker with caching and buildx
 name: Setup DOCKER
 runs:
   using: composite

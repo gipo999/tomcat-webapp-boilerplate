@@ -1,3 +1,5 @@
+# Composite private action to build, run and test a Docker container
+# Will have to respond to the health check endpoint
 name: Build, Run and Test Docker Container
 inputs:
   load:
@@ -23,6 +25,7 @@ runs:
         push: ${{ inputs.push }}
         context: .
         file: ./Dockerfile
+        # load the image into the docker cache to be able to run it
         load: ${{ inputs.load }}
         platforms: linux/amd64
         tags: ${{ inputs.docker_tag }}

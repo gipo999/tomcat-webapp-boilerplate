@@ -1,11 +1,10 @@
 name: Close stale issues and PR Workflow
 on:
   schedule:
-    - cron: "30 1 * * *"
+    - cron: "30 1 * * *" # every day at 1:30am
 jobs:
   stale:
     name: Close stale issues and PR job
-    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e # v9

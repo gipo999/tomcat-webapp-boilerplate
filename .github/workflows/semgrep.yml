@@ -6,16 +6,24 @@ on:
     branches:
       - dev
   schedule:
-    - cron: 11 2 * * *
+    - cron: 11 2 * * * # Run every day at 2:11 UTC
 name: Semgrep Workflow
 jobs:
   semgrep:
+    concurrency:
+      # use case: for example, when someone pushes a commit to a PR, the workflow will be triggered again
+      # we want to cancel previous jobs and only run the latest one
+      # TODO: check if this is the correct group to do this
+      # github.ref is the branch name
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     permissions:
       security-events: write
       packages: read
       actions: read
       contents: read
-    if: github.event.pull_request.draft == false && github.actor != 'dependabot[bot]'
+    # don't run on draft PRs or dependabot PRs or renovate PRs
+    if: github.event.pull_request.draft == false && github.actor != 'dependabot[bot]' && github.actor != 'renovate[bot]'
     name: Semgrep Job
     runs-on: ubuntu-latest
     env:
@@ -24,9 +32,11 @@ jobs:
       image: semgrep/semgrep@sha256:550dfdac1ec5d4a757d1c2ac0197a6360ef3ac8e3d0a804731eab07242e91b4c
     steps:
       - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      # generate the SARIF file to upload to the GitHub Advanced Security Dashboard
       - run: semgrep ci --sarif > semgrep.sarif
       - name: Upload SARIF file for GitHub Advanced Security Dashboard
         uses: github/codeql-action/upload-sarif@2e230e8fe0ad3a14a340ad0815ddb96d599d2aff # v3
         with:
           sarif_file: semgrep.sarif
-        if: always()
+          # we don't want to upload security vulns for code that is not merged yet
+        if: ${{ github.event_name != 'pull_request' }}
