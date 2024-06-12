@@ -1,6 +1,9 @@
 name: Check Test Build Workflow
 on:
   # FIXME: secrets not available from pull_request forks
+  push:
+    branches:
+      - "dev"
   pull_request:
     branches:
       - "dev"
