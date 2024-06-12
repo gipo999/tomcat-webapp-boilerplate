@@ -36,16 +36,18 @@
 
 Proof of concept for a tomcat webapp boilerplate with automated testing and security checks.
 
-Many features are ported from <https://github.com/gipo999/smispi>, please refer to that repository for additional notes and documentation.
+Many features are ported from <https://github.com/gipo999/smispi>, please refer to that repository for additional notes and documentation. _Additional feats from that repo like pitest can be added to this one._
 
 ## Features
 
-- gradle,
-- docker,
-- docker-compose,
-- pre, post commit, pre push git hooks,
-- github actions on pr, on dev push, cron, for health, security, static code analysis and Dynamic Application Security Testing (DAST).
+- gradle tasks,
+- docker standalone image with tomcat,
+- docker-compose for development,
+- pre, post commit, pre push git hooks to protect from secrets exposure and other issues,
+- github actions (health, security, static code analysis and Dynamic Application Security Testing (DAST), release, publish),
 - code coverage with codecov
+- semantic-release: uses commitizen for commit messages and automatically creates github tags+releases adding the WAR, javadoc and source code to the release at that point in time
+- automatic image publishing to dockerhub and github packages
 
 ## Basics
 
@@ -84,7 +86,7 @@ Vulnerability assessment actions:
   - can be customized and improved. <https://github.com/wapiti-scanner/wapiti/blob/master/doc/wapiti.ronn>
 - OWASP ZAP (Zed Attack Proxy)
   - using the base full-scan option
-  - can be customized and improved. Can be put in a custom action to get the full cli power and adding extensions/addons (like sarif report)
+  - can be customized and improved. Can be put in a custom action to get the full cli power and adding extensions/addons (like sarif report <https://www.zaproxy.org/docs/desktop/addons/report-generation/report-sarif-json/>)
 
 Reports that won't generate a sarif are uploaded to github pages or are made available with custom actions at [issues](https://github.com/gipo999/tomcat-webapp-boilerplate/issues)
 _note issues, pr comments, gh pages are considered vulnerabilities since they expose information_
@@ -97,9 +99,9 @@ Read more at [Sarif Reports](#sarif-reports)
 
 Requires commits to be made following the `commitizen` format
 
-Fix: bump patch version
-Feat: bump minor version
-BREAKING CHANGE: bump major version
+- Fix: bump patch version
+- Feat: bump minor version
+- BREAKING CHANGE: bump major version
 
 ### Static code analyzers
 
