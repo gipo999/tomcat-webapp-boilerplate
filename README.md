@@ -1,4 +1,4 @@
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=gipo999_tomcat-webpapp-boilerplate)](https://sonarcloud.io/summary/new_code?id=gipo999_tomcat-webapp-boilerplate)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=gipo999_tomcat-webapp-boilerplate)](https://sonarcloud.io/summary/new_code?id=gipo999_tomcat-webapp-boilerplate)
 
 [![CodeQL](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/codeql.yml/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/codeql.yml)
 [![Check Test Build Workflow](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml)
