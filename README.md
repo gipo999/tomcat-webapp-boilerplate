@@ -11,6 +11,29 @@
 
 # Tomcat Webapp Boilerplate
 
+<!--toc:start-->
+
+- [Tomcat Webapp Boilerplate](#tomcat-webapp-boilerplate)
+  - [Features](#features)
+  - [Basics](#basics)
+    - [Development](#development)
+    - [Git Hooks](#git-hooks)
+    - [Github Actions](#github-actions)
+    - [Release](#release)
+    - [Static code analyzers](#static-code-analyzers)
+    - [Dynamic Application Security Testing (DAST)](#dynamic-application-security-testing-dast)
+    - [Sarif Reports](#sarif-reports)
+    - [Auto upload images](#auto-upload-images)
+  - [Env vars needed in github secrets](#env-vars-needed-in-github-secrets)
+  - [Additional Tools and references](#additional-tools-and-references)
+    - [References](#references)
+    - [Alternatives/Additions](#alternativesadditions)
+      - [Considered Strongest, but paid](#considered-strongest-but-paid)
+      - [Free](#free)
+      - [Other static analysis tools](#other-static-analysis-tools)
+- [Find out more](#find-out-more)
+<!--toc:end-->
+
 Proof of concept for a tomcat webapp boilerplate with automated testing and security checks.
 
 Many features are ported from <https://github.com/gipo999/smispi>, please refer to that repository for additional notes and documentation.
@@ -30,6 +53,7 @@ Many features are ported from <https://github.com/gipo999/smispi>, please refer 
 
 - Live environment with a `tomcat` docker image
 - Auto-restart on code change with `npm run dev` utilizing docker-compose and nodemon
+  - check [docker-compose.yml](./compose.dev.yml) for more info
 - Linting with `npm run lint` (runs buildWar)
 - Fixing linting issues with `npm run fix` (runs spotless and rewrite)
 
@@ -160,3 +184,5 @@ After a succesful release, the docker image is uploaded to dockerhub and github 
 Check more notes/todos @ [github project](https://github.com/users/gipo999/projects/3/views/1), [issues](https://github.com/gipo999/tomcat-webapp-boilerplate/issues)
 
 You can take a look at other branches (.bak, etc) for older versions or different approaches.
+
+Every file has comments with implementation details
