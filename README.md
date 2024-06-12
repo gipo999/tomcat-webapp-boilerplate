@@ -46,8 +46,7 @@ Many features are ported from <https://github.com/gipo999/smispi>, please refer 
 - pre, post commit, pre push git hooks to protect from secrets exposure and other issues,
 - github actions (health, security, static code analysis and Dynamic Application Security Testing (DAST), release, publish),
 - code coverage with codecov
-- semantic-release: uses commitizen for commit messages and automatically creates github tags+releases adding the WAR, javadoc and source code to the release at that point in time
-- automatic image publishing to dockerhub and github packages
+- semantic-release: more info on [Release](#release)
 
 ## Basics
 
@@ -91,11 +90,19 @@ Vulnerability assessment actions:
 Reports that won't generate a sarif are uploaded to github pages or are made available with custom actions at [issues](https://github.com/gipo999/tomcat-webapp-boilerplate/issues)
 _note issues, pr comments, gh pages are considered vulnerabilities since they expose information_
 
+Please check [gh pages](https://gipo999.github.io/tomcat-webapp-boilerplate/)
+
 Read more at [Sarif Reports](#sarif-reports)
 
 ### Release
 
 - Automatic release with `semantic-release` and `commitizen`
+
+Uses commitizen for commit messages and automatically creates github tags+releases adding the WAR, javadoc and source code to the release at that point in time
+
+Please check [releases](https://github.com/gipo999/tomcat-webapp-boilerplate/releases)
+
+- automatic image publishing to dockerhub and github packages
 
 Requires commits to be made following the `commitizen` format
 
