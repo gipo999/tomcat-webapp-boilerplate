@@ -17,7 +17,7 @@ jobs:
       # we want to cancel previous jobs and only run the latest one
       # TODO: check if this is the correct group to do this
       # github.ref is the branch name
-      group: ${{ github.workflow }}-${{ github.ref }}
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.language }}
       cancel-in-progress: true
     permissions:
       security-events: write
