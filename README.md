@@ -1,3 +1,14 @@
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=gipo999_tomcat-webpapp-boilerplate)](https://sonarcloud.io/summary/new_code?id=gipo999_tomcat-webapp-boilerplate)
+
+[![CodeQL](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/github-code-scanning/codeql)
+[![Tests](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml)
+[![CodeCov](https://codecov.io/gh/gipo999/tomcat-webapp-boilerplate/graph/badge.svg?token=E8EMVN7YWB)](https://codecov.io/gh/gipo999/tomcat-webapp-boilerplate)
+[![Publish Package Workflow](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/publish.yml/badge.svg?branch=dev)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/publish.yml)
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Semantic-release: Commmitizen](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![Active Development](https://img.shields.io/badge/Maintenance%20Level-Actively%20Developed-brightgreen.svg)](https://gist.github.com/cheerfulstoic/d107229326a01ff0f333a1d3476e068d)
+
 # Tomcat Webapp Boilerplate
 
 Proof of concept for a tomcat webapp boilerplate with gradle, docker, compose, pre commit, post commit, pre push, on pr, on dev push, cron, security and Dynamic Application Security Testing (DAST).
