@@ -13,7 +13,7 @@
 
 Proof of concept for a tomcat webapp boilerplate with automated testing and security checks.
 
-Many features are ported from <https://github.com/gipo999/smispi>
+Many features are ported from <https://github.com/gipo999/smispi>, please refer to that repository for additional notes and documentation.
 
 ## Features
 
@@ -98,12 +98,10 @@ BREAKING CHANGE: bump major version
 
 ### Sarif Reports
 
-Sarif reports can be uploaded to github with the `upload-sarif` action
+Sarif reports can be uploaded to github with the `upload-sarif` action.
 
-they provide a standard format for static analysis tools, and can be used in github security tab
-to have a better overview of the vulnerabilities and identify the tools that generated them
-
-Must convert manually zap, nmap, fix snyk.
+They provide a standard format for static analysis tools, and can be used in github security tab
+to have a better overview of the vulnerabilities and identify the tools that generated them.
 
 Requires custom actions to parse bugged or missing sarif reports (zap, nmap, wapiti, snyk container).
 
@@ -157,6 +155,8 @@ After a succesful release, the docker image is uploaded to dockerhub and github 
 
 <https://github.com/eclipse/steady>
 
-### Find out more
+# Find out more
 
-Check [github project](https://github.com/users/gipo999/projects/3/views/1)
+Check more notes/todos @ [github project](https://github.com/users/gipo999/projects/3/views/1), [issues](https://github.com/gipo999/tomcat-webapp-boilerplate/issues)
+
+You can take a look at other branches (.bak, etc) for older versions or different approaches.
