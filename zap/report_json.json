@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Tue, 11 Jun 2024 14:56:48",
+	"@generated": "Wed, 12 Jun 2024 07:13:25",
 	"site":[ 
 		{
 			"@name": "http://localhost:8080",
@@ -23,7 +23,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://zX2HQeSx.com",
+							"attack": "origin: http://b4tmlmVd.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -31,7 +31,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://zX2HQeSx.com",
+							"attack": "origin: http://b4tmlmVd.com",
 							"evidence": "",
 							"otherinfo": ""
 						}
@@ -294,6 +294,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -310,7 +318,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -337,6 +345,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -353,7 +369,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -380,6 +396,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -396,7 +420,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -423,6 +447,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -439,7 +471,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -619,7 +651,7 @@
 					"reference": "<p>https://owasp.org/wstg</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "292"
+					"sourceid": "300"
 				}
 			]
 		}
