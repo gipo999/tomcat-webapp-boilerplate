@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Wed, 12 Jun 2024 10:44:42",
+	"@generated": "Wed, 12 Jun 2024 10:56:50",
 	"site":[ 
 		{
 			"@name": "http://localhost:8080",
@@ -23,7 +23,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://Yyy2hE1k.com",
+							"attack": "origin: http://1xLsRBiF.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -31,7 +31,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://Yyy2hE1k.com",
+							"attack": "origin: http://1xLsRBiF.com",
 							"evidence": "",
 							"otherinfo": ""
 						}
@@ -42,7 +42,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</p><p>https://portswigger.net/web-security/cors</p>",
 					"cweid": "942",
 					"wascid": "14",
-					"sourceid": "540"
+					"sourceid": "541"
 				},
 				{
 					"pluginid": "10038",
@@ -294,7 +294,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
+							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -337,7 +337,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
+							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -380,7 +380,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
+							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -423,7 +423,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
+							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -619,7 +619,7 @@
 					"reference": "<p>https://owasp.org/wstg</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "304"
+					"sourceid": "307"
 				}
 			]
 		}
