@@ -1,3 +1,5 @@
+# Composite private action to setup the CI environment with all the tools needed for the project.
+# We could install pre-commit too here
 name: Setup CI
 runs:
   using: composite

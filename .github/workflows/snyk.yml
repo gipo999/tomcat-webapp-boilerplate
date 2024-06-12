@@ -1,6 +1,14 @@
 # IMP: snyk token can't be used from forks, so PRs from forks will fail
 name: Snyk Security Scan Workflow
 on:
+  # WARN: secrets not available from pull_request forks
+  #
+  # we can't run this on PRs from forks as snyk token can't be used from forks
+  # for security reasons, prs from forks are not allowed to use/read secrets
+  #
+  # Another note: the generated sarif can be uploaded to the GitHub Code Scanning dashboard
+  # but we don't want to upload security vulns for code that is not merged yet
+  #
   # pull_request:
   #   branches: ["dev"]
   push:

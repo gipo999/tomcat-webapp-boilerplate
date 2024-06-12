@@ -1,4 +1,4 @@
-name: Gradle Check and Build Workflow
+name: Check Test Build Workflow
 on:
   # FIXME: secrets not available from pull_request forks
   pull_request:
@@ -6,7 +6,17 @@ on:
       - "dev"
   workflow_dispatch: {}
 jobs:
+  # we don't need windows as the container runs on linux only
+  # tomcat image doesn't have a windows version
   build-linux:
+    concurrency:
+      # use case: for example, when someone pushes a commit to a PR, the workflow will be triggered again
+      # we want to cancel previous jobs and only run the latest one
+      # since the job will run in the pull request branch, we can use the branch name to limit concurrency for a single feat branch
+      # to prevent running too many jobs if commits are pushed to the same branch
+      # github.ref is the branch name
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     env:
       # required for local testing without risking pulling the wrong image
       TEST_TAG: gipo999/tomcat-webapp-boilerplate:test
@@ -16,26 +26,31 @@ jobs:
       issues: write
       actions: read
       contents: read
+    # don't run the job if the PR is a draft to save resources
     if: github.event.pull_request.draft == false
     name: Lint and Build on Linux Job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources Step
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      # setup the CI environment using a private composite action
       - name: Setup CI environment
         uses: ./.github/actions/ci-setup
-        # run the gradle check and build tasks
-      - name: Build with Gradle Wrapper Step
-        # buildWar runs check, test, war tasks
+        # run the gradle check, test, war tasks
         # at this point we won't know if the app will run in a container
+      - name: Build with Gradle Wrapper Step
         run: ./gradlew buildWar
+        # coverage reports in PR comment if modified
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@125fc84a9a348dbcf27191600683ec096ec9021c # v4.4.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+      # prepare docke environment with caching of images and buildx
       - name: Setup DOCKER environment
         uses: ./.github/actions/docker-setup
       # test the docker image
+      # Using a private composite action to build, run and test the container
+      # uses curl to verify the container is running and /health is responding
       - name: Build, run and test container
         uses: ./.github/actions/build-run-testcontainer
         with:
