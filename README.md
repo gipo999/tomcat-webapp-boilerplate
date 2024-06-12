@@ -1,9 +1,9 @@
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=gipo999_tomcat-webpapp-boilerplate)](https://sonarcloud.io/summary/new_code?id=gipo999_tomcat-webapp-boilerplate)
 
-[![CodeQL](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/github-code-scanning/codeql)
-[![Tests](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml)
+[![CodeQL](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/codeql.yml/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/codeql.yml)
+[![Check Test Build Workflow](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/gradle-check-build.yml)
 [![CodeCov](https://codecov.io/gh/gipo999/tomcat-webapp-boilerplate/graph/badge.svg?token=E8EMVN7YWB)](https://codecov.io/gh/gipo999/tomcat-webapp-boilerplate)
-[![Publish Package Workflow](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/publish.yml/badge.svg?branch=dev)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/publish.yml)
+[![Publish Docker Image Workflow](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/publish-docker.yml/badge.svg)](https://github.com/gipo999/tomcat-webapp-boilerplate/actions/workflows/publish-docker.yml)
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Semantic-release: Commmitizen](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
@@ -61,7 +61,7 @@ Vulnerability assessment actions:
 Reports that won't generate a sarif are uploaded to github pages or are made available with custom actions at [issues](https://github.com/gipo999/tomcat-webapp-boilerplate/issues)
 _note issues, pr comments, gh pages are considered vulnerabilities since they expose information_
 
-Read more at ![Sarif Reports](#sarif-reports)
+Read more at [Sarif Reports](#sarif-reports)
 
 ### Release
 
@@ -103,7 +103,7 @@ Must convert manually zap, nmap, fix snyk.
 
 Requires custom actions to parse bugged or missing sarif reports (zap, nmap, wapiti, snyk container).
 
-Please check ![attack action](./.github/actions/attack/action.yml) for more info
+Please check [attack action](./.github/actions/attack/action.yml) for more info
 
 ### Auto upload images
 
@@ -114,12 +114,12 @@ After a succesful release, the docker image is uploaded to dockerhub and github 
 
 ## Env vars needed in github secrets
 
-- SEMGREP_APP_TOKEN
-- DOCKERHUB_TOKEN
-- DOCKERHUB_USERNAME
-- SNYK_TOKEN
-- PAT
-- CODECOV_TOKEN
+- `SEMGREP_APP_TOKEN`
+- `DOCKERHUB_TOKEN`
+- `DOCKERHUB_USERNAME`
+- `SNYK_TOKEN`
+- `PAT`
+- `CODECOV_TOKEN`
 
 ## Additional Tools and references
 
@@ -131,26 +131,25 @@ After a succesful release, the docker image is uploaded to dockerhub and github 
 
 #### Considered Strongest, but paid
 
-nessus
-<https://medium.com/@ben.swain_70016/attack-surface-monitoring-github-actions-nessus-3e3e83d44a34>
+- nessus <https://medium.com/@ben.swain_70016/attack-surface-monitoring-github-actions-nessus-3e3e83d44a34>
 
-acunetix
+- acunetix
 
-burpsuite
+- burpsuite
 
-purpleteam
+- purpleteam
 
-#### free
+#### Free
 
-nuclei
+- nuclei
 
-flan <https://github.com/cloudflare/flan>
+- flan <https://github.com/cloudflare/flan>
 
-trivy
+- trivy
 
 <https://github.com/topics/vulnerability-assessment>
 
-#### other static analysis tools
+#### Other static analysis tools
 
 <https://github.com/eclipse/steady>
 
