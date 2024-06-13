@@ -74,6 +74,13 @@ runs:
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         # rules_file_name: ".zap/rules.tsv"
         cmd_options: "-aj"
+    # NOTE: test loading artifact
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: zap-report
+        path: ./report_json.json
+        overwrite: true
     - name: Set output if zap has run
       if: ${{ inputs.run_zap == 'true'}}
       shell: bash
