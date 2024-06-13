@@ -47,6 +47,10 @@ runs:
       with:
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         github_token: ${{ inputs.github_token }}
+    - name: Set output if wapiti has run
+      if: ${{ inputs.run-wapiti }}
+      shell: bash
+      run: echo "wapiti=true" >> $GITHUB_OUTPUT
     # ZAP
     #
     # can be improved with rules file and cmd_options
@@ -70,6 +74,10 @@ runs:
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         # rules_file_name: ".zap/rules.tsv"
         cmd_options: "-aj"
+    - name: Set output if zap has run
+      if: ${{ inputs.run-zap }}
+      shell: bash
+      run: echo "zap=true" >> $GITHUB_OUTPUT
     #
     # run custom container with nmap
     # NOTE: can't use docker action with scanners
@@ -91,11 +99,19 @@ runs:
         port: "8080"
         flags: "-sV"
         generate_reports: true
+    - name: Set output if nmap has run
+      if: ${{ inputs.run-nmap }}
+      shell: bash
+      run: echo "nmap=true" >> $GITHUB_OUTPUT
     #
     # SNYK
     - name: Set up Snyk CLI to check for security issues
       if: ${{ inputs.run-snyk }}
       uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
+    - name: Set output if snyk has run
+      if: ${{ inputs.run-snyk }}
+      shell: bash
+      run: echo "snyk=true" >> $GITHUB_OUTPUT
     - name: login to snyk
       if: ${{ inputs.run-snyk }}
       shell: bash
