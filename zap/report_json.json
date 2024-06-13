@@ -1,0 +1,659 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.15.0",
+	"@generated": "Thu, 13 Jun 2024 12:27:55",
+	"site":[ 
+		{
+			"@name": "http://localhost:8080",
+			"@host": "localhost",
+			"@port": "8080",
+			"@ssl": "false",
+			"alerts": [ 
+				{
+					"pluginid": "40040",
+					"alertRef": "40040",
+					"alert": "CORS Misconfiguration",
+					"name": "CORS Misconfiguration",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>This CORS misconfiguration could allow an attacker to perform AJAX queries to the vulnerable website from a malicious page loaded by the victim's user agent.</p><p>In order to perform authenticated AJAX queries, the server must specify the header \"Access-Control-Allow-Credentials: true\" and the \"Access-Control-Allow-Origin\" header must be set to null or the malicious page's domain. Even if this misconfiguration doesn't allow authenticated AJAX requests, unauthenticated sensitive content can still be accessed (e.g intranet websites).</p><p>A malicious page can belong to a malicious website but also a trusted website with flaws (e.g XSS, support of HTTP without TLS allowing code injection through MITM, etc).</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://pKQN5UB5.com",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "",
+							"attack": "origin: http://pKQN5UB5.com",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>If a web resource contains sensitive information, the origin should be properly specified in the Access-Control-Allow-Origin header. Only trusted websites needing this resource should be specified in this header, with the most secured protocol supported.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</p><p>https://portswigger.net/web-security/cors</p>",
+					"cweid": "942",
+					"wascid": "14",
+					"sourceid": "541"
+				},
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/favicon.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "5",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "10098",
+					"alertRef": "10098",
+					"alert": "Cross-Domain Misconfiguration",
+					"name": "Cross-Domain Misconfiguration",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
+					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
+					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
+					"cweid": "264",
+					"wascid": "14",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "40039",
+					"alertRef": "40039",
+					"alert": "Web Cache Deception",
+					"name": "Web Cache Deception",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Web cache deception may be possible. It may be possible for unauthorised user to view sensitive data on this page.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "",
+							"attack": "/test.css,/test.jpg,/test.js,/test.html,/test.gif,/test.png,/test.svg,/test.php,/test.txt,/test.pdf,/test.asp,",
+							"evidence": "",
+							"otherinfo": "Cached Authorised Response and Unauthorised Response are similar."
+						}
+					],
+					"count": "1",
+					"solution": "<p>It is strongly advised to refrain from classifying file types, such as images or stylesheets solely by their URL and file extension. Instead you should make sure that files are cached based on their Content-Type header.</p>",
+					"otherinfo": "<p>Cached Authorised Response and Unauthorised Response are similar.</p>",
+					"reference": "<p>https://blogs.akamai.com/2017/03/on-web-cache-deception-attacks.html</p><p>https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/web-cache-deception/</p>",
+					"cweid": "0",
+					"wascid": "0",
+					"sourceid": "599"
+				},
+				{
+					"pluginid": "10009",
+					"alertRef": "10009",
+					"alert": "In Page Banner Information Leak",
+					"name": "In Page Banner Information Leak",
+					"riskcode": "1",
+					"confidence": "3",
+					"riskdesc": "Low (High)",
+					"desc": "<p>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Tomcat/9.0.89",
+							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
+						},
+						{
+							"uri": "http://localhost:8080/favicon.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Tomcat/9.0.89",
+							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
+						},
+						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Tomcat/9.0.89",
+							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
+						},
+						{
+							"uri": "http://localhost:8080/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Tomcat/9.0.89",
+							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Tomcat/9.0.89",
+							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
+						}
+					],
+					"count": "5",
+					"solution": "<p>Configure the server to prevent such information leaks. For example:</p><p>Under Tomcat this is done via the \"server\" directive and implementation of custom error pages.</p><p>Under Apache this is done via the \"ServerSignature\" and \"ServerTokens\" directives.</p>",
+					"otherinfo": "<p>There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.</p>",
+					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/favicon.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "5",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-3",
+					"alert": "Sec-Fetch-Dest Header is Missing",
+					"name": "Sec-Fetch-Dest Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-2",
+					"alert": "Sec-Fetch-Mode Header is Missing",
+					"name": "Sec-Fetch-Mode Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-1",
+					"alert": "Sec-Fetch-Site Header is Missing",
+					"name": "Sec-Fetch-Site Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-4",
+					"alert": "Sec-Fetch-User Header is Missing",
+					"name": "Sec-Fetch-User Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "http://localhost:8080/favicon.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "http://localhost:8080/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "http://localhost:8080/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						}
+					],
+					"count": "5",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
+					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "10104",
+					"alertRef": "10104",
+					"alert": "User Agent Fuzzer",
+					"name": "User Agent Fuzzer",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.</p>",
+					"instances":[ 
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
+							"method": "GET",
+							"param": "Header User-Agent",
+							"attack": "msnbot/1.1 (+http://search.msn.com/msnbot.htm)",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/wstg</p>",
+					"cweid": "0",
+					"wascid": "0",
+					"sourceid": "290"
+				}
+			]
+		}
+	]
+}
