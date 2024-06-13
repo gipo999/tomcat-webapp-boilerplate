@@ -33,10 +33,18 @@ inputs:
     required: false
     default: false
 outputs:
-  wapiti: ${{ steps.wapiti.outputs.wapiti }}
-  zap: ${{ steps.zap.outputs.zap }}
-  nmap: ${{ steps.nmap.outputs.nmap }}
-  snyk: ${{ steps.snyk.outputs.snyk }}
+  wapiti:
+    description: "wapiti output if run"
+    value: ${{ steps.wapiti.outputs.wapiti }}
+  zap:
+    description: "zap output if run"
+    value: ${{ steps.zap.outputs.zap }}
+  nmap:
+    description: "nmap output if run"
+    value: ${{ steps.nmap.outputs.nmap }}
+  snyk:
+    description: "snyk output if run"
+    value: ${{ steps.snyk.outputs.snyk }}
 runs:
   using: composite
   steps:
