@@ -81,6 +81,9 @@ runs:
         name: zap-report
         path: ./report_json.json
         overwrite: true
+    # NOTE: test generating summary
+    - name: Adding markdown
+      run: echo '### Done zap' >> $GITHUB_STEP_SUMMARY
     - name: Set output if zap has run
       if: ${{ inputs.run_zap == 'true'}}
       shell: bash

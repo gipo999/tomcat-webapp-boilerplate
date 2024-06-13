@@ -195,3 +195,19 @@ Check more notes/todos @ [github project](https://github.com/users/gipo999/proje
 You can take a look at other branches (.bak, etc) for older versions or different approaches.
 
 Every file has comments with implementation details
+
+# Github actions interesting links
+
+## Artifacts
+
+<https://github.com/actions/upload-artifact>
+
+## Expressions
+
+<https://docs.github.com/en/actions/learn-github-actions/expressions>
+
+## Summaries
+
+<https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/>
+
+![](assets/imgs/nvim/summaries.png)
