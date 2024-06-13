@@ -44,7 +44,7 @@ runs:
         mkdir -p ${{inputs.gh_pages_dir}}/wapiti
         mkdir -p ${{inputs.gh_pages_dir}}/snyk-container
     - name: add nmap links to docs/gh-pages/index.html
-      if:
+      if: ${{inputs.nmap == 'true' }}
       shell: bash
       run: |
         # NOTE: for now, nmap deactivated as it possibly exposes github vulns
@@ -53,37 +53,37 @@ runs:
         echo "<a href='/tomcat-webapp-boilerplate/nmap/vulscan-output.log'>Nmap Vulscan Report</a>" >> ${{inputs.gh_pages_dir}}/index.html
     - name: add zap links to docs/gh-pages/index.html
       shell: bash
-      if: ${{inputs.zap}}
+      if: ${{inputs.zap == 'true' }}
       run: |
         echo "<a href='/tomcat-webapp-boilerplate/zap/report_html.html'>ZAP Report</a>" >> ${{inputs.gh_pages_dir}}/index.html
         echo "<a href='/tomcat-webapp-boilerplate/zap/report_json.json'>ZAP Report json</a>" >> ${{inputs.gh_pages_dir}}/index.html
     - name: add wapiti links to docs/gh-pages/index.html
       shell: bash
-      if: ${{inputs.wapiti}}
+      if: ${{inputs.wapiti == 'true'}}
       run: |
         echo "a href='/tomcat-webapp-boilerplate/wapiti/out.html'>Wapiti Report</a>" >> ${{inputs.gh_pages_dir}}/index.html
     - name: add snyk links to docs/gh-pages/index.html
       shell: bash
-      if: ${{inputs.snyk}}
+      if: ${{inputs.snyk == 'true'}}
       run: |
         echo "<a href='/tomcat-webapp-boilerplate/snyk-container/snyk-container.json'>Snyk Container Report</a>" >> ${{inputs.gh_pages_dir}}/index.html
       #
     # Copy zap report to docs/gh-pages/zap
     - name: Copy zap report to docs/gh-pages/zap
       shell: bash
-      if: ${{ inputs.zap}}
+      if: ${{ inputs.zap == 'true'}}
       run: |
         mv ./report_html.html ${{inputs.gh_pages_dir}}/zap/report_html.html
         mv ./report_json.json ${{inputs.gh_pages_dir}}/zap/report_json.json
     # Copy snyk-container report to docs/gh-pages/snyk-container
     - name: Copy snyk-container.sarif report to docs/gh-pages/snyk-container
       shell: bash
-      if: ${{ inputs.snyk}}
+      if: ${{ inputs.snyk == 'true' }}
       run: mv ./snyk-container.sarif ${{inputs.gh_pages_dir}}/snyk-container/snyk-container.json
     # Copy wapiti report to docs/gh-pages/wapiti
     - name: Copy wapiti report to docs/gh-pages/nmap
       shell: bash
-      if: ${{ inputs.wapiti}}
+      if: ${{ inputs.wapiti == 'true'}}
       # requires sudo as docker container creates those files runs as root
       run: |
         # we don't know the exact name of the generated report (based on timestamp)
@@ -93,7 +93,7 @@ runs:
     # NOTE: for now, nmap deactivated as it possibly exposes github vulns
     - name: Copy nmap report to docs/gh-pages/nmap
       shell: bash
-      if: ${{ inputs.nmap}}
+      if: ${{ inputs.nmap == 'true'}}
       # requires sudo as docker container creating those files runs as root
       run: |
         # echo "nmap reports are deactivated for now as they potentially expose github runners vulnerabilities" >> ${{inputs.gh_pages_dir}}/nmap/vulscan-output.log
