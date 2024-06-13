@@ -61,7 +61,7 @@ runs:
       shell: bash
       if: ${{inputs.wapiti == 'true'}}
       run: |
-        echo "a href='/tomcat-webapp-boilerplate/wapiti/out.html'>Wapiti Report</a>" >> ${{inputs.gh_pages_dir}}/index.html
+        echo "<a href='/tomcat-webapp-boilerplate/wapiti/out.html'>Wapiti Report</a>" >> ${{inputs.gh_pages_dir}}/index.html
     - name: add snyk links to docs/gh-pages/index.html
       shell: bash
       if: ${{inputs.snyk == 'true'}}
