@@ -77,7 +77,6 @@ runs:
     # NOTE: test loading artifact
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
-      shell: bash
       with:
         name: zap-report
         path: ./report_json.json
