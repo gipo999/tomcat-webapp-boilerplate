@@ -28,6 +28,13 @@ repos:
         stages: [commit]
       - id: detect-private-key
         stages: [commit]
+  # gitguardian requires API key
+  # - repo: https://github.com/gitguardian/ggshield
+  #   rev: v1.28.0
+  #   hooks:
+  #     - id: ggshield
+  #       language_version: python3
+  #       stages: [commit]
   - repo: https://github.com/gitleaks/gitleaks
     rev: 79cac73f7267f4a48f4bc73db11e105a6098a836 # pragma: allowlist secret
     hooks:
