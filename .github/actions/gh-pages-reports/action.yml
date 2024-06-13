@@ -1,0 +1,103 @@
+name: Gh pages vuln tests reports
+inputs:
+  github_token:
+    description: "GitHub token"
+    required: true
+  "gh_pages_dir:":
+    description: "Folder to copy to gh-pages"
+    required: true
+    default: "./docs/gh-pages"
+  nmap:
+    description: "nmap output"
+    required: false
+    default: false
+  wapiti:
+    description: "wapiti output"
+    required: false
+    default: false
+  zap:
+    description: "zap output"
+    required: false
+    default: false
+  snyk:
+    description: "snyk output"
+    required: false
+    default: false
+steps:
+  #
+  # NOTE:
+  # for now, code security reports are difficult as we
+  # require parsing of all outputs and conversion to sarif
+  # this for every tool that doesn't have it builtin
+  #
+  # since we not parsing and converting to sarif
+  # for this repo we will just upload the raw outputs to gh pages as
+  # reference
+  #
+  - name: create all folders
+    run: |
+      mkdir -p ${{inputs.gh_pages_dir}}/zap
+      mkdir -p ${{inputs.gh_pages_dir}}/nmap
+      mkdir -p ${{inputs.gh_pages_dir}}/wapiti
+      mkdir -p ${{inputs.gh_pages_dir}}/snyk-container
+  - name: add nmap links to docs/gh-pages/index.html
+    if:
+    run: |
+      # NOTE: for now, nmap deactivated as it possibly exposes github vulns
+      echo "<a href='/tomcat-webapp-boilerplate/nmap/vulner-output.log'>Nmap Vulnerabilities Report</a>" >> ./docs/gh-pages/index.html
+      echo "<a href='/tomcat-webapp-boilerplate/nmap/direct-output.log'>Nmap Direct Report</a>" >> ./docs/gh-pages/index.html
+      echo "<a href='/tomcat-webapp-boilerplate/nmap/vulscan-output.log'>Nmap Vulscan Report</a>" >> ./docs/gh-pages/index.html
+  - name: add zap links to docs/gh-pages/index.html
+    if: ${{ steps.attack.outputs.zap == 'true' }}
+    run: |
+      echo "<a href='/tomcat-webapp-boilerplate/zap/report_html.html'>ZAP Report</a>" >> ./docs/gh-pages/index.html
+      echo "<a href='/tomcat-webapp-boilerplate/zap/report_json.json'>ZAP Report json</a>" >> ./docs/gh-pages/index.html
+  - name: add wapiti links to docs/gh-pages/index.html
+    if: ${{ steps.attack.outputs.wapiti == 'true' }}
+    run: |
+      echo "<a href='/tomcat-webapp-boilerplate/wapiti/out.html'>Wapiti Report</a>" >> ./docs/gh-pages/index.html
+  - name: add snyk links to docs/gh-pages/index.html
+    if: ${{ steps.attack.outputs.snyk == 'true' }}
+    run: |
+      echo "<a href='/tomcat-webapp-boilerplate/snyk-container/snyk-container.json'>Snyk Container Report</a>" >> ./docs/gh-pages/index.html
+    #
+  # Copy zap report to docs/gh-pages/zap
+  - name: Copy zap report to docs/gh-pages/zap
+    if: ${{ steps.attack.outputs.zap == 'true' }}
+    run: mv ./report_html.html ./docs/gh-pages/zap/report_html.html
+  - name: Copy zap report to docs/gh-pages/zap
+    if: ${{ steps.attack.outputs.zap == 'true' }}
+    run: mv ./report_json.json ./docs/gh-pages/zap/report_json.json
+  # Copy snyk-container report to docs/gh-pages/snyk-container
+  - name: Copy snyk-container.sarif report to docs/gh-pages/snyk-container
+    if: ${{ steps.attack.outputs.snyk == 'true' }}
+    run: mv ./snyk-container.sarif ./docs/gh-pages/snyk-container/snyk-container.json
+  # Copy wapiti report to docs/gh-pages/wapiti
+  - name: Copy wapiti report to docs/gh-pages/nmap
+    if: ${{ steps.attack.outputs.wapiti == 'true' }}
+    # requires sudo as docker container creates those files runs as root
+    run: |
+      # we don't know the exact name of the generated report (based on timestamp)
+      # needed to point the index.html link to the correct file
+      ls -d .wapiti/generated_report/local* | xargs -I {} sudo mv {} .wapiti/generated_report/out.html
+      sudo mv ./.wapiti/generated_report/* ./docs/gh-pages/wapiti/
+  # NOTE: for now, nmap deactivated as it possibly exposes github vulns
+  - name: Copy nmap report to docs/gh-pages/nmap
+    if: ${{ steps.attack.outputs.nmap == 'true' }}
+    # requires sudo as docker container creating those files runs as root
+    run: |
+      # echo "nmap reports are deactivated for now as they potentially expose github runners vulnerabilities" >> ./docs/gh-pages/nmap/vulscan-output.log
+      sudo mv ./nmap-reports/vulner/vulner-output.log ./docs/gh-pages/nmap/vulner-output.log
+      sudo mv ./nmap-reports/direct/direct-output.log ./docs/gh-pages/nmap/direct-output.log
+      sudo mv ./nmap-reports/vulscan/vulscan-output.log ./docs/gh-pages/nmap/vulscan-output.log
+  - name: Change ownerhip of docs/gh-pages
+    run: |
+      sudo chown -R $USER:$USER ./docs/gh-pages
+  #
+  # post all results to github pages
+  - name: Deploy to GitHub Pages
+    uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4
+    if: github.ref == 'refs/heads/dev'
+    with:
+      github_token: ${{ inputs.github_token }}
+      publish_dir: ${{ inputs.gh_pages_dir }}
