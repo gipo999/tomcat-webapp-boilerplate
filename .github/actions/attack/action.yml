@@ -16,6 +16,22 @@ inputs:
   github_token:
     description: "github token"
     required: true
+  run-wapiti:
+    description: "run wapiti"
+    required: false
+    default: true
+  run-zap:
+    description: "run zap"
+    required: false
+    default: true
+  run-nmap:
+    description: "run nmap"
+    required: false
+    default: false
+  run-snyk:
+    description: "run snyk"
+    required: false
+    default: true
 runs:
   using: composite
   steps:
@@ -24,12 +40,17 @@ runs:
     # emits .wapiti/generated_report/report.html
     # for now, base default scan, can be improved alot: https://github.com/wapiti-scanner/wapiti/blob/master/doc/wapiti.ronn
     - name: Wapiti Scan
+      if: ${{ inputs.run-wapiti }}
       # I cloned their repo and created the docker image, pushing it to my registry
       # Then i created a githbu action with nodejs to run the docker image since we need --network=host
       uses: gipo355/vuln-docker-scanners-wapiti-action@6147b708e264ce95171ba8c246f0d84a7e6d718a # v1.0.3
       with:
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         github_token: ${{ inputs.github_token }}
+    - name: Set output if wapiti has run
+      if: ${{ inputs.run-wapiti }}
+      shell: bash
+      run: echo "wapiti=true" >> $GITHUB_OUTPUT
     # ZAP
     #
     # can be improved with rules file and cmd_options
@@ -43,6 +64,7 @@ runs:
     # could do post-processing: create custom action to convert zap json to sarif or use zap sarif addon
     # check trivy, snyk actions for reference on parsing
     - name: ZAP Scan
+      if: ${{ inputs.run-zap }}
       uses: zaproxy/action-full-scan@d2a07475d467566c9a3e3c700f31f47724aa1060 # v0.10.0
       with:
         # pat for creating issues
@@ -52,6 +74,10 @@ runs:
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         # rules_file_name: ".zap/rules.tsv"
         cmd_options: "-aj"
+    - name: Set output if zap has run
+      if: ${{ inputs.run-zap }}
+      shell: bash
+      run: echo "zap=true" >> $GITHUB_OUTPUT
     #
     # run custom container with nmap
     # NOTE: can't use docker action with scanners
@@ -62,21 +88,32 @@ runs:
     #
     # NOTE: nmap deactivated for now as it possibly exposes github vulns
     #
-    # - name: Nmap Scan
-    #   uses: gipo355/vuln-docker-scanners-nmap-action@debeebb1184d79dd8e7f1148aebe58a8b2f86efe # v1.1.4
-    #   with:
-    #     github_token: ${{ inputs.github_token }}
-    #     target: "localhost"
-    #     vulner: true
-    #     vulscan: true
-    #     port: "8080"
-    #     flags: "-sV"
-    #     generate_reports: true
+    - name: Nmap Scan
+      if: ${{ inputs.run-nmap }}
+      uses: gipo355/vuln-docker-scanners-nmap-action@debeebb1184d79dd8e7f1148aebe58a8b2f86efe # v1.1.4
+      with:
+        github_token: ${{ inputs.github_token }}
+        target: "localhost"
+        vulner: true
+        vulscan: true
+        port: "8080"
+        flags: "-sV"
+        generate_reports: true
+    - name: Set output if nmap has run
+      if: ${{ inputs.run-nmap }}
+      shell: bash
+      run: echo "nmap=true" >> $GITHUB_OUTPUT
     #
     # SNYK
     - name: Set up Snyk CLI to check for security issues
+      if: ${{ inputs.run-snyk }}
       uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
+    - name: Set output if snyk has run
+      if: ${{ inputs.run-snyk }}
+      shell: bash
+      run: echo "snyk=true" >> $GITHUB_OUTPUT
     - name: login to snyk
+      if: ${{ inputs.run-snyk }}
       shell: bash
       run: snyk auth ${{ inputs.snyk_token }}
     # SNYK CONTAINER
@@ -93,6 +130,7 @@ runs:
     #     at async runWrapper (/home/runner/work/_actions/github/codeql-action/f079b8493333aace61c81488f8bd40919487bd9f/lib/upload-sarif-action.js:84:9)
     #
     - name: run snyk container
+      if: ${{ inputs.run-snyk }}
       shell: bash
       run: snyk container test ${{ inputs.docker_tag }} --file=Dockerfile --sarif > snyk-container.sarif || true
       #
