@@ -29,10 +29,15 @@
     - [References](#references)
     - [Alternatives/Additions](#alternativesadditions)
       - [Considered Strongest, but paid](#considered-strongest-but-paid)
+      - [others](#others)
       - [Free](#free)
       - [Other static analysis tools](#other-static-analysis-tools)
 - [Find out more](#find-out-more)
-<!--toc:end-->
+- [Github actions interesting links](#github-actions-interesting-links)
+  - [Artifacts](#artifacts)
+  - [Expressions](#expressions)
+  - [Summaries](#summaries)
+  <!--toc:end-->
 
 Proof of concept for a tomcat webapp boilerplate with automated testing and security checks.
 
@@ -85,6 +90,7 @@ Vulnerability assessment actions:
   - can be customized and improved. <https://github.com/wapiti-scanner/wapiti/blob/master/doc/wapiti.ronn>
 - OWASP ZAP (Zed Attack Proxy)
   - using the base full-scan option
+  - can use the API scan instead (<https://www.zaproxy.org/docs/docker/api-scan/>, <https://github.com/zaproxy/action-api-scan>) can be fed and openapi spec
   - can be customized and improved. Can be put in a custom action to get the full cli power and adding extensions/addons (like sarif report <https://www.zaproxy.org/docs/desktop/addons/report-generation/report-sarif-json/>)
 
 Reports that won't generate a sarif are uploaded to github pages or are made available with custom actions at [issues](https://github.com/gipo999/tomcat-webapp-boilerplate/issues)
@@ -128,6 +134,8 @@ Requires commits to be made following the `commitizen` format
 - load tester with wrk
 - wapiti
 - others can be added with custom actions or adding to the nmap cli tool created
+
+Please check [Alternative/Additions](#alternativesadditions)
 
 ### Sarif Reports
 
@@ -173,6 +181,26 @@ After a succesful release, the docker image is uploaded to dockerhub and github 
 - burpsuite
 
 - purpleteam
+
+#### others
+
+- astra <https://www.getastra.com/pentest/pricing>
+
+- apiscan <https://www.apisec.ai/>
+
+- pentest tools <https://pentest-tools.com/pricing>
+
+- portswigger <https://portswigger.net/burp/vulnerability-scanner/api-security-testing>
+
+<https://owasp.org/www-community/api_security_tools>
+
+<https://nordicapis.com/api-vulnerability-scanners/>
+
+<https://github.com/arainho/awesome-api-security>
+
+<https://github.com/sbilly/awesome-security>
+
+<https://github.com/okhosting/awesome-cyber-security>
 
 #### Free
 
