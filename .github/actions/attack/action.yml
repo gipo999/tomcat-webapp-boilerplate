@@ -53,6 +53,7 @@ runs:
         target: "http://localhost:8080/tomcat-webapp-boilerplate/app"
         github_token: ${{ inputs.github_token }}
     - name: Set output if wapiti has run
+      id: wapiti
       if: ${{ inputs.run_wapiti == 'true' }}
       shell: bash
       run: echo "wapiti=true" >> $GITHUB_OUTPUT
@@ -93,6 +94,7 @@ runs:
     - name: Set output if zap has run
       if: ${{ inputs.run_zap == 'true'}}
       shell: bash
+      id: zap
       run: echo "zap=true" >> $GITHUB_OUTPUT
     #
     # run custom container with nmap
@@ -117,6 +119,7 @@ runs:
         generate_reports: true
     - name: Set output if nmap has run
       if: ${{ inputs.run_nmap == 'true' }}
+      id: nmap
       shell: bash
       run: echo "nmap=true" >> $GITHUB_OUTPUT
     #
@@ -126,6 +129,7 @@ runs:
       uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
     - name: Set output if snyk has run
       if: ${{ inputs.run_snyk == 'true' }}
+      id: snyk
       shell: bash
       run: echo "snyk=true" >> $GITHUB_OUTPUT
     - name: login to snyk
