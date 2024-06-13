@@ -77,12 +77,14 @@ runs:
     # NOTE: test loading artifact
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
+      shell: bash
       with:
         name: zap-report
         path: ./report_json.json
         overwrite: true
     # NOTE: test generating summary
     - name: Adding markdown
+      shell: bash
       run: echo '### Done zap' >> $GITHUB_STEP_SUMMARY
     - name: Set output if zap has run
       if: ${{ inputs.run_zap == 'true'}}
