@@ -32,6 +32,11 @@ inputs:
     description: "run snyk"
     required: false
     default: false
+outputs:
+  wapiti: ${{ steps.wapiti.outputs.wapiti }}
+  zap: ${{ steps.zap.outputs.zap }}
+  nmap: ${{ steps.nmap.outputs.nmap }}
+  snyk: ${{ steps.snyk.outputs.snyk }}
 runs:
   using: composite
   steps:
