@@ -91,10 +91,11 @@ Vulnerability assessment actions:
 - OWASP ZAP (Zed Attack Proxy)
   - using the base full-scan option
   - can use the API scan instead (<https://www.zaproxy.org/docs/docker/api-scan/>, <https://github.com/zaproxy/action-api-scan>) can be fed an openapi spec
-  - can be customized and improved. Can be put in a custom action to get the full cli power and adding extensions/addons (like sarif report <https://www.zaproxy.org/docs/desktop/addons/report-generation/report-sarif-json/>)
+  - can be customized and improved. Can be put in a custom action to get the full cli power and adding extensions/addons (like sarif report) <https://www.zaproxy.org/docs/desktop/addons/report-generation/report-sarif-json/>)
 
 Reports that won't generate a sarif are uploaded to github pages or are made available with custom actions at [issues](https://github.com/gipo999/tomcat-webapp-boilerplate/issues)
-_note issues, pr comments, gh pages are considered vulnerabilities since they expose information_
+
+_note: issues, pr comments, gh pages are considered vulnerabilities since they expose information_
 
 Please check [gh pages](https://gipo999.github.io/tomcat-webapp-boilerplate/)
 
