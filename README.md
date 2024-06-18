@@ -82,10 +82,10 @@ Vulnerability assessment actions:
 - codeql
 - semgrep _(provides WEB UI for results insights at <https://semgrep.dev/manage>)_
 - dependency review
-- Custom made nmap action <https://github.com/gipo355/docker-vuln-scanners-nmap-action>
-  - this utilises a custom made cli tool in a docker container with cobra and go @ <https://github.com/gipo355/docker-vuln-scanners>
+- Custom made nmap action <https://github.com/gipo355/vuln-docker-scanners-nmap-action>
+  - this utilises a custom made cli tool in a docker container with cobra and go @ <https://github.com/gipo355/vuln-docker-scanners>
   - WARN: this action is deactivated as it scans the whole github host runner giving insights on possible vulnerabilities
-- Custom made wapiti action <https://github.com/gipo355/docker-vuln-scanners-wapiti-action>
+- Custom made wapiti action <https://github.com/gipo355/vuln-docker-scanners-wapiti-action>
   - this utilises a custom made docker image (gipo355/wapiti) with wapiti installed
   - can be customized and improved. <https://github.com/wapiti-scanner/wapiti/blob/master/doc/wapiti.ronn>
 - OWASP ZAP (Zed Attack Proxy)
