@@ -653,6 +653,30 @@
               }
             },
             {
+              "id": "SNYK-UBUNTU2204-WGET-7266700",
+              "shortDescription": {
+                "text": "Medium severity - CVE-2024-38428 vulnerability in wget"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-38428) wget@1.21.2-2ubuntu1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `wget` package and not the `wget` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nurl.c in GNU Wget through 1.24.5 mishandles semicolons in the userinfo subcomponent of a URI, and thus there may be insecure behavior in which data that was supposed to be in the userinfo subcomponent is misinterpreted to be part of the host subcomponent.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `wget`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-38428](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-38428)\n- [https://git.savannah.gnu.org/cgit/wget.git/commit/?id=ed0c7c7e0e8f7298352646b2fd6e06a11e242ace](https://git.savannah.gnu.org/cgit/wget.git/commit/?id=ed0c7c7e0e8f7298352646b2fd6e06a11e242ace)\n- [https://lists.gnu.org/archive/html/bug-wget/2024-06/msg00005.html](https://lists.gnu.org/archive/html/bug-wget/2024-06/msg00005.html)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
               "id": "SNYK-UBUNTU2204-XZUTILS-5854647",
               "shortDescription": {
                 "text": "Medium severity - CVE-2020-22916 vulnerability in xz-utils"
@@ -1282,6 +1306,30 @@
         },
         {
           "ruleId": "SNYK-UBUNTU2204-WGET-2785488",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable wget package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "wget@1.21.2-2ubuntu1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2204-WGET-7266700",
           "level": "warning",
           "message": {
             "text": "This file introduces a vulnerable wget package with a medium severity vulnerability."
