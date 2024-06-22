@@ -3,7 +3,7 @@
 # this was meant to be used for development purposes
 
 # FROM eclipse-temurin:21 as BUILD_IMAGE
-FROM eclipse-temurin:21@sha256:75e0ef9789c2ae11886a6414290bff43858aafd03439e545e77ef9948f100a84
+FROM eclipse-temurin:21@sha256:2dbc9d6e45e878ef98d0d918e8d591ddfc3ae1a73a27d76d743affc93a2c13d1
 # FROM tomcat:9-jdk21-temurin-jammy
 
 # TODO: must provide gradle otherwise it downloads every restart??
