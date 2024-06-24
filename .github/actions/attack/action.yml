@@ -134,7 +134,7 @@ runs:
     # SNYK
     - name: Set up Snyk CLI to check for security issues
       if: ${{ inputs.run_snyk == 'true' }}
-      uses: snyk/actions/setup@d406fd286b663eb8c6f8adcced4f7bcd199c0a3f
+      uses: snyk/actions/setup@a1346e4eaf761d462da22c34c681dc06849b6851
     - name: Set output if snyk has run
       if: ${{ inputs.run_snyk == 'true' }}
       id: snyk
