@@ -6,6 +6,9 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
+          "semanticVersion": "1.1292.0",
+          "version": "1.1292.0",
+          "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 133
           },
@@ -1382,6 +1385,9 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
+          "semanticVersion": "1.1292.0",
+          "version": "1.1292.0",
+          "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 23
           },
@@ -1394,6 +1400,9 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
+          "semanticVersion": "1.1292.0",
+          "version": "1.1292.0",
+          "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
           },
@@ -1406,6 +1415,9 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
+          "semanticVersion": "1.1292.0",
+          "version": "1.1292.0",
+          "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 32
           },
@@ -1418,6 +1430,9 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
+          "semanticVersion": "1.1292.0",
+          "version": "1.1292.0",
+          "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
           },
@@ -1430,6 +1445,9 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
+          "semanticVersion": "1.1292.0",
+          "version": "1.1292.0",
+          "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
           },
@@ -1442,6 +1460,9 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
+          "semanticVersion": "1.1292.0",
+          "version": "1.1292.0",
+          "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
           },
