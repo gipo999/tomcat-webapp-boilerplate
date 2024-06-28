@@ -6,8 +6,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.0",
-          "version": "1.1292.0",
+          "semanticVersion": "1.1292.1",
+          "version": "1.1292.1",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 133
@@ -665,7 +665,7 @@
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `wget` package and not the `wget` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nurl.c in GNU Wget through 1.24.5 mishandles semicolons in the userinfo subcomponent of a URI, and thus there may be insecure behavior in which data that was supposed to be in the userinfo subcomponent is misinterpreted to be part of the host subcomponent.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `wget`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-38428](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-38428)\n- [https://git.savannah.gnu.org/cgit/wget.git/commit/?id=ed0c7c7e0e8f7298352646b2fd6e06a11e242ace](https://git.savannah.gnu.org/cgit/wget.git/commit/?id=ed0c7c7e0e8f7298352646b2fd6e06a11e242ace)\n- [https://lists.gnu.org/archive/html/bug-wget/2024-06/msg00005.html](https://lists.gnu.org/archive/html/bug-wget/2024-06/msg00005.html)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `wget` package and not the `wget` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nurl.c in GNU Wget through 1.24.5 mishandles semicolons in the userinfo subcomponent of a URI, and thus there may be insecure behavior in which data that was supposed to be in the userinfo subcomponent is misinterpreted to be part of the host subcomponent.\n## Remediation\nUpgrade `Ubuntu:22.04` `wget` to version 1.21.2-2ubuntu1.1 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-38428](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-38428)\n- [https://git.savannah.gnu.org/cgit/wget.git/commit/?id=ed0c7c7e0e8f7298352646b2fd6e06a11e242ace](https://git.savannah.gnu.org/cgit/wget.git/commit/?id=ed0c7c7e0e8f7298352646b2fd6e06a11e242ace)\n- [https://lists.gnu.org/archive/html/bug-wget/2024-06/msg00005.html](https://lists.gnu.org/archive/html/bug-wget/2024-06/msg00005.html)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -1353,6 +1353,30 @@
                 }
               ]
             }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to wget@1.21.2-2ubuntu1.1"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "wget@1.21.2-2ubuntu1.1"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
           ]
         },
         {
@@ -1385,8 +1409,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.0",
-          "version": "1.1292.0",
+          "semanticVersion": "1.1292.1",
+          "version": "1.1292.1",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 23
@@ -1400,8 +1424,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.0",
-          "version": "1.1292.0",
+          "semanticVersion": "1.1292.1",
+          "version": "1.1292.1",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
@@ -1415,8 +1439,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.0",
-          "version": "1.1292.0",
+          "semanticVersion": "1.1292.1",
+          "version": "1.1292.1",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 32
@@ -1430,8 +1454,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.0",
-          "version": "1.1292.0",
+          "semanticVersion": "1.1292.1",
+          "version": "1.1292.1",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
@@ -1445,8 +1469,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.0",
-          "version": "1.1292.0",
+          "semanticVersion": "1.1292.1",
+          "version": "1.1292.1",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
@@ -1460,8 +1484,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.0",
-          "version": "1.1292.0",
+          "semanticVersion": "1.1292.1",
+          "version": "1.1292.1",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
