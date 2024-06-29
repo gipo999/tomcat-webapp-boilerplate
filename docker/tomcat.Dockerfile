@@ -1,7 +1,7 @@
 # OLD DOCKERFILE
 # keeping it for reference
 # this was meant to be used for development purposes
-FROM tomcat:9-jdk21@sha256:701bdd15e1cf25451056932397b582681e5c2afbd5a4bd540835b47e0a31a4c3
+FROM tomcat:9-jdk21@sha256:2379f337c97e4604b996d65a072737d7cb55ddef4a264c24be5539a0f499ac8a
 
 RUN adduser tomcat
 
