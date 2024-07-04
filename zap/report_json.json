@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Wed, 3 Jul 2024 00:39:31",
+	"@generated": "Thu, 4 Jul 2024 00:40:30",
 	"site":[ 
 		{
 			"@name": "http://localhost:8080",
@@ -23,7 +23,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://p4KN2qBL.com",
+							"attack": "origin: http://j1ukID6z.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -31,7 +31,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://p4KN2qBL.com",
+							"attack": "origin: http://j1ukID6z.com",
 							"evidence": "",
 							"otherinfo": ""
 						}
@@ -651,7 +651,7 @@
 					"reference": "<p>https://owasp.org/wstg</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "304"
+					"sourceid": "307"
 				}
 			]
 		}
