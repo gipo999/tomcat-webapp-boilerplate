@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sat, 6 Jul 2024 00:38:55",
+	"@generated": "Sun, 7 Jul 2024 00:44:04",
 	"site":[ 
 		{
 			"@name": "http://localhost:8080",
@@ -23,7 +23,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://z355LfGm.com",
+							"attack": "origin: http://zb0Qejme.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -31,7 +31,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://z355LfGm.com",
+							"attack": "origin: http://zb0Qejme.com",
 							"evidence": "",
 							"otherinfo": ""
 						}
@@ -42,7 +42,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</p><p>https://portswigger.net/web-security/cors</p>",
 					"cweid": "942",
 					"wascid": "14",
-					"sourceid": "553"
+					"sourceid": "541"
 				},
 				{
 					"pluginid": "10038",
@@ -155,7 +155,7 @@
 					"reference": "<p>https://blogs.akamai.com/2017/03/on-web-cache-deception-attacks.html</p><p>https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/web-cache-deception/</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "599"
+					"sourceid": "600"
 				},
 				{
 					"pluginid": "10009",
@@ -286,7 +286,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "http://localhost:8080/",
+							"uri": "http://localhost:8080/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -294,7 +294,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
+							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -316,7 +316,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -329,7 +329,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "http://localhost:8080/",
+							"uri": "http://localhost:8080/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -337,7 +337,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
+							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -359,7 +359,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -372,7 +372,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "http://localhost:8080/",
+							"uri": "http://localhost:8080/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -380,7 +380,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
+							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -402,7 +402,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -415,7 +415,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "http://localhost:8080/",
+							"uri": "http://localhost:8080/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -423,7 +423,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
+							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -445,7 +445,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -619,7 +619,7 @@
 					"reference": "<p>https://owasp.org/wstg</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "303"
+					"sourceid": "311"
 				}
 			]
 		}
