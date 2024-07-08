@@ -1469,10 +1469,85 @@
           "properties": {
             "artifactsScanned": 32
           },
-          "rules": []
+          "rules": [
+            {
+              "id": "SNYK-JAVA-ORGAPACHETOMCAT-7430174",
+              "shortDescription": {
+                "text": "High severity - Insufficient Session Expiration vulnerability in org.apache.tomcat:tomcat-coyote"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-34750) org.apache.tomcat:tomcat-coyote@9.0.89"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## Overview\n[org.apache.tomcat:tomcat-coyote](https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-coyote) is a Tomcat Connectors and HTTP parser.\n\nAffected versions of this package are vulnerable to Insufficient Session Expiration due to an infinite timeout being assigned to an open connection improperly, in `http2/Stream.java`. An attacker can force this situation by sending an HTTP/2 stream with excessive headers, causing denial of service to other connections.\n## Remediation\nUpgrade `org.apache.tomcat:tomcat-coyote` to version 9.0.90, 10.1.25, 11.0.0-M21 or higher.\n## References\n- [Apache Mailing List](https://lists.apache.org/thread/4kqf0bc9gxymjc2x7v3p7dvplnl77y8l)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-10.html)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-11.html)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-9.html)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/2344a4c0d03e307ba6b8ab6dc8b894cc8bac63f2)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/2afae300c9ac9c0e516e2e9de580847d925365c3)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/9fec9a82887853402833a80b584e3762c7423f5f)\n"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-613",
+                  "maven"
+                ],
+                "cvssv3_baseScore": 8.7,
+                "security-severity": "8.7"
+              }
+            }
+          ]
         }
       },
-      "results": []
+      "results": [
+        {
+          "ruleId": "SNYK-JAVA-ORGAPACHETOMCAT-7430174",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable org.apache.tomcat:tomcat-coyote package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/local/tomcat/lib"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "org.apache.tomcat:tomcat-coyote@9.0.89"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to org.apache.tomcat:tomcat-coyote@9.0.90"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "/usr/local/tomcat/lib"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "org.apache.tomcat:tomcat-coyote@9.0.90"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "tool": {
