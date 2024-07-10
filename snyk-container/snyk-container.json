@@ -362,6 +362,31 @@
               }
             },
             {
+              "id": "SNYK-UBUNTU2204-LIBPNG16-3124883",
+              "shortDescription": {
+                "text": "Low severity - NULL Pointer Dereference vulnerability in libpng1.6"
+              },
+              "fullDescription": {
+                "text": "(CVE-2022-3857) libpng1.6/libpng16-16@1.6.37-3build5"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `libpng1.6` package and not the `libpng1.6` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nA flaw was found in libpng 1.6.38. A crafted PNG image can lead to a segmentation fault and denial of service in png_setup_paeth_row() function.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `libpng1.6`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3857](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3857)\n- [https://sourceforge.net/p/libpng/bugs/300/](https://sourceforge.net/p/libpng/bugs/300/)\n- [https://security.netapp.com/advisory/ntap-20230406-0004/](https://security.netapp.com/advisory/ntap-20230406-0004/)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-476",
+                  "deb"
+                ],
+                "cvssv3_baseScore": 5.5,
+                "security-severity": "5.5"
+              }
+            },
+            {
               "id": "SNYK-UBUNTU2204-LIBZSTD-3368800",
               "shortDescription": {
                 "text": "Low severity - Resource Exhaustion vulnerability in libzstd"
@@ -1013,6 +1038,30 @@
               "logicalLocations": [
                 {
                   "fullyQualifiedName": "libgcrypt20@1.9.4-3ubuntu3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2204-LIBPNG16-3124883",
+          "level": "note",
+          "message": {
+            "text": "This file introduces a vulnerable libpng1.6 package with a low severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "libpng1.6@1.6.37-3build5"
                 }
               ]
             }
