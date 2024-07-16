@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Mon, 15 Jul 2024 00:42:24",
+	"@generated": "Tue, 16 Jul 2024 00:40:51",
 	"site":[ 
 		{
 			"@name": "http://localhost:8080",
@@ -23,7 +23,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://awYCAu2j.com",
+							"attack": "origin: http://5OpTwbVL.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -31,7 +31,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://awYCAu2j.com",
+							"attack": "origin: http://5OpTwbVL.com",
 							"evidence": "",
 							"otherinfo": ""
 						}
@@ -42,7 +42,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</p><p>https://portswigger.net/web-security/cors</p>",
 					"cweid": "942",
 					"wascid": "14",
-					"sourceid": "557"
+					"sourceid": "552"
 				},
 				{
 					"pluginid": "10038",
@@ -155,7 +155,7 @@
 					"reference": "<p>https://blogs.akamai.com/2017/03/on-web-cache-deception-attacks.html</p><p>https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/web-cache-deception/</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "604"
+					"sourceid": "599"
 				},
 				{
 					"pluginid": "10009",
@@ -294,14 +294,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -318,7 +310,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -345,14 +337,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -369,7 +353,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -396,14 +380,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -420,7 +396,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -447,14 +423,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "http://localhost:8080/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -471,7 +439,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -651,7 +619,7 @@
 					"reference": "<p>https://owasp.org/wstg</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "303"
+					"sourceid": "305"
 				}
 			]
 		}
