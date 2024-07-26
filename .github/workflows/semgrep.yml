@@ -35,7 +35,7 @@ jobs:
       # generate the SARIF file to upload to the GitHub Advanced Security Dashboard
       - run: semgrep ci --sarif > semgrep.sarif
       - name: Upload SARIF file for GitHub Advanced Security Dashboard
-        uses: github/codeql-action/upload-sarif@530d4feaa9c62aaab2d250371e2061eb7a172363 # v3
+        uses: github/codeql-action/upload-sarif@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3
         with:
           sarif_file: semgrep.sarif
           # we don't want to upload security vulns for code that is not merged yet
