@@ -6,50 +6,24 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.1",
-          "version": "1.1292.1",
+          "semanticVersion": "1.1292.2",
+          "version": "1.1292.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
-            "artifactsScanned": 133
+            "artifactsScanned": 132
           },
           "rules": [
             {
-              "id": "SNYK-UBUNTU2204-BINUTILS-2793366",
-              "shortDescription": {
-                "text": "Low severity - Improper Input Validation vulnerability in binutils"
-              },
-              "fullDescription": {
-                "text": "(CVE-2019-1010204) binutils/binutils-common@2.38-4ubuntu2.6"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `binutils` package and not the `binutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nGNU binutils gold gold v1.11-v1.16 (GNU binutils v2.21-v2.31.1) is affected by: Improper Input Validation, Signed/Unsigned Comparison, Out-of-bounds Read. The impact is: Denial of service. The component is: gold/fileread.cc:497, elfcpp/elfcpp_file.h:644. The attack vector is: An ELF file with an invalid e_shoff header field must be opened.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `binutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2019-1010204](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2019-1010204)\n- [https://support.f5.com/csp/article/K05032915?utm_source=f5support&amp;utm_medium=RSS](https://support.f5.com/csp/article/K05032915?utm_source=f5support&amp;utm_medium=RSS)\n- [https://security-tracker.debian.org/tracker/CVE-2019-1010204](https://security-tracker.debian.org/tracker/CVE-2019-1010204)\n- [https://sourceware.org/bugzilla/show_bug.cgi?id=23765](https://sourceware.org/bugzilla/show_bug.cgi?id=23765)\n- [https://security.netapp.com/advisory/ntap-20190822-0001/](https://security.netapp.com/advisory/ntap-20190822-0001/)\n- [https://support.f5.com/csp/article/K05032915?utm_source=f5support&amp%3Butm_medium=RSS](https://support.f5.com/csp/article/K05032915?utm_source=f5support&amp%3Butm_medium=RSS)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-20",
-                  "CWE-125",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 5.5,
-                "security-severity": "5.5"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-BINUTILS-2796179",
+              "id": "SNYK-UBUNTU2404-BINUTILS-6721946",
               "shortDescription": {
                 "text": "Low severity - Missing Release of Resource after Effective Lifetime vulnerability in binutils"
               },
               "fullDescription": {
-                "text": "(CVE-2018-20657) binutils/binutils-common@2.38-4ubuntu2.6"
+                "text": "(CVE-2018-20657) binutils/binutils-common@2.42-4ubuntu2"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `binutils` package and not the `binutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nThe demangle_template function in cplus-dem.c in GNU libiberty, as distributed in GNU Binutils 2.31.1, has a memory leak via a crafted string, leading to a denial of service (memory consumption), as demonstrated by cxxfilt, a related issue to CVE-2018-12698.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `binutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-20657](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-20657)\n- [http://www.securityfocus.com/bid/106444](http://www.securityfocus.com/bid/106444)\n- [https://support.f5.com/csp/article/K62602089](https://support.f5.com/csp/article/K62602089)\n- [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88539](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88539)\n- [https://access.redhat.com/errata/RHSA-2019:3352](https://access.redhat.com/errata/RHSA-2019:3352)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `binutils` package and not the `binutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nThe demangle_template function in cplus-dem.c in GNU libiberty, as distributed in GNU Binutils 2.31.1, has a memory leak via a crafted string, leading to a denial of service (memory consumption), as demonstrated by cxxfilt, a related issue to CVE-2018-12698.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `binutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-20657](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-20657)\n- [http://www.securityfocus.com/bid/106444](http://www.securityfocus.com/bid/106444)\n- [https://support.f5.com/csp/article/K62602089](https://support.f5.com/csp/article/K62602089)\n- [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88539](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88539)\n- [https://access.redhat.com/errata/RHSA-2019:3352](https://access.redhat.com/errata/RHSA-2019:3352)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -65,16 +39,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-BINUTILS-2801731",
+              "id": "SNYK-UBUNTU2404-BINUTILS-6725747",
               "shortDescription": {
                 "text": "Low severity - Allocation of Resources Without Limits or Throttling vulnerability in binutils"
               },
               "fullDescription": {
-                "text": "(CVE-2017-13716) binutils/binutils-common@2.38-4ubuntu2.6"
+                "text": "(CVE-2017-13716) binutils/binutils-common@2.42-4ubuntu2"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `binutils` package and not the `binutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nThe C++ symbol demangler routine in cplus-dem.c in libiberty, as distributed in GNU Binutils 2.29, allows remote attackers to cause a denial of service (excessive memory allocation and application crash) via a crafted file, as demonstrated by a call from the Binary File Descriptor (BFD) library (aka libbfd).\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `binutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13716](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13716)\n- [https://security-tracker.debian.org/tracker/CVE-2017-13716](https://security-tracker.debian.org/tracker/CVE-2017-13716)\n- [https://sourceware.org/bugzilla/show_bug.cgi?id=22009](https://sourceware.org/bugzilla/show_bug.cgi?id=22009)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `binutils` package and not the `binutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nThe C++ symbol demangler routine in cplus-dem.c in libiberty, as distributed in GNU Binutils 2.29, allows remote attackers to cause a denial of service (excessive memory allocation and application crash) via a crafted file, as demonstrated by a call from the Binary File Descriptor (BFD) library (aka libbfd).\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `binutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13716](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13716)\n- [https://security-tracker.debian.org/tracker/CVE-2017-13716](https://security-tracker.debian.org/tracker/CVE-2017-13716)\n- [https://sourceware.org/bugzilla/show_bug.cgi?id=22009](https://sourceware.org/bugzilla/show_bug.cgi?id=22009)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -90,66 +64,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-BINUTILS-3227639",
-              "shortDescription": {
-                "text": "Low severity - Uncontrolled Recursion vulnerability in binutils"
-              },
-              "fullDescription": {
-                "text": "(CVE-2022-27943) binutils/binutils-common@2.38-4ubuntu2.6"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `binutils` package and not the `binutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nlibiberty/rust-demangle.c in GNU GCC 11.2 allows stack consumption in demangle_const, as demonstrated by nm-new.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `binutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-27943](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-27943)\n- [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105039](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105039)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/H424YXGW7OKXS2NCAP35OP6Y4P4AW6VG/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/H424YXGW7OKXS2NCAP35OP6Y4P4AW6VG/)\n- [https://sourceware.org/bugzilla/show_bug.cgi?id=28995](https://sourceware.org/bugzilla/show_bug.cgi?id=28995)\n- [https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/H424YXGW7OKXS2NCAP35OP6Y4P4AW6VG/](https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/H424YXGW7OKXS2NCAP35OP6Y4P4AW6VG/)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-674",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 5.5,
-                "security-severity": "5.5"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-BINUTILS-5855067",
-              "shortDescription": {
-                "text": "Low severity - Allocation of Resources Without Limits or Throttling vulnerability in binutils"
-              },
-              "fullDescription": {
-                "text": "(CVE-2022-48064) binutils/binutils-common@2.38-4ubuntu2.6"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `binutils` package and not the `binutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nGNU Binutils before 2.40 was discovered to contain an excessive memory consumption vulnerability via the function bfd_dwarf2_find_nearest_line_with_alt at dwarf2.c. The attacker could supply a crafted ELF file and cause a DNS attack.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `binutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-48064](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-48064)\n- [https://sourceware.org/bugzilla/show_bug.cgi?id=29922](https://sourceware.org/bugzilla/show_bug.cgi?id=29922)\n- [https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8f2c64de86bc3d7556121fe296dd679000283931](https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8f2c64de86bc3d7556121fe296dd679000283931)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/3XKYUAIORNQ32IZUOZFURECZKEXOHX7Z/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/3XKYUAIORNQ32IZUOZFURECZKEXOHX7Z/)\n- [https://security.netapp.com/advisory/ntap-20231006-0008/](https://security.netapp.com/advisory/ntap-20231006-0008/)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/NSUNHSOWWLLNGHRM5TUBNCJHEYHPDX2M/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/NSUNHSOWWLLNGHRM5TUBNCJHEYHPDX2M/)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/KGSKF4GH7425S6XFDQMWTJGD5U47BAZN/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/KGSKF4GH7425S6XFDQMWTJGD5U47BAZN/)\n- [https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/3XKYUAIORNQ32IZUOZFURECZKEXOHX7Z/](https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/3XKYUAIORNQ32IZUOZFURECZKEXOHX7Z/)\n- [https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KGSKF4GH7425S6XFDQMWTJGD5U47BAZN/](https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KGSKF4GH7425S6XFDQMWTJGD5U47BAZN/)\n- [https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NSUNHSOWWLLNGHRM5TUBNCJHEYHPDX2M/](https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NSUNHSOWWLLNGHRM5TUBNCJHEYHPDX2M/)\n- [https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git%3Bh=8f2c64de86bc3d7556121fe296dd679000283931](https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git%3Bh=8f2c64de86bc3d7556121fe296dd679000283931)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-770",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 5.5,
-                "security-severity": "5.5"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-COREUTILS-2801226",
+              "id": "SNYK-UBUNTU2404-COREUTILS-6727355",
               "shortDescription": {
                 "text": "Low severity - Improper Input Validation vulnerability in coreutils"
               },
               "fullDescription": {
-                "text": "(CVE-2016-2781) coreutils@8.32-4.1ubuntu1.2"
+                "text": "(CVE-2016-2781) coreutils@9.4-3ubuntu6"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `coreutils` package and not the `coreutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nchroot in GNU coreutils, when used with --userspec, allows local users to escape to the parent session via a crafted TIOCSTI ioctl call, which pushes characters to the terminal&#39;s input buffer.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `coreutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-2781](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-2781)\n- [https://security-tracker.debian.org/tracker/CVE-2016-2781](https://security-tracker.debian.org/tracker/CVE-2016-2781)\n- [https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772@%3Cdev.mina.apache.org%3E](https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772@%3Cdev.mina.apache.org%3E)\n- [http://www.openwall.com/lists/oss-security/2016/02/28/2](http://www.openwall.com/lists/oss-security/2016/02/28/2)\n- [http://www.openwall.com/lists/oss-security/2016/02/28/3](http://www.openwall.com/lists/oss-security/2016/02/28/3)\n- [https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772%40%3Cdev.mina.apache.org%3E](https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772%40%3Cdev.mina.apache.org%3E)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `coreutils` package and not the `coreutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nchroot in GNU coreutils, when used with --userspec, allows local users to escape to the parent session via a crafted TIOCSTI ioctl call, which pushes characters to the terminal&#39;s input buffer.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `coreutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-2781](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-2781)\n- [https://security-tracker.debian.org/tracker/CVE-2016-2781](https://security-tracker.debian.org/tracker/CVE-2016-2781)\n- [https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772@%3Cdev.mina.apache.org%3E](https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772@%3Cdev.mina.apache.org%3E)\n- [http://www.openwall.com/lists/oss-security/2016/02/28/2](http://www.openwall.com/lists/oss-security/2016/02/28/2)\n- [http://www.openwall.com/lists/oss-security/2016/02/28/3](http://www.openwall.com/lists/oss-security/2016/02/28/3)\n- [https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772%40%3Cdev.mina.apache.org%3E](https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772%40%3Cdev.mina.apache.org%3E)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -165,41 +89,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-GCC12-5861847",
-              "shortDescription": {
-                "text": "Low severity - Uncontrolled Recursion vulnerability in gcc-12"
-              },
-              "fullDescription": {
-                "text": "(CVE-2022-27943) gcc-12/libstdc++6@12.3.0-1ubuntu1~22.04"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `gcc-12` package and not the `gcc-12` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nlibiberty/rust-demangle.c in GNU GCC 11.2 allows stack consumption in demangle_const, as demonstrated by nm-new.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `gcc-12`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-27943](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-27943)\n- [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105039](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105039)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/H424YXGW7OKXS2NCAP35OP6Y4P4AW6VG/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/H424YXGW7OKXS2NCAP35OP6Y4P4AW6VG/)\n- [https://sourceware.org/bugzilla/show_bug.cgi?id=28995](https://sourceware.org/bugzilla/show_bug.cgi?id=28995)\n- [https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/H424YXGW7OKXS2NCAP35OP6Y4P4AW6VG/](https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/H424YXGW7OKXS2NCAP35OP6Y4P4AW6VG/)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-674",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 5.5,
-                "security-severity": "5.5"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-GLIBC-2801292",
+              "id": "SNYK-UBUNTU2404-GLIBC-6727419",
               "shortDescription": {
                 "text": "Low severity - Allocation of Resources Without Limits or Throttling vulnerability in glibc"
               },
               "fullDescription": {
-                "text": "(CVE-2016-20013) glibc/libc-bin@2.35-0ubuntu3.8"
+                "text": "(CVE-2016-20013) glibc/libc-bin@2.39-0ubuntu8.2"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `glibc` package and not the `glibc` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nsha256crypt and sha512crypt through 0.6 allow attackers to cause a denial of service (CPU consumption) because the algorithm&#39;s runtime is proportional to the square of the length of the password.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `glibc`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-20013](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-20013)\n- [https://twitter.com/solardiz/status/795601240151457793](https://twitter.com/solardiz/status/795601240151457793)\n- [https://pthree.org/2018/05/23/do-not-use-sha256crypt-sha512crypt-theyre-dangerous/](https://pthree.org/2018/05/23/do-not-use-sha256crypt-sha512crypt-theyre-dangerous/)\n- [https://akkadia.org/drepper/SHA-crypt.txt](https://akkadia.org/drepper/SHA-crypt.txt)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `glibc` package and not the `glibc` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nsha256crypt and sha512crypt through 0.6 allow attackers to cause a denial of service (CPU consumption) because the algorithm&#39;s runtime is proportional to the square of the length of the password.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `glibc`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-20013](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-20013)\n- [https://twitter.com/solardiz/status/795601240151457793](https://twitter.com/solardiz/status/795601240151457793)\n- [https://pthree.org/2018/05/23/do-not-use-sha256crypt-sha512crypt-theyre-dangerous/](https://pthree.org/2018/05/23/do-not-use-sha256crypt-sha512crypt-theyre-dangerous/)\n- [https://akkadia.org/drepper/SHA-crypt.txt](https://akkadia.org/drepper/SHA-crypt.txt)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -215,16 +114,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-GNUPG2-3035409",
+              "id": "SNYK-UBUNTU2404-GNUPG2-6702792",
               "shortDescription": {
                 "text": "Low severity - Out-of-bounds Write vulnerability in gnupg2"
               },
               "fullDescription": {
-                "text": "(CVE-2022-3219) gnupg2/gpgv@2.2.27-3ubuntu2.1"
+                "text": "(CVE-2022-3219) gnupg2/gpgv@2.4.4-2ubuntu17"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `gnupg2` package and not the `gnupg2` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nGnuPG can be made to spin on a relatively small input by (for example) crafting a public key with thousands of signatures attached, compressed down to just a few KB.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `gnupg2`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3219](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3219)\n- [https://access.redhat.com/security/cve/CVE-2022-3219](https://access.redhat.com/security/cve/CVE-2022-3219)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2127010](https://bugzilla.redhat.com/show_bug.cgi?id=2127010)\n- [https://dev.gnupg.org/D556](https://dev.gnupg.org/D556)\n- [https://dev.gnupg.org/T5993](https://dev.gnupg.org/T5993)\n- [https://marc.info/?l=oss-security&m=165696590211434&w=4](https://marc.info/?l=oss-security&m=165696590211434&w=4)\n- [https://security.netapp.com/advisory/ntap-20230324-0001/](https://security.netapp.com/advisory/ntap-20230324-0001/)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `gnupg2` package and not the `gnupg2` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nGnuPG can be made to spin on a relatively small input by (for example) crafting a public key with thousands of signatures attached, compressed down to just a few KB.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `gnupg2`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3219](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3219)\n- [https://access.redhat.com/security/cve/CVE-2022-3219](https://access.redhat.com/security/cve/CVE-2022-3219)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2127010](https://bugzilla.redhat.com/show_bug.cgi?id=2127010)\n- [https://dev.gnupg.org/D556](https://dev.gnupg.org/D556)\n- [https://dev.gnupg.org/T5993](https://dev.gnupg.org/T5993)\n- [https://marc.info/?l=oss-security&m=165696590211434&w=4](https://marc.info/?l=oss-security&m=165696590211434&w=4)\n- [https://security.netapp.com/advisory/ntap-20230324-0001/](https://security.netapp.com/advisory/ntap-20230324-0001/)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -240,89 +139,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-KRB5-2797765",
-              "shortDescription": {
-                "text": "Low severity - Integer Overflow or Wraparound vulnerability in krb5"
-              },
-              "fullDescription": {
-                "text": "(CVE-2018-5709) krb5/libkrb5support0@1.19.2-2ubuntu0.3"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nAn issue was discovered in MIT Kerberos 5 (aka krb5) through 1.16. There is a variable &#34;dbentry-&gt;n_key_data&#34; in kadmin/dbutil/dump.c that can store 16-bit data but unknowingly the developer has assigned a &#34;u4&#34; variable to it, which is for 32-bit data. An attacker can use this vulnerability to affect other artifacts of the database as we know that a Kerberos database dump file contains trusted data.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `krb5`.\n## References\n- [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5709](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5709)\n- [https://security-tracker.debian.org/tracker/CVE-2018-5709](https://security-tracker.debian.org/tracker/CVE-2018-5709)\n- [https://github.com/poojamnit/Kerberos-V5-1.16-Vulnerabilities/tree/master/Integer%20Overflow](https://github.com/poojamnit/Kerberos-V5-1.16-Vulnerabilities/tree/master/Integer%20Overflow)\n- [https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772@%3Cdev.mina.apache.org%3E](https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772@%3Cdev.mina.apache.org%3E)\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-5709](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-5709)\n- [https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772%40%3Cdev.mina.apache.org%3E](https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772%40%3Cdev.mina.apache.org%3E)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-190",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 7.5,
-                "security-severity": "7.5"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-KRB5-6281067",
-              "shortDescription": {
-                "text": "Low severity - CVE-2024-26461 vulnerability in krb5"
-              },
-              "fullDescription": {
-                "text": "(CVE-2024-26461) krb5/libkrb5support0@1.19.2-2ubuntu0.3"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nKerberos 5 (aka krb5) 1.21.2 contains a memory leak vulnerability in /krb5/src/lib/gssapi/krb5/k5sealv3.c.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26461](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26461)\n- [https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md](https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md)\n- [https://security.netapp.com/advisory/ntap-20240415-0011/](https://security.netapp.com/advisory/ntap-20240415-0011/)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "deb"
-                ],
-                "cvssv3_baseScore": null,
-                "security-severity": "null"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-KRB5-6281073",
-              "shortDescription": {
-                "text": "Medium severity - CVE-2024-26462 vulnerability in krb5"
-              },
-              "fullDescription": {
-                "text": "(CVE-2024-26462) krb5/libkrb5support0@1.19.2-2ubuntu0.3"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nKerberos 5 (aka krb5) 1.21.2 contains a memory leak vulnerability in /krb5/src/kdc/ndr.c.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26462](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26462)\n- [https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_3.md](https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_3.md)\n- [https://security.netapp.com/advisory/ntap-20240415-0012/](https://security.netapp.com/advisory/ntap-20240415-0012/)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "deb"
-                ],
-                "cvssv3_baseScore": null,
-                "security-severity": "null"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-KRB5-6281079",
+              "id": "SNYK-UBUNTU2404-KRB5-6693034",
               "shortDescription": {
                 "text": "Low severity - CVE-2024-26458 vulnerability in krb5"
               },
               "fullDescription": {
-                "text": "(CVE-2024-26458) krb5/libkrb5support0@1.19.2-2ubuntu0.3"
+                "text": "(CVE-2024-26458) krb5/libk5crypto3@1.20.1-6ubuntu2"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nKerberos 5 (aka krb5) 1.21.2 contains a memory leak in /krb5/src/lib/rpc/pmap_rmt.c.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26458](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26458)\n- [https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md](https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md)\n- [https://security.netapp.com/advisory/ntap-20240415-0010/](https://security.netapp.com/advisory/ntap-20240415-0010/)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nKerberos 5 (aka krb5) 1.21.2 contains a memory leak in /krb5/src/lib/rpc/pmap_rmt.c.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26458](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26458)\n- [https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md](https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md)\n- [https://security.netapp.com/advisory/ntap-20240415-0010/](https://security.netapp.com/advisory/ntap-20240415-0010/)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -337,16 +163,64 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-KRB5-7413877",
+              "id": "SNYK-UBUNTU2404-KRB5-6693037",
+              "shortDescription": {
+                "text": "Medium severity - CVE-2024-26462 vulnerability in krb5"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-26462) krb5/libk5crypto3@1.20.1-6ubuntu2"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nKerberos 5 (aka krb5) 1.21.2 contains a memory leak vulnerability in /krb5/src/kdc/ndr.c.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26462](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26462)\n- [https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_3.md](https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_3.md)\n- [https://security.netapp.com/advisory/ntap-20240415-0012/](https://security.netapp.com/advisory/ntap-20240415-0012/)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
+              "id": "SNYK-UBUNTU2404-KRB5-6693038",
+              "shortDescription": {
+                "text": "Low severity - CVE-2024-26461 vulnerability in krb5"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-26461) krb5/libk5crypto3@1.20.1-6ubuntu2"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nKerberos 5 (aka krb5) 1.21.2 contains a memory leak vulnerability in /krb5/src/lib/gssapi/krb5/k5sealv3.c.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26461](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-26461)\n- [https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md](https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md)\n- [https://security.netapp.com/advisory/ntap-20240415-0011/](https://security.netapp.com/advisory/ntap-20240415-0011/)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
+              "id": "SNYK-UBUNTU2404-KRB5-7413878",
               "shortDescription": {
                 "text": "Medium severity - CVE-2024-37371 vulnerability in krb5"
               },
               "fullDescription": {
-                "text": "(CVE-2024-37371) krb5/libkrb5support0@1.19.2-2ubuntu0.3"
+                "text": "(CVE-2024-37371) krb5/libk5crypto3@1.20.1-6ubuntu2"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nIn MIT Kerberos 5 (aka krb5) before 1.21.3, an attacker can cause invalid memory reads during GSS message token handling by sending message tokens with invalid length fields.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37371](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37371)\n- [https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef](https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef)\n- [https://web.mit.edu/kerberos/www/advisories/](https://web.mit.edu/kerberos/www/advisories/)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nIn MIT Kerberos 5 (aka krb5) before 1.21.3, an attacker can cause invalid memory reads during GSS message token handling by sending message tokens with invalid length fields.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37371](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37371)\n- [https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef](https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef)\n- [https://web.mit.edu/kerberos/www/advisories/](https://web.mit.edu/kerberos/www/advisories/)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -361,16 +235,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-KRB5-7413894",
+              "id": "SNYK-UBUNTU2404-KRB5-7413896",
               "shortDescription": {
                 "text": "Medium severity - CVE-2024-37370 vulnerability in krb5"
               },
               "fullDescription": {
-                "text": "(CVE-2024-37370) krb5/libkrb5support0@1.19.2-2ubuntu0.3"
+                "text": "(CVE-2024-37370) krb5/libk5crypto3@1.20.1-6ubuntu2"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nIn MIT Kerberos 5 (aka krb5) before 1.21.3, an attacker can modify the plaintext Extra Count field of a confidential GSS krb5 wrap token, causing the unwrapped token to appear truncated to the application.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37370](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37370)\n- [https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef](https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef)\n- [https://web.mit.edu/kerberos/www/advisories/](https://web.mit.edu/kerberos/www/advisories/)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nIn MIT Kerberos 5 (aka krb5) before 1.21.3, an attacker can modify the plaintext Extra Count field of a confidential GSS krb5 wrap token, causing the unwrapped token to appear truncated to the application.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37370](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37370)\n- [https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef](https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef)\n- [https://web.mit.edu/kerberos/www/advisories/](https://web.mit.edu/kerberos/www/advisories/)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -385,16 +259,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-LIBGCRYPT20-6411451",
+              "id": "SNYK-UBUNTU2404-LIBGCRYPT20-6693674",
               "shortDescription": {
                 "text": "Medium severity - Information Exposure vulnerability in libgcrypt20"
               },
               "fullDescription": {
-                "text": "(CVE-2024-2236) libgcrypt20@1.9.4-3ubuntu3"
+                "text": "(CVE-2024-2236) libgcrypt20@1.10.3-2build1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `libgcrypt20` package and not the `libgcrypt20` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nA timing-based side-channel flaw was found in libgcrypt&#39;s RSA implementation. This issue may allow a remote attacker to initiate a Bleichenbacher-style attack, which can lead to the decryption of RSA ciphertexts.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `libgcrypt20`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2236](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2236)\n- [https://access.redhat.com/security/cve/CVE-2024-2236](https://access.redhat.com/security/cve/CVE-2024-2236)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2268268](https://bugzilla.redhat.com/show_bug.cgi?id=2268268)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2245218](https://bugzilla.redhat.com/show_bug.cgi?id=2245218)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `libgcrypt20` package and not the `libgcrypt20` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nA timing-based side-channel flaw was found in libgcrypt&#39;s RSA implementation. This issue may allow a remote attacker to initiate a Bleichenbacher-style attack, which can lead to the decryption of RSA ciphertexts.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `libgcrypt20`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2236](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2236)\n- [https://access.redhat.com/security/cve/CVE-2024-2236](https://access.redhat.com/security/cve/CVE-2024-2236)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2268268](https://bugzilla.redhat.com/show_bug.cgi?id=2268268)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2245218](https://bugzilla.redhat.com/show_bug.cgi?id=2245218)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -410,16 +284,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-LIBPNG16-3124883",
+              "id": "SNYK-UBUNTU2404-LIBPNG16-6702001",
               "shortDescription": {
                 "text": "Low severity - NULL Pointer Dereference vulnerability in libpng1.6"
               },
               "fullDescription": {
-                "text": "(CVE-2022-3857) libpng1.6/libpng16-16@1.6.37-3build5"
+                "text": "(CVE-2022-3857) libpng1.6/libpng16-16t64@1.6.43-5build1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `libpng1.6` package and not the `libpng1.6` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nA flaw was found in libpng 1.6.38. A crafted PNG image can lead to a segmentation fault and denial of service in png_setup_paeth_row() function.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `libpng1.6`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3857](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3857)\n- [https://sourceforge.net/p/libpng/bugs/300/](https://sourceforge.net/p/libpng/bugs/300/)\n- [https://security.netapp.com/advisory/ntap-20230406-0004/](https://security.netapp.com/advisory/ntap-20230406-0004/)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `libpng1.6` package and not the `libpng1.6` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nA flaw was found in libpng 1.6.38. A crafted PNG image can lead to a segmentation fault and denial of service in png_setup_paeth_row() function.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `libpng1.6`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3857](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-3857)\n- [https://sourceforge.net/p/libpng/bugs/300/](https://sourceforge.net/p/libpng/bugs/300/)\n- [https://security.netapp.com/advisory/ntap-20230406-0004/](https://security.netapp.com/advisory/ntap-20230406-0004/)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -435,114 +309,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-LIBZSTD-3368800",
-              "shortDescription": {
-                "text": "Low severity - Resource Exhaustion vulnerability in libzstd"
-              },
-              "fullDescription": {
-                "text": "(CVE-2022-4899) libzstd/libzstd1@1.4.8+dfsg-3build1"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `libzstd` package and not the `libzstd` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nA vulnerability was found in zstd v1.4.10, where an attacker can supply empty string as an argument to the command line tool to cause buffer overrun.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `libzstd`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-4899](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-4899)\n- [https://github.com/facebook/zstd/issues/3200](https://github.com/facebook/zstd/issues/3200)\n- [https://security.netapp.com/advisory/ntap-20230725-0005/](https://security.netapp.com/advisory/ntap-20230725-0005/)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/C63HAGVLQA6FJNDCHR7CNZZL6VSLILB2/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/C63HAGVLQA6FJNDCHR7CNZZL6VSLILB2/)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JEHRBBYYTPA4DETOM5XAKGCP37NUTLOA/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JEHRBBYYTPA4DETOM5XAKGCP37NUTLOA/)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QYLDK6ODVC4LJSDULLX6Q2YHTFOWABCN/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QYLDK6ODVC4LJSDULLX6Q2YHTFOWABCN/)\n- [https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/C63HAGVLQA6FJNDCHR7CNZZL6VSLILB2/](https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/C63HAGVLQA6FJNDCHR7CNZZL6VSLILB2/)\n- [https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JEHRBBYYTPA4DETOM5XAKGCP37NUTLOA/](https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JEHRBBYYTPA4DETOM5XAKGCP37NUTLOA/)\n- [https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QYLDK6ODVC4LJSDULLX6Q2YHTFOWABCN/](https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QYLDK6ODVC4LJSDULLX6Q2YHTFOWABCN/)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-400",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 7.5,
-                "security-severity": "7.5"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-NCURSES-6123867",
-              "shortDescription": {
-                "text": "Low severity - CVE-2023-50495 vulnerability in ncurses"
-              },
-              "fullDescription": {
-                "text": "(CVE-2023-50495) ncurses/libtinfo6@6.3-2ubuntu0.1"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `ncurses` package and not the `ncurses` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nNCurse v6.4-20230418 was discovered to contain a segmentation fault via the component _nc_wrap_entry().\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `ncurses`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-50495](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-50495)\n- [https://lists.gnu.org/archive/html/bug-ncurses/2023-04/msg00020.html](https://lists.gnu.org/archive/html/bug-ncurses/2023-04/msg00020.html)\n- [https://lists.gnu.org/archive/html/bug-ncurses/2023-04/msg00029.html](https://lists.gnu.org/archive/html/bug-ncurses/2023-04/msg00029.html)\n- [https://security.netapp.com/advisory/ntap-20240119-0008/](https://security.netapp.com/advisory/ntap-20240119-0008/)\n- [https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/LU4MYMKFEZQ5VSCVLRIZGDQOUW3T44GT/](https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/LU4MYMKFEZQ5VSCVLRIZGDQOUW3T44GT/)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 6.5,
-                "security-severity": "6.5"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-NCURSES-6253015",
-              "shortDescription": {
-                "text": "Low severity - CVE-2023-45918 vulnerability in ncurses"
-              },
-              "fullDescription": {
-                "text": "(CVE-2023-45918) ncurses/libtinfo6@6.3-2ubuntu0.1"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `ncurses` package and not the `ncurses` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nncurses 6.4-20230610 has a NULL pointer dereference in tgetstr in tinfo/lib_termcap.c.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `ncurses`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-45918](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-45918)\n- [https://lists.gnu.org/archive/html/bug-ncurses/2023-06/msg00005.html](https://lists.gnu.org/archive/html/bug-ncurses/2023-06/msg00005.html)\n- [https://security.netapp.com/advisory/ntap-20240315-0006/](https://security.netapp.com/advisory/ntap-20240315-0006/)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "deb"
-                ],
-                "cvssv3_baseScore": null,
-                "security-severity": "null"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-OPENSSL-5538123",
-              "shortDescription": {
-                "text": "Medium severity - Resource Exhaustion vulnerability in openssl"
-              },
-              "fullDescription": {
-                "text": "(CVE-2022-40735) openssl/libssl3@3.0.2-0ubuntu1.15"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `openssl` package and not the `openssl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nThe Diffie-Hellman Key Agreement Protocol allows use of long exponents that arguably make certain calculations unnecessarily expensive, because the 1996 van Oorschot and Wiener paper found that &#34;(appropriately) short exponents&#34; can be used when there are adequate subgroup constraints, and these short exponents can lead to less expensive calculations than for long exponents. This issue is different from CVE-2002-20001 because it is based on an observation about exponent size, rather than an observation about numbers that are not public keys. The specific situations in which calculation expense would constitute a server-side vulnerability depend on the protocol (e.g., TLS, SSH, or IKE) and the DHE implementation details. In general, there might be an availability concern because of server-side resource consumption from DHE modular-exponentiation calculations. Finally, it is possible for an attacker to exploit this vulnerability and CVE-2002-20001 together.\n## Remediation\nUpgrade `Ubuntu:22.04` `openssl` to version 3.0.2-0ubuntu1.16 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-40735](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2022-40735)\n- [https://github.com/mozilla/ssl-config-generator/issues/162](https://github.com/mozilla/ssl-config-generator/issues/162)\n- [https://link.springer.com/content/pdf/10.1007/3-540-68339-9_29.pdf](https://link.springer.com/content/pdf/10.1007/3-540-68339-9_29.pdf)\n- [https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf)\n- [https://www.researchgate.net/profile/Anton-Stiglic-2/publication/2401745_Security_Issues_in_the_Diffie-Hellman_Key_Agreement_Protocol/links/546c144f0cf20dedafd53e7e/Security-Issues-in-the-Diffie-Hellman-Key-Agreement-Protocol.pdf](https://www.researchgate.net/profile/Anton-Stiglic-2/publication/2401745_Security_Issues_in_the_Diffie-Hellman_Key_Agreement_Protocol/links/546c144f0cf20dedafd53e7e/Security-Issues-in-the-Diffie-Hellman-Key-Agreement-Protocol.pdf)\n- [https://gist.github.com/c0r0n3r/9455ddcab985c50fd1912eabf26e058b](https://gist.github.com/c0r0n3r/9455ddcab985c50fd1912eabf26e058b)\n- [https://www.rfc-editor.org/rfc/rfc4419](https://www.rfc-editor.org/rfc/rfc4419)\n- [https://www.rfc-editor.org/rfc/rfc7919#section-5.2](https://www.rfc-editor.org/rfc/rfc7919#section-5.2)\n- [https://www.rfc-editor.org/rfc/rfc3526](https://www.rfc-editor.org/rfc/rfc3526)\n- [https://raw.githubusercontent.com/CVEProject/cvelist/9d7fbbcabd3f44cfedc9e8807757d31ece85a2c6/2022/40xxx/CVE-2022-40735.json](https://raw.githubusercontent.com/CVEProject/cvelist/9d7fbbcabd3f44cfedc9e8807757d31ece85a2c6/2022/40xxx/CVE-2022-40735.json)\n- [https://www.rfc-editor.org/rfc/rfc5114#section-4](https://www.rfc-editor.org/rfc/rfc5114#section-4)\n- [https://dheatattack.gitlab.io/](https://dheatattack.gitlab.io/)\n- [https://ieeexplore.ieee.org/document/10374117](https://ieeexplore.ieee.org/document/10374117)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-400",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 7.5,
-                "security-severity": "7.5"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-OPENSSL-6592113",
+              "id": "SNYK-UBUNTU2404-OPENSSL-6693301",
               "shortDescription": {
                 "text": "Low severity - CVE-2024-2511 vulnerability in openssl"
               },
               "fullDescription": {
-                "text": "(CVE-2024-2511) openssl/libssl3@3.0.2-0ubuntu1.15"
+                "text": "(CVE-2024-2511) openssl/libssl3t64@3.0.13-0ubuntu3.1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `openssl` package and not the `openssl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nIssue summary: Some non-default TLS server configurations can cause unbounded\nmemory growth when processing TLSv1.3 sessions\n\nImpact summary: An attacker may exploit certain server configurations to trigger\nunbounded memory growth that would lead to a Denial of Service\n\nThis problem can occur in TLSv1.3 if the non-default SSL_OP_NO_TICKET option is\nbeing used (but not if early_data support is also configured and the default\nanti-replay protection is in use). In this case, under certain conditions, the\nsession cache can get into an incorrect state and it will fail to flush properly\nas it fills. The session cache will continue to grow in an unbounded manner. A\nmalicious client could deliberately create the scenario for this failure to\nforce a Denial of Service. It may also happen by accident in normal operation.\n\nThis issue only affects TLS servers supporting TLSv1.3. It does not affect TLS\nclients.\n\nThe FIPS modules in 3.2, 3.1 and 3.0 are not affected by this issue. OpenSSL\n1.0.2 is also not affected by this issue.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `openssl`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2511](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2511)\n- [https://github.com/openssl/openssl/commit/7e4d731b1c07201ad9374c1cd9ac5263bdf35bce](https://github.com/openssl/openssl/commit/7e4d731b1c07201ad9374c1cd9ac5263bdf35bce)\n- [https://github.com/openssl/openssl/commit/b52867a9f618bb955bed2a3ce3db4d4f97ed8e5d](https://github.com/openssl/openssl/commit/b52867a9f618bb955bed2a3ce3db4d4f97ed8e5d)\n- [https://github.com/openssl/openssl/commit/e9d7083e241670332e0443da0f0d4ffb52829f08](https://github.com/openssl/openssl/commit/e9d7083e241670332e0443da0f0d4ffb52829f08)\n- [https://github.openssl.org/openssl/extended-releases/commit/5f8d25770ae6437db119dfc951e207271a326640](https://github.openssl.org/openssl/extended-releases/commit/5f8d25770ae6437db119dfc951e207271a326640)\n- [https://www.openssl.org/news/secadv/20240408.txt](https://www.openssl.org/news/secadv/20240408.txt)\n- [http://www.openwall.com/lists/oss-security/2024/04/08/5](http://www.openwall.com/lists/oss-security/2024/04/08/5)\n- [https://security.netapp.com/advisory/ntap-20240503-0013/](https://security.netapp.com/advisory/ntap-20240503-0013/)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `openssl` package and not the `openssl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nIssue summary: Some non-default TLS server configurations can cause unbounded\nmemory growth when processing TLSv1.3 sessions\n\nImpact summary: An attacker may exploit certain server configurations to trigger\nunbounded memory growth that would lead to a Denial of Service\n\nThis problem can occur in TLSv1.3 if the non-default SSL_OP_NO_TICKET option is\nbeing used (but not if early_data support is also configured and the default\nanti-replay protection is in use). In this case, under certain conditions, the\nsession cache can get into an incorrect state and it will fail to flush properly\nas it fills. The session cache will continue to grow in an unbounded manner. A\nmalicious client could deliberately create the scenario for this failure to\nforce a Denial of Service. It may also happen by accident in normal operation.\n\nThis issue only affects TLS servers supporting TLSv1.3. It does not affect TLS\nclients.\n\nThe FIPS modules in 3.2, 3.1 and 3.0 are not affected by this issue. OpenSSL\n1.0.2 is also not affected by this issue.\n## Remediation\nUpgrade `Ubuntu:24.04` `openssl` to version 3.0.13-0ubuntu3.2 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2511](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2511)\n- [https://github.com/openssl/openssl/commit/7e4d731b1c07201ad9374c1cd9ac5263bdf35bce](https://github.com/openssl/openssl/commit/7e4d731b1c07201ad9374c1cd9ac5263bdf35bce)\n- [https://github.com/openssl/openssl/commit/b52867a9f618bb955bed2a3ce3db4d4f97ed8e5d](https://github.com/openssl/openssl/commit/b52867a9f618bb955bed2a3ce3db4d4f97ed8e5d)\n- [https://github.com/openssl/openssl/commit/e9d7083e241670332e0443da0f0d4ffb52829f08](https://github.com/openssl/openssl/commit/e9d7083e241670332e0443da0f0d4ffb52829f08)\n- [https://github.openssl.org/openssl/extended-releases/commit/5f8d25770ae6437db119dfc951e207271a326640](https://github.openssl.org/openssl/extended-releases/commit/5f8d25770ae6437db119dfc951e207271a326640)\n- [https://www.openssl.org/news/secadv/20240408.txt](https://www.openssl.org/news/secadv/20240408.txt)\n- [http://www.openwall.com/lists/oss-security/2024/04/08/5](http://www.openwall.com/lists/oss-security/2024/04/08/5)\n- [https://security.netapp.com/advisory/ntap-20240503-0013/](https://security.netapp.com/advisory/ntap-20240503-0013/)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -557,16 +333,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-OPENSSL-6861899",
+              "id": "SNYK-UBUNTU2404-OPENSSL-6861903",
               "shortDescription": {
                 "text": "Low severity - CVE-2024-4603 vulnerability in openssl"
               },
               "fullDescription": {
-                "text": "(CVE-2024-4603) openssl/libssl3@3.0.2-0ubuntu1.15"
+                "text": "(CVE-2024-4603) openssl/libssl3t64@3.0.13-0ubuntu3.1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `openssl` package and not the `openssl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nIssue summary: Checking excessively long DSA keys or parameters may be very\nslow.\n\nImpact summary: Applications that use the functions EVP_PKEY_param_check()\nor EVP_PKEY_public_check() to check a DSA public key or DSA parameters may\nexperience long delays. Where the key or parameters that are being checked\nhave been obtained from an untrusted source this may lead to a Denial of\nService.\n\nThe functions EVP_PKEY_param_check() or EVP_PKEY_public_check() perform\nvarious checks on DSA parameters. Some of those computations take a long time\nif the modulus (`p` parameter) is too large.\n\nTrying to use a very large modulus is slow and OpenSSL will not allow using\npublic keys with a modulus which is over 10,000 bits in length for signature\nverification. However the key and parameter check functions do not limit\nthe modulus size when performing the checks.\n\nAn application that calls EVP_PKEY_param_check() or EVP_PKEY_public_check()\nand supplies a key or parameters obtained from an untrusted source could be\nvulnerable to a Denial of Service attack.\n\nThese functions are not called by OpenSSL itself on untrusted DSA keys so\nonly applications that directly call these functions may be vulnerable.\n\nAlso vulnerable are the OpenSSL pkey and pkeyparam command line applications\nwhen using the `-check` option.\n\nThe OpenSSL SSL/TLS implementation is not affected by this issue.\n\nThe OpenSSL 3.0 and 3.1 FIPS providers are affected by this issue.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `openssl`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-4603](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-4603)\n- [https://github.com/openssl/openssl/commit/3559e868e58005d15c6013a0c1fd832e51c73397](https://github.com/openssl/openssl/commit/3559e868e58005d15c6013a0c1fd832e51c73397)\n- [https://github.com/openssl/openssl/commit/53ea06486d296b890d565fb971b2764fcd826e7e](https://github.com/openssl/openssl/commit/53ea06486d296b890d565fb971b2764fcd826e7e)\n- [https://github.com/openssl/openssl/commit/9c39b3858091c152f52513c066ff2c5a47969f0d](https://github.com/openssl/openssl/commit/9c39b3858091c152f52513c066ff2c5a47969f0d)\n- [https://github.com/openssl/openssl/commit/da343d0605c826ef197aceedc67e8e04f065f740](https://github.com/openssl/openssl/commit/da343d0605c826ef197aceedc67e8e04f065f740)\n- [https://www.openssl.org/news/secadv/20240516.txt](https://www.openssl.org/news/secadv/20240516.txt)\n- [http://www.openwall.com/lists/oss-security/2024/05/16/2](http://www.openwall.com/lists/oss-security/2024/05/16/2)\n- [https://security.netapp.com/advisory/ntap-20240621-0001/](https://security.netapp.com/advisory/ntap-20240621-0001/)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `openssl` package and not the `openssl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nIssue summary: Checking excessively long DSA keys or parameters may be very\nslow.\n\nImpact summary: Applications that use the functions EVP_PKEY_param_check()\nor EVP_PKEY_public_check() to check a DSA public key or DSA parameters may\nexperience long delays. Where the key or parameters that are being checked\nhave been obtained from an untrusted source this may lead to a Denial of\nService.\n\nThe functions EVP_PKEY_param_check() or EVP_PKEY_public_check() perform\nvarious checks on DSA parameters. Some of those computations take a long time\nif the modulus (`p` parameter) is too large.\n\nTrying to use a very large modulus is slow and OpenSSL will not allow using\npublic keys with a modulus which is over 10,000 bits in length for signature\nverification. However the key and parameter check functions do not limit\nthe modulus size when performing the checks.\n\nAn application that calls EVP_PKEY_param_check() or EVP_PKEY_public_check()\nand supplies a key or parameters obtained from an untrusted source could be\nvulnerable to a Denial of Service attack.\n\nThese functions are not called by OpenSSL itself on untrusted DSA keys so\nonly applications that directly call these functions may be vulnerable.\n\nAlso vulnerable are the OpenSSL pkey and pkeyparam command line applications\nwhen using the `-check` option.\n\nThe OpenSSL SSL/TLS implementation is not affected by this issue.\n\nThe OpenSSL 3.0 and 3.1 FIPS providers are affected by this issue.\n## Remediation\nUpgrade `Ubuntu:24.04` `openssl` to version 3.0.13-0ubuntu3.2 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-4603](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-4603)\n- [https://github.com/openssl/openssl/commit/3559e868e58005d15c6013a0c1fd832e51c73397](https://github.com/openssl/openssl/commit/3559e868e58005d15c6013a0c1fd832e51c73397)\n- [https://github.com/openssl/openssl/commit/53ea06486d296b890d565fb971b2764fcd826e7e](https://github.com/openssl/openssl/commit/53ea06486d296b890d565fb971b2764fcd826e7e)\n- [https://github.com/openssl/openssl/commit/9c39b3858091c152f52513c066ff2c5a47969f0d](https://github.com/openssl/openssl/commit/9c39b3858091c152f52513c066ff2c5a47969f0d)\n- [https://github.com/openssl/openssl/commit/da343d0605c826ef197aceedc67e8e04f065f740](https://github.com/openssl/openssl/commit/da343d0605c826ef197aceedc67e8e04f065f740)\n- [https://www.openssl.org/news/secadv/20240516.txt](https://www.openssl.org/news/secadv/20240516.txt)\n- [http://www.openwall.com/lists/oss-security/2024/05/16/2](http://www.openwall.com/lists/oss-security/2024/05/16/2)\n- [https://security.netapp.com/advisory/ntap-20240621-0001/](https://security.netapp.com/advisory/ntap-20240621-0001/)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -581,16 +357,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-OPENSSL-7151340",
+              "id": "SNYK-UBUNTU2404-OPENSSL-7151344",
               "shortDescription": {
                 "text": "Low severity - CVE-2024-4741 vulnerability in openssl"
               },
               "fullDescription": {
-                "text": "(CVE-2024-4741) openssl/libssl3@3.0.2-0ubuntu1.15"
+                "text": "(CVE-2024-4741) openssl/libssl3t64@3.0.13-0ubuntu3.1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n_This vulnerability has not been analyzed by NVD yet._\n\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `openssl`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-4741](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-4741)\n"
+                "markdown": "## NVD Description\n_This vulnerability has not been analyzed by NVD yet._\n\n## Remediation\nUpgrade `Ubuntu:24.04` `openssl` to version 3.0.13-0ubuntu3.2 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-4741](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-4741)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -605,66 +381,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-PCRE3-2799820",
+              "id": "SNYK-UBUNTU2404-OPENSSL-7411333",
               "shortDescription": {
-                "text": "Low severity - Uncontrolled Recursion vulnerability in pcre3"
+                "text": "Low severity - CVE-2024-5535 vulnerability in openssl"
               },
               "fullDescription": {
-                "text": "(CVE-2017-11164) pcre3/libpcre3@2:8.39-13ubuntu0.22.04.1"
+                "text": "(CVE-2024-5535) openssl/libssl3t64@3.0.13-0ubuntu3.1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `pcre3` package and not the `pcre3` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nIn PCRE 8.41, the OP_KETRMAX feature in the match function in pcre_exec.c allows stack exhaustion (uncontrolled recursion) when processing a crafted regular expression.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `pcre3`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-11164](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-11164)\n- [https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-11164](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-11164)\n- [https://security-tracker.debian.org/tracker/CVE-2017-11164](https://security-tracker.debian.org/tracker/CVE-2017-11164)\n- [https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772@%3Cdev.mina.apache.org%3E](https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772@%3Cdev.mina.apache.org%3E)\n- [http://openwall.com/lists/oss-security/2017/07/11/3](http://openwall.com/lists/oss-security/2017/07/11/3)\n- [http://www.securityfocus.com/bid/99575](http://www.securityfocus.com/bid/99575)\n- [http://www.openwall.com/lists/oss-security/2023/04/11/1](http://www.openwall.com/lists/oss-security/2023/04/11/1)\n- [http://www.openwall.com/lists/oss-security/2023/04/12/1](http://www.openwall.com/lists/oss-security/2023/04/12/1)\n- [https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772%40%3Cdev.mina.apache.org%3E](https://lists.apache.org/thread.html/rf9fa47ab66495c78bb4120b0754dd9531ca2ff0430f6685ac9b07772%40%3Cdev.mina.apache.org%3E)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-674",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 7.5,
-                "security-severity": "7.5"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-SHADOW-5425688",
-              "shortDescription": {
-                "text": "Low severity - Arbitrary Code Injection vulnerability in shadow"
-              },
-              "fullDescription": {
-                "text": "(CVE-2023-29383) shadow/passwd@1:4.8.1-2ubuntu2.2"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `shadow` package and not the `shadow` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nIn Shadow 4.13, it is possible to inject control characters into fields provided to the SUID program chfn (change finger). Although it is not possible to exploit this directly (e.g., adding a new user fails because \\n is in the block list), it is possible to misrepresent the /etc/passwd file when viewed. Use of \\r manipulations and Unicode characters to work around blocking of the : character make it possible to give the impression that a new user has been added. In other words, an adversary may be able to convince a system administrator to take the system offline (an indirect, social-engineered denial of service) by demonstrating that &#34;cat /etc/passwd&#34; shows a rogue user account.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `shadow`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-29383](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-29383)\n- [https://github.com/shadow-maint/shadow/commit/e5905c4b84d4fb90aefcd96ee618411ebfac663d](https://github.com/shadow-maint/shadow/commit/e5905c4b84d4fb90aefcd96ee618411ebfac663d)\n- [https://github.com/shadow-maint/shadow/pull/687](https://github.com/shadow-maint/shadow/pull/687)\n- [https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/cve-2023-29383-abusing-linux-chfn-to-misrepresent-etc-passwd/](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/cve-2023-29383-abusing-linux-chfn-to-misrepresent-etc-passwd/)\n- [https://www.trustwave.com/en-us/resources/security-resources/security-advisories/?fid=31797](https://www.trustwave.com/en-us/resources/security-resources/security-advisories/?fid=31797)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-74",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 3.3,
-                "security-severity": "3.3"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-SYSTEMD-6137855",
-              "shortDescription": {
-                "text": "Low severity - CVE-2023-7008 vulnerability in systemd"
-              },
-              "fullDescription": {
-                "text": "(CVE-2023-7008) systemd/libsystemd0@249.11-0ubuntu3.12"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `systemd` package and not the `systemd` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nA vulnerability was found in systemd-resolved. This issue may allow systemd-resolved to accept records of DNSSEC-signed domains even when they have no signature, allowing man-in-the-middles (or the upstream DNS resolver) to manipulate records.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `systemd`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-7008](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-7008)\n- [https://access.redhat.com/security/cve/CVE-2023-7008](https://access.redhat.com/security/cve/CVE-2023-7008)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2222261](https://bugzilla.redhat.com/show_bug.cgi?id=2222261)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2222672](https://bugzilla.redhat.com/show_bug.cgi?id=2222672)\n- [https://github.com/systemd/systemd/issues/25676](https://github.com/systemd/systemd/issues/25676)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QHNBXGKJWISJETTTDTZKTBFIBJUOSLKL/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QHNBXGKJWISJETTTDTZKTBFIBJUOSLKL/)\n- [https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/4GMDEG5PKONWNHOEYSUDRT6JEOISRMN2/](https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/4GMDEG5PKONWNHOEYSUDRT6JEOISRMN2/)\n- [https://access.redhat.com/errata/RHSA-2024:2463](https://access.redhat.com/errata/RHSA-2024:2463)\n- [https://access.redhat.com/errata/RHSA-2024:3203](https://access.redhat.com/errata/RHSA-2024:3203)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `openssl` package and not the `openssl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nIssue summary: Calling the OpenSSL API function SSL_select_next_proto with an\nempty supported client protocols buffer may cause a crash or memory contents to\nbe sent to the peer.\n\nImpact summary: A buffer overread can have a range of potential consequences\nsuch as unexpected application beahviour or a crash. In particular this issue\ncould result in up to 255 bytes of arbitrary private data from memory being sent\nto the peer leading to a loss of confidentiality. However, only applications\nthat directly call the SSL_select_next_proto function with a 0 length list of\nsupported client protocols are affected by this issue. This would normally never\nbe a valid scenario and is typically not under attacker control but may occur by\naccident in the case of a configuration or programming error in the calling\napplication.\n\nThe OpenSSL API function SSL_select_next_proto is typically used by TLS\napplications that support ALPN (Application Layer Protocol Negotiation) or NPN\n(Next Protocol Negotiation). NPN is older, was never standardised and\nis deprecated in favour of ALPN. We believe that ALPN is significantly more\nwidely deployed than NPN. The SSL_select_next_proto function accepts a list of\nprotocols from the server and a list of protocols from the client and returns\nthe first protocol that appears in the server list that also appears in the\nclient list. In the case of no overlap between the two lists it returns the\nfirst item in the client list. In either case it will signal whether an overlap\nbetween the two lists was found. In the case where SSL_select_next_proto is\ncalled with a zero length client list it fails to notice this condition and\nreturns the memory immediately following the client list pointer (and reports\nthat there was no overlap in the lists).\n\nThis function is typically called from a server side application callback for\nALPN or a client side application callback for NPN. In the case of ALPN the list\nof protocols supplied by the client is guaranteed by libssl to never be zero in\nlength. The list of server protocols comes from the application and should never\nnormally be expected to be of zero length. In this case if the\nSSL_select_next_proto function has been called as expected (with the list\nsupplied by the client passed in the client/client_len parameters), then the\napplication will not be vulnerable to this issue. If the application has\naccidentally been configured with a zero length server list, and has\naccidentally passed that zero length server list in the client/client_len\nparameters, and has additionally failed to correctly handle a &#34;no overlap&#34;\nresponse (which would normally result in a handshake failure in ALPN) then it\nwill be vulnerable to this problem.\n\nIn the case of NPN, the protocol permits the client to opportunistically select\na protocol when there is no overlap. OpenSSL returns the first client protocol\nin the no overlap case in support of this. The list of client protocols comes\nfrom the application and should never normally be expected to be of zero length.\nHowever if the SSL_select_next_proto function is accidentally called with a\nclient_len of 0 then an invalid memory pointer will be returned instead. If the\napplication uses this output as the opportunistic protocol then the loss of\nconfidentiality will occur.\n\nThis issue has been assessed as Low severity because applications are most\nlikely to be vulnerable if they are using NPN instead of ALPN - but NPN is not\nwidely used. It also requires an application configuration or programming error.\nFinally, this issue would not typically be under attacker control making active\nexploitation unlikely.\n\nThe FIPS modules in 3.3, 3.2, 3.1 and 3.0 are not affected by this issue.\n\nDue to the low severity of this issue we are not issuing new releases of\nOpenSSL at this time. The fix will be included in the next releases when they\nbecome available.\n## Remediation\nUpgrade `Ubuntu:24.04` `openssl` to version 3.0.13-0ubuntu3.2 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-5535](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-5535)\n- [https://github.com/openssl/openssl/commit/4ada436a1946cbb24db5ab4ca082b69c1bc10f37](https://github.com/openssl/openssl/commit/4ada436a1946cbb24db5ab4ca082b69c1bc10f37)\n- [https://github.com/openssl/openssl/commit/99fb785a5f85315b95288921a321a935ea29a51e](https://github.com/openssl/openssl/commit/99fb785a5f85315b95288921a321a935ea29a51e)\n- [https://github.com/openssl/openssl/commit/cf6f91f6121f4db167405db2f0de410a456f260c](https://github.com/openssl/openssl/commit/cf6f91f6121f4db167405db2f0de410a456f260c)\n- [https://github.com/openssl/openssl/commit/e86ac436f0bd54d4517745483e2315650fae7b2c](https://github.com/openssl/openssl/commit/e86ac436f0bd54d4517745483e2315650fae7b2c)\n- [https://github.openssl.org/openssl/extended-releases/commit/9947251413065a05189a63c9b7a6c1d4e224c21c](https://github.openssl.org/openssl/extended-releases/commit/9947251413065a05189a63c9b7a6c1d4e224c21c)\n- [https://github.openssl.org/openssl/extended-releases/commit/b78ec0824da857223486660177d3b1f255c65d87](https://github.openssl.org/openssl/extended-releases/commit/b78ec0824da857223486660177d3b1f255c65d87)\n- [https://www.openssl.org/news/secadv/20240627.txt](https://www.openssl.org/news/secadv/20240627.txt)\n- [http://www.openwall.com/lists/oss-security/2024/06/27/1](http://www.openwall.com/lists/oss-security/2024/06/27/1)\n- [http://www.openwall.com/lists/oss-security/2024/06/28/4](http://www.openwall.com/lists/oss-security/2024/06/28/4)\n- [https://security.netapp.com/advisory/ntap-20240712-0005/](https://security.netapp.com/advisory/ntap-20240712-0005/)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -674,21 +400,21 @@
                   "security",
                   "deb"
                 ],
-                "cvssv3_baseScore": 5.9,
-                "security-severity": "5.9"
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-WGET-2785488",
+              "id": "SNYK-UBUNTU2404-WGET-6709170",
               "shortDescription": {
                 "text": "Medium severity - Open Redirect vulnerability in wget"
               },
               "fullDescription": {
-                "text": "(CVE-2021-31879) wget@1.21.2-2ubuntu1"
+                "text": "(CVE-2021-31879) wget@1.21.4-1ubuntu4.1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `wget` package and not the `wget` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nGNU Wget through 1.21.1 does not omit the Authorization header upon a redirect to a different origin, a related issue to CVE-2018-1000007.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `wget`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2021-31879](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2021-31879)\n- [https://security.netapp.com/advisory/ntap-20210618-0002/](https://security.netapp.com/advisory/ntap-20210618-0002/)\n- [https://mail.gnu.org/archive/html/bug-wget/2021-02/msg00002.html](https://mail.gnu.org/archive/html/bug-wget/2021-02/msg00002.html)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `wget` package and not the `wget` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nGNU Wget through 1.21.1 does not omit the Authorization header upon a redirect to a different origin, a related issue to CVE-2018-1000007.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `wget`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2021-31879](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2021-31879)\n- [https://security.netapp.com/advisory/ntap-20210618-0002/](https://security.netapp.com/advisory/ntap-20210618-0002/)\n- [https://mail.gnu.org/archive/html/bug-wget/2021-02/msg00002.html](https://mail.gnu.org/archive/html/bug-wget/2021-02/msg00002.html)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -704,40 +430,16 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2204-WGET-7266700",
-              "shortDescription": {
-                "text": "Medium severity - CVE-2024-38428 vulnerability in wget"
-              },
-              "fullDescription": {
-                "text": "(CVE-2024-38428) wget@1.21.2-2ubuntu1"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `wget` package and not the `wget` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nurl.c in GNU Wget through 1.24.5 mishandles semicolons in the userinfo subcomponent of a URI, and thus there may be insecure behavior in which data that was supposed to be in the userinfo subcomponent is misinterpreted to be part of the host subcomponent.\n## Remediation\nUpgrade `Ubuntu:22.04` `wget` to version 1.21.2-2ubuntu1.1 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-38428](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-38428)\n- [https://git.savannah.gnu.org/cgit/wget.git/commit/?id=ed0c7c7e0e8f7298352646b2fd6e06a11e242ace](https://git.savannah.gnu.org/cgit/wget.git/commit/?id=ed0c7c7e0e8f7298352646b2fd6e06a11e242ace)\n- [https://lists.gnu.org/archive/html/bug-wget/2024-06/msg00005.html](https://lists.gnu.org/archive/html/bug-wget/2024-06/msg00005.html)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "deb"
-                ],
-                "cvssv3_baseScore": null,
-                "security-severity": "null"
-              }
-            },
-            {
-              "id": "SNYK-UBUNTU2204-XZUTILS-5854647",
+              "id": "SNYK-UBUNTU2404-XZUTILS-6714568",
               "shortDescription": {
                 "text": "Medium severity - CVE-2020-22916 vulnerability in xz-utils"
               },
               "fullDescription": {
-                "text": "(CVE-2020-22916) xz-utils/liblzma5@5.2.5-2ubuntu1"
+                "text": "(CVE-2020-22916) xz-utils/liblzma5@5.6.1+really5.4.5-1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `xz-utils` package and not the `xz-utils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nAn issue discovered in XZ 5.2.5 allows attackers to cause a denial of service via decompression of a crafted file. NOTE: the vendor disputes the claims of &#34;endless output&#34; and &#34;denial of service&#34; because decompression of the 17,486 bytes always results in 114,881,179 bytes, which is often a reasonable size increase.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `xz-utils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2020-22916](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2020-22916)\n- [https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability](https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability)\n- [https://tukaani.org/xz/](https://tukaani.org/xz/)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2234987](https://bugzilla.redhat.com/show_bug.cgi?id=2234987)\n- [https://bugzilla.suse.com/show_bug.cgi?id=1214590](https://bugzilla.suse.com/show_bug.cgi?id=1214590)\n- [https://github.com/tukaani-project/xz/issues/61](https://github.com/tukaani-project/xz/issues/61)\n- [https://security-tracker.debian.org/tracker/CVE-2020-22916](https://security-tracker.debian.org/tracker/CVE-2020-22916)\n- [http://web.archive.org/web/20230918084612/https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability](http://web.archive.org/web/20230918084612/https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `xz-utils` package and not the `xz-utils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nAn issue discovered in XZ 5.2.5 allows attackers to cause a denial of service via decompression of a crafted file. NOTE: the vendor disputes the claims of &#34;endless output&#34; and &#34;denial of service&#34; because decompression of the 17,486 bytes always results in 114,881,179 bytes, which is often a reasonable size increase.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `xz-utils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2020-22916](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2020-22916)\n- [https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability](https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability)\n- [https://tukaani.org/xz/](https://tukaani.org/xz/)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2234987](https://bugzilla.redhat.com/show_bug.cgi?id=2234987)\n- [https://bugzilla.suse.com/show_bug.cgi?id=1214590](https://bugzilla.suse.com/show_bug.cgi?id=1214590)\n- [https://github.com/tukaani-project/xz/issues/61](https://github.com/tukaani-project/xz/issues/61)\n- [https://security-tracker.debian.org/tracker/CVE-2020-22916](https://security-tracker.debian.org/tracker/CVE-2020-22916)\n- [http://web.archive.org/web/20230918084612/https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability](http://web.archive.org/web/20230918084612/https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -756,7 +458,7 @@
       },
       "results": [
         {
-          "ruleId": "SNYK-UBUNTU2204-BINUTILS-2793366",
+          "ruleId": "SNYK-UBUNTU2404-BINUTILS-6721946",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable binutils package with a low severity vulnerability."
@@ -773,14 +475,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "binutils@2.38-4ubuntu2.6"
+                  "fullyQualifiedName": "binutils@2.42-4ubuntu2"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-BINUTILS-2796179",
+          "ruleId": "SNYK-UBUNTU2404-BINUTILS-6725747",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable binutils package with a low severity vulnerability."
@@ -797,86 +499,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "binutils@2.38-4ubuntu2.6"
+                  "fullyQualifiedName": "binutils@2.42-4ubuntu2"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-BINUTILS-2801731",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable binutils package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "binutils@2.38-4ubuntu2.6"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-BINUTILS-3227639",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable binutils package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "binutils@2.38-4ubuntu2.6"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-BINUTILS-5855067",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable binutils package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "binutils@2.38-4ubuntu2.6"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-COREUTILS-2801226",
+          "ruleId": "SNYK-UBUNTU2404-COREUTILS-6727355",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable coreutils package with a low severity vulnerability."
@@ -893,38 +523,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "coreutils@8.32-4.1ubuntu1.2"
+                  "fullyQualifiedName": "coreutils@9.4-3ubuntu6"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-GCC12-5861847",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable gcc-12 package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "gcc-12@12.3.0-1ubuntu1~22.04"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-GLIBC-2801292",
+          "ruleId": "SNYK-UBUNTU2404-GLIBC-6727419",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable glibc package with a low severity vulnerability."
@@ -941,14 +547,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "glibc@2.35-0ubuntu3.8"
+                  "fullyQualifiedName": "glibc@2.39-0ubuntu8.2"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-GNUPG2-3035409",
+          "ruleId": "SNYK-UBUNTU2404-GNUPG2-6702792",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable gnupg2 package with a low severity vulnerability."
@@ -965,14 +571,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "gnupg2@2.2.27-3ubuntu2.1"
+                  "fullyQualifiedName": "gnupg2@2.4.4-2ubuntu17"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-KRB5-2797765",
+          "ruleId": "SNYK-UBUNTU2404-KRB5-6693034",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable krb5 package with a low severity vulnerability."
@@ -989,14 +595,38 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "krb5@1.19.2-2ubuntu0.3"
+                  "fullyQualifiedName": "krb5@1.20.1-6ubuntu2"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-KRB5-6281067",
+          "ruleId": "SNYK-UBUNTU2404-KRB5-6693037",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable krb5 package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "krb5@1.20.1-6ubuntu2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2404-KRB5-6693038",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable krb5 package with a low severity vulnerability."
@@ -1013,14 +643,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "krb5@1.19.2-2ubuntu0.3"
+                  "fullyQualifiedName": "krb5@1.20.1-6ubuntu2"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-KRB5-6281073",
+          "ruleId": "SNYK-UBUNTU2404-KRB5-7413878",
           "level": "warning",
           "message": {
             "text": "This file introduces a vulnerable krb5 package with a medium severity vulnerability."
@@ -1037,38 +667,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "krb5@1.19.2-2ubuntu0.3"
+                  "fullyQualifiedName": "krb5@1.20.1-6ubuntu2"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-KRB5-6281079",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable krb5 package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "krb5@1.19.2-2ubuntu0.3"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-KRB5-7413877",
+          "ruleId": "SNYK-UBUNTU2404-KRB5-7413896",
           "level": "warning",
           "message": {
             "text": "This file introduces a vulnerable krb5 package with a medium severity vulnerability."
@@ -1085,38 +691,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "krb5@1.19.2-2ubuntu0.3"
+                  "fullyQualifiedName": "krb5@1.20.1-6ubuntu2"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-KRB5-7413894",
-          "level": "warning",
-          "message": {
-            "text": "This file introduces a vulnerable krb5 package with a medium severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "krb5@1.19.2-2ubuntu0.3"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-LIBGCRYPT20-6411451",
+          "ruleId": "SNYK-UBUNTU2404-LIBGCRYPT20-6693674",
           "level": "warning",
           "message": {
             "text": "This file introduces a vulnerable libgcrypt20 package with a medium severity vulnerability."
@@ -1133,14 +715,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "libgcrypt20@1.9.4-3ubuntu3"
+                  "fullyQualifiedName": "libgcrypt20@1.10.3-2build1"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-LIBPNG16-3124883",
+          "ruleId": "SNYK-UBUNTU2404-LIBPNG16-6702001",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable libpng1.6 package with a low severity vulnerability."
@@ -1157,17 +739,17 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "libpng1.6@1.6.37-3build5"
+                  "fullyQualifiedName": "libpng1.6@1.6.43-5build1"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-LIBZSTD-3368800",
+          "ruleId": "SNYK-UBUNTU2404-OPENSSL-6693301",
           "level": "note",
           "message": {
-            "text": "This file introduces a vulnerable libzstd package with a low severity vulnerability."
+            "text": "This file introduces a vulnerable openssl package with a low severity vulnerability."
           },
           "locations": [
             {
@@ -1181,79 +763,7 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "libzstd@1.4.8+dfsg-3build1"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-NCURSES-6123867",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable ncurses package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ncurses@6.3-2ubuntu0.1"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-NCURSES-6253015",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable ncurses package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "ncurses@6.3-2ubuntu0.1"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-OPENSSL-5538123",
-          "level": "warning",
-          "message": {
-            "text": "This file introduces a vulnerable openssl package with a medium severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "openssl@3.0.2-0ubuntu1.15"
+                  "fullyQualifiedName": "openssl@3.0.13-0ubuntu3.1"
                 }
               ]
             }
@@ -1261,7 +771,7 @@
           "fixes": [
             {
               "description": {
-                "text": "Upgrade to openssl/libssl3@3.0.2-0ubuntu1.16"
+                "text": "Upgrade to openssl/libssl3t64@3.0.13-0ubuntu3.2"
               },
               "artifactChanges": [
                 {
@@ -1274,7 +784,7 @@
                         "startLine": 1
                       },
                       "insertedContent": {
-                        "text": "openssl/libssl3@3.0.2-0ubuntu1.16"
+                        "text": "openssl/libssl3t64@3.0.13-0ubuntu3.2"
                       }
                     }
                   ]
@@ -1284,7 +794,7 @@
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-OPENSSL-6592113",
+          "ruleId": "SNYK-UBUNTU2404-OPENSSL-6861903",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable openssl package with a low severity vulnerability."
@@ -1301,14 +811,38 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "openssl@3.0.2-0ubuntu1.15"
+                  "fullyQualifiedName": "openssl@3.0.13-0ubuntu3.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to openssl/libssl3t64@3.0.13-0ubuntu3.2"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "openssl/libssl3t64@3.0.13-0ubuntu3.2"
+                      }
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-OPENSSL-6861899",
+          "ruleId": "SNYK-UBUNTU2404-OPENSSL-7151344",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable openssl package with a low severity vulnerability."
@@ -1325,14 +859,38 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "openssl@3.0.2-0ubuntu1.15"
+                  "fullyQualifiedName": "openssl@3.0.13-0ubuntu3.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to openssl/libssl3t64@3.0.13-0ubuntu3.2"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "openssl/libssl3t64@3.0.13-0ubuntu3.2"
+                      }
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-OPENSSL-7151340",
+          "ruleId": "SNYK-UBUNTU2404-OPENSSL-7411333",
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable openssl package with a low severity vulnerability."
@@ -1349,86 +907,38 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "openssl@3.0.2-0ubuntu1.15"
+                  "fullyQualifiedName": "openssl@3.0.13-0ubuntu3.1"
                 }
               ]
             }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-PCRE3-2799820",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable pcre3 package with a low severity vulnerability."
-          },
-          "locations": [
+          ],
+          "fixes": [
             {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
+              "description": {
+                "text": "Upgrade to openssl/libssl3t64@3.0.13-0ubuntu3.2"
               },
-              "logicalLocations": [
+              "artifactChanges": [
                 {
-                  "fullyQualifiedName": "pcre3@2:8.39-13ubuntu0.22.04.1"
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "openssl/libssl3t64@3.0.13-0ubuntu3.2"
+                      }
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-SHADOW-5425688",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable shadow package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "shadow@1:4.8.1-2ubuntu2.2"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-SYSTEMD-6137855",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable systemd package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "systemd@249.11-0ubuntu3.12"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-WGET-2785488",
+          "ruleId": "SNYK-UBUNTU2404-WGET-6709170",
           "level": "warning",
           "message": {
             "text": "This file introduces a vulnerable wget package with a medium severity vulnerability."
@@ -1445,62 +955,14 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "wget@1.21.2-2ubuntu1"
+                  "fullyQualifiedName": "wget@1.21.4-1ubuntu4.1"
                 }
               ]
             }
           ]
         },
         {
-          "ruleId": "SNYK-UBUNTU2204-WGET-7266700",
-          "level": "warning",
-          "message": {
-            "text": "This file introduces a vulnerable wget package with a medium severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "wget@1.21.2-2ubuntu1"
-                }
-              ]
-            }
-          ],
-          "fixes": [
-            {
-              "description": {
-                "text": "Upgrade to wget@1.21.2-2ubuntu1.1"
-              },
-              "artifactChanges": [
-                {
-                  "artifactLocation": {
-                    "uri": "Dockerfile"
-                  },
-                  "replacements": [
-                    {
-                      "deletedRegion": {
-                        "startLine": 1
-                      },
-                      "insertedContent": {
-                        "text": "wget@1.21.2-2ubuntu1.1"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2204-XZUTILS-5854647",
+          "ruleId": "SNYK-UBUNTU2404-XZUTILS-6714568",
           "level": "warning",
           "message": {
             "text": "This file introduces a vulnerable xz-utils package with a medium severity vulnerability."
@@ -1517,7 +979,7 @@
               },
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "xz-utils@5.2.5-2ubuntu1"
+                  "fullyQualifiedName": "xz-utils@5.6.1+really5.4.5-1"
                 }
               ]
             }
@@ -1529,8 +991,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.1",
-          "version": "1.1292.1",
+          "semanticVersion": "1.1292.2",
+          "version": "1.1292.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 23
@@ -1544,8 +1006,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.1",
-          "version": "1.1292.1",
+          "semanticVersion": "1.1292.2",
+          "version": "1.1292.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
@@ -1559,98 +1021,23 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.1",
-          "version": "1.1292.1",
+          "semanticVersion": "1.1292.2",
+          "version": "1.1292.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 32
           },
-          "rules": [
-            {
-              "id": "SNYK-JAVA-ORGAPACHETOMCAT-7430174",
-              "shortDescription": {
-                "text": "High severity - Insufficient Session Expiration vulnerability in org.apache.tomcat:tomcat-coyote"
-              },
-              "fullDescription": {
-                "text": "(CVE-2024-34750) org.apache.tomcat:tomcat-coyote@9.0.89"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## Overview\n[org.apache.tomcat:tomcat-coyote](https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-coyote) is a Tomcat Connectors and HTTP parser.\n\nAffected versions of this package are vulnerable to Insufficient Session Expiration due to an infinite timeout being assigned to an open connection improperly, in `http2/Stream.java`. An attacker can force this situation by sending an HTTP/2 stream with excessive headers, causing an out-of-memory error or exhausting `maxConnections`.\n## Remediation\nUpgrade `org.apache.tomcat:tomcat-coyote` to version 9.0.90, 10.1.25, 11.0.0-M21 or higher.\n## References\n- [Apache Mailing List](https://lists.apache.org/thread/4kqf0bc9gxymjc2x7v3p7dvplnl77y8l)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-10.html)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-11.html)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-9.html)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/2344a4c0d03e307ba6b8ab6dc8b894cc8bac63f2)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/2afae300c9ac9c0e516e2e9de580847d925365c3)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/9fec9a82887853402833a80b584e3762c7423f5f)\n"
-              },
-              "defaultConfiguration": {
-                "level": "error"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-613",
-                  "maven"
-                ],
-                "cvssv3_baseScore": 8.7,
-                "security-severity": "8.7"
-              }
-            }
-          ]
+          "rules": []
         }
       },
-      "results": [
-        {
-          "ruleId": "SNYK-JAVA-ORGAPACHETOMCAT-7430174",
-          "level": "error",
-          "message": {
-            "text": "This file introduces a vulnerable org.apache.tomcat:tomcat-coyote package with a high severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "/usr/local/tomcat/lib"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "org.apache.tomcat:tomcat-coyote@9.0.89"
-                }
-              ]
-            }
-          ],
-          "fixes": [
-            {
-              "description": {
-                "text": "Upgrade to org.apache.tomcat:tomcat-coyote@9.0.90"
-              },
-              "artifactChanges": [
-                {
-                  "artifactLocation": {
-                    "uri": "/usr/local/tomcat/lib"
-                  },
-                  "replacements": [
-                    {
-                      "deletedRegion": {
-                        "startLine": 1
-                      },
-                      "insertedContent": {
-                        "text": "org.apache.tomcat:tomcat-coyote@9.0.90"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "results": []
     },
     {
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.1",
-          "version": "1.1292.1",
+          "semanticVersion": "1.1292.2",
+          "version": "1.1292.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
@@ -1664,8 +1051,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.1",
-          "version": "1.1292.1",
+          "semanticVersion": "1.1292.2",
+          "version": "1.1292.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
@@ -1679,8 +1066,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.1",
-          "version": "1.1292.1",
+          "semanticVersion": "1.1292.2",
+          "version": "1.1292.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
