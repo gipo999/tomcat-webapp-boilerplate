@@ -337,6 +337,54 @@
               }
             },
             {
+              "id": "SNYK-UBUNTU2204-KRB5-7413877",
+              "shortDescription": {
+                "text": "Medium severity - CVE-2024-37371 vulnerability in krb5"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-37371) krb5/libkrb5support0@1.19.2-2ubuntu0.3"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nIn MIT Kerberos 5 (aka krb5) before 1.21.3, an attacker can cause invalid memory reads during GSS message token handling by sending message tokens with invalid length fields.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37371](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37371)\n- [https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef](https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef)\n- [https://web.mit.edu/kerberos/www/advisories/](https://web.mit.edu/kerberos/www/advisories/)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
+              "id": "SNYK-UBUNTU2204-KRB5-7413894",
+              "shortDescription": {
+                "text": "Medium severity - CVE-2024-37370 vulnerability in krb5"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-37370) krb5/libkrb5support0@1.19.2-2ubuntu0.3"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `krb5` package and not the `krb5` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:22.04` relevant fixed versions and status._\n\nIn MIT Kerberos 5 (aka krb5) before 1.21.3, an attacker can modify the plaintext Extra Count field of a confidential GSS krb5 wrap token, causing the unwrapped token to appear truncated to the application.\n## Remediation\nThere is no fixed version for `Ubuntu:22.04` `krb5`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37370](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-37370)\n- [https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef](https://github.com/krb5/krb5/commit/55fbf435edbe2e92dd8101669b1ce7144bc96fef)\n- [https://web.mit.edu/kerberos/www/advisories/](https://web.mit.edu/kerberos/www/advisories/)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
               "id": "SNYK-UBUNTU2204-LIBGCRYPT20-6411451",
               "shortDescription": {
                 "text": "Medium severity - Information Exposure vulnerability in libgcrypt20"
@@ -1000,6 +1048,54 @@
           "level": "note",
           "message": {
             "text": "This file introduces a vulnerable krb5 package with a low severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "krb5@1.19.2-2ubuntu0.3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2204-KRB5-7413877",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable krb5 package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "krb5@1.19.2-2ubuntu0.3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2204-KRB5-7413894",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable krb5 package with a medium severity vulnerability."
           },
           "locations": [
             {
