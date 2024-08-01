@@ -13,6 +13,6 @@ jobs:
     if: github.event.pull_request.draft == false
     steps:
       - name: Download and submit dependency graph on PR step
-        uses: gradle/actions/dependency-submission@db19848a5fa7950289d3668fb053140cf3028d43 # v3
+        uses: gradle/actions/dependency-submission@d9c87d481d55275bb5441eef3fe0e46805f9ef70 # v3
         with:
           dependency-graph: download-and-submit
