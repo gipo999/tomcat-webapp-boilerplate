@@ -45,12 +45,12 @@ jobs:
       - name: display json output
         run: cat snyk-os.sarif
       - name: Upload snyk code result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@530d4feaa9c62aaab2d250371e2061eb7a172363 # v3
+        uses: github/codeql-action/upload-sarif@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3
         with:
           sarif_file: snyk-code.sarif
       - name: display json output
         run: cat snyk-code.sarif
       - name: Upload snyk open source result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@530d4feaa9c62aaab2d250371e2061eb7a172363 # v3
+        uses: github/codeql-action/upload-sarif@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3
         with:
           sarif_file: snyk-os.sarif
