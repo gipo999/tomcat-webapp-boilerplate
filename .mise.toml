@@ -1,5 +1,5 @@
 [tools]
-java = "21"
+java = "21.0.4+7.0.LTS"
 gradle = "8"
 python = "3"
 node = "22"
