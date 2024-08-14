@@ -91,14 +91,14 @@
             {
               "id": "SNYK-UBUNTU2404-CURL-7575744",
               "shortDescription": {
-                "text": "Medium severity - CVE-2024-7264 vulnerability in curl"
+                "text": "Medium severity - Out-of-bounds Read vulnerability in curl"
               },
               "fullDescription": {
                 "text": "(CVE-2024-7264) curl/libcurl4t64@8.5.0-2ubuntu10.1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `curl` package and not the `curl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nlibcurl&#39;s ASN1 parser code has the `GTime2str()` function, used for parsing an\nASN.1 Generalized Time field. If given an syntactically incorrect field, the\nparser might end up using -1 for the length of the *time fraction*, leading to\na `strlen()` getting performed on a pointer to a heap buffer area that is not\n(purposely) null terminated.\n\nThis flaw most likely leads to a crash, but can also lead to heap contents\ngetting returned to the application when\n[CURLINFO_CERTINFO](https://curl.se/libcurl/c/CURLINFO_CERTINFO.html) is used.\n## Remediation\nUpgrade `Ubuntu:24.04` `curl` to version 8.5.0-2ubuntu10.2 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-7264](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-7264)\n- [https://curl.se/docs/CVE-2024-7264.html](https://curl.se/docs/CVE-2024-7264.html)\n- [https://curl.se/docs/CVE-2024-7264.json](https://curl.se/docs/CVE-2024-7264.json)\n- [https://hackerone.com/reports/2629968](https://hackerone.com/reports/2629968)\n- [http://www.openwall.com/lists/oss-security/2024/07/31/1](http://www.openwall.com/lists/oss-security/2024/07/31/1)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `curl` package and not the `curl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nlibcurl&#39;s ASN1 parser code has the `GTime2str()` function, used for parsing an\nASN.1 Generalized Time field. If given an syntactically incorrect field, the\nparser might end up using -1 for the length of the *time fraction*, leading to\na `strlen()` getting performed on a pointer to a heap buffer area that is not\n(purposely) null terminated.\n\nThis flaw most likely leads to a crash, but can also lead to heap contents\ngetting returned to the application when\n[CURLINFO_CERTINFO](https://curl.se/libcurl/c/CURLINFO_CERTINFO.html) is used.\n## Remediation\nUpgrade `Ubuntu:24.04` `curl` to version 8.5.0-2ubuntu10.2 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-7264](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-7264)\n- [http://www.openwall.com/lists/oss-security/2024/07/31/1](http://www.openwall.com/lists/oss-security/2024/07/31/1)\n- [https://curl.se/docs/CVE-2024-7264.html](https://curl.se/docs/CVE-2024-7264.html)\n- [https://curl.se/docs/CVE-2024-7264.json](https://curl.se/docs/CVE-2024-7264.json)\n- [https://hackerone.com/reports/2629968](https://hackerone.com/reports/2629968)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -106,10 +106,11 @@
               "properties": {
                 "tags": [
                   "security",
+                  "CWE-125",
                   "deb"
                 ],
-                "cvssv3_baseScore": null,
-                "security-severity": "null"
+                "cvssv3_baseScore": 6.5,
+                "security-severity": "6.5"
               }
             },
             {
