@@ -453,30 +453,6 @@
                 "cvssv3_baseScore": 6.1,
                 "security-severity": "6.1"
               }
-            },
-            {
-              "id": "SNYK-UBUNTU2404-XZUTILS-6714568",
-              "shortDescription": {
-                "text": "Medium severity - CVE-2020-22916 vulnerability in xz-utils"
-              },
-              "fullDescription": {
-                "text": "(CVE-2020-22916) xz-utils/liblzma5@5.6.1+really5.4.5-1"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `xz-utils` package and not the `xz-utils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nAn issue discovered in XZ 5.2.5 allows attackers to cause a denial of service via decompression of a crafted file. NOTE: the vendor disputes the claims of &#34;endless output&#34; and &#34;denial of service&#34; because decompression of the 17,486 bytes always results in 114,881,179 bytes, which is often a reasonable size increase.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `xz-utils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2020-22916](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2020-22916)\n- [https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability](https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability)\n- [https://tukaani.org/xz/](https://tukaani.org/xz/)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2234987](https://bugzilla.redhat.com/show_bug.cgi?id=2234987)\n- [https://bugzilla.suse.com/show_bug.cgi?id=1214590](https://bugzilla.suse.com/show_bug.cgi?id=1214590)\n- [https://github.com/tukaani-project/xz/issues/61](https://github.com/tukaani-project/xz/issues/61)\n- [https://security-tracker.debian.org/tracker/CVE-2020-22916](https://security-tracker.debian.org/tracker/CVE-2020-22916)\n- [http://web.archive.org/web/20230918084612/https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability](http://web.archive.org/web/20230918084612/https://github.com/snappyJack/CVE-request-XZ-5.2.5-has-denial-of-service-vulnerability)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 5.5,
-                "security-severity": "5.5"
-              }
             }
           ]
         }
@@ -1005,30 +981,6 @@
               "logicalLocations": [
                 {
                   "fullyQualifiedName": "wget@1.21.4-1ubuntu4.1"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2404-XZUTILS-6714568",
-          "level": "warning",
-          "message": {
-            "text": "This file introduces a vulnerable xz-utils package with a medium severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "xz-utils@5.6.1+really5.4.5-1"
                 }
               ]
             }
