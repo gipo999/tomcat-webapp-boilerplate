@@ -6,8 +6,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.4",
-          "version": "1.1292.4",
+          "semanticVersion": "1.1293.0",
+          "version": "1.1293.0",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 132
@@ -255,8 +255,8 @@
                   "security",
                   "deb"
                 ],
-                "cvssv3_baseScore": null,
-                "security-severity": "null"
+                "cvssv3_baseScore": 9.1,
+                "security-severity": "9.1"
               }
             },
             {
@@ -279,8 +279,8 @@
                   "security",
                   "deb"
                 ],
-                "cvssv3_baseScore": null,
-                "security-severity": "null"
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
               }
             },
             {
@@ -992,8 +992,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.4",
-          "version": "1.1292.4",
+          "semanticVersion": "1.1293.0",
+          "version": "1.1293.0",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 23
@@ -1007,8 +1007,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.4",
-          "version": "1.1292.4",
+          "semanticVersion": "1.1293.0",
+          "version": "1.1293.0",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
@@ -1022,8 +1022,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.4",
-          "version": "1.1292.4",
+          "semanticVersion": "1.1293.0",
+          "version": "1.1293.0",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 32
@@ -1037,8 +1037,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.4",
-          "version": "1.1292.4",
+          "semanticVersion": "1.1293.0",
+          "version": "1.1293.0",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
@@ -1052,8 +1052,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.4",
-          "version": "1.1292.4",
+          "semanticVersion": "1.1293.0",
+          "version": "1.1293.0",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
@@ -1067,8 +1067,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1292.4",
-          "version": "1.1292.4",
+          "semanticVersion": "1.1293.0",
+          "version": "1.1293.0",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
