@@ -430,6 +430,30 @@
               }
             },
             {
+              "id": "SNYK-UBUNTU2404-OPENSSL-7886358",
+              "shortDescription": {
+                "text": "Medium severity - CVE-2024-6119 vulnerability in openssl"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-6119) openssl/libssl3t64@3.0.13-0ubuntu3.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `openssl` package and not the `openssl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nIssue summary: Applications performing certificate name checks (e.g., TLS\nclients checking server certificates) may attempt to read an invalid memory\naddress resulting in abnormal termination of the application process.\n\nImpact summary: Abnormal termination of an application can a cause a denial of\nservice.\n\nApplications performing certificate name checks (e.g., TLS clients checking\nserver certificates) may attempt to read an invalid memory address when\ncomparing the expected name with an `otherName` subject alternative name of an\nX.509 certificate. This may result in an exception that terminates the\napplication program.\n\nNote that basic certificate chain validation (signatures, dates, ...) is not\naffected, the denial of service can occur only when the application also\nspecifies an expected DNS name, Email address or IP address.\n\nTLS servers rarely solicit client certificates, and even when they do, they\ngenerally don&#39;t perform a name check against a reference identifier (expected\nidentity), but rather extract the presented identity after checking the\ncertificate chain.  So TLS servers are generally not affected and the severity\nof the issue is Moderate.\n\nThe FIPS modules in 3.3, 3.2, 3.1 and 3.0 are not affected by this issue.\n## Remediation\nUpgrade `Ubuntu:24.04` `openssl` to version 3.0.13-0ubuntu3.4 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-6119](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-6119)\n- [https://github.com/openssl/openssl/commit/05f360d9e849a1b277db628f1f13083a7f8dd04f](https://github.com/openssl/openssl/commit/05f360d9e849a1b277db628f1f13083a7f8dd04f)\n- [https://github.com/openssl/openssl/commit/06d1dc3fa96a2ba5a3e22735a033012aadc9f0d6](https://github.com/openssl/openssl/commit/06d1dc3fa96a2ba5a3e22735a033012aadc9f0d6)\n- [https://github.com/openssl/openssl/commit/621f3729831b05ee828a3203eddb621d014ff2b2](https://github.com/openssl/openssl/commit/621f3729831b05ee828a3203eddb621d014ff2b2)\n- [https://github.com/openssl/openssl/commit/7dfcee2cd2a63b2c64b9b4b0850be64cb695b0a0](https://github.com/openssl/openssl/commit/7dfcee2cd2a63b2c64b9b4b0850be64cb695b0a0)\n- [https://openssl-library.org/news/secadv/20240903.txt](https://openssl-library.org/news/secadv/20240903.txt)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
               "id": "SNYK-UBUNTU2404-WGET-6709170",
               "shortDescription": {
                 "text": "Medium severity - Open Redirect vulnerability in wget"
@@ -954,6 +978,54 @@
                       },
                       "insertedContent": {
                         "text": "openssl/libssl3t64@3.0.13-0ubuntu3.2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2404-OPENSSL-7886358",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable openssl package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "openssl@3.0.13-0ubuntu3.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to openssl/libssl3t64@3.0.13-0ubuntu3.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "openssl/libssl3t64@3.0.13-0ubuntu3.4"
                       }
                     }
                   ]
