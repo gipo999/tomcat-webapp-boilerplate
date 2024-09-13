@@ -114,6 +114,30 @@
               }
             },
             {
+              "id": "SNYK-UBUNTU2404-CURL-7931919",
+              "shortDescription": {
+                "text": "Medium severity - CVE-2024-8096 vulnerability in curl"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-8096) curl/libcurl4t64@8.5.0-2ubuntu10.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `curl` package and not the `curl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nWhen curl is told to use the Certificate Status Request TLS extension, often referred to as OCSP stapling, to verify that the server certificate is valid, it might fail to detect some OCSP problems and instead wrongly consider the response as fine.  If the returned status reports another error than &#39;revoked&#39; (like for example &#39;unauthorized&#39;) it is not treated as a bad certficate.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `curl`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-8096](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-8096)\n- [https://curl.se/docs/CVE-2024-8096.html](https://curl.se/docs/CVE-2024-8096.html)\n- [https://curl.se/docs/CVE-2024-8096.json](https://curl.se/docs/CVE-2024-8096.json)\n- [https://hackerone.com/reports/2669852](https://hackerone.com/reports/2669852)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
               "id": "SNYK-UBUNTU2404-EXPAT-7885392",
               "shortDescription": {
                 "text": "Medium severity - Integer Overflow or Wraparound vulnerability in expat"
@@ -123,7 +147,7 @@
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `expat` package and not the `expat` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nAn issue was discovered in libexpat before 2.6.3. dtdCopy in xmlparse.c can have an integer overflow for nDefaultAtts on 32-bit platforms (where UINT_MAX equals SIZE_MAX).\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `expat`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45491](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45491)\n- [https://github.com/libexpat/libexpat/issues/888](https://github.com/libexpat/libexpat/issues/888)\n- [https://github.com/libexpat/libexpat/pull/891](https://github.com/libexpat/libexpat/pull/891)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `expat` package and not the `expat` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nAn issue was discovered in libexpat before 2.6.3. dtdCopy in xmlparse.c can have an integer overflow for nDefaultAtts on 32-bit platforms (where UINT_MAX equals SIZE_MAX).\n## Remediation\nUpgrade `Ubuntu:24.04` `expat` to version 2.6.1-2ubuntu0.1 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45491](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45491)\n- [https://github.com/libexpat/libexpat/issues/888](https://github.com/libexpat/libexpat/issues/888)\n- [https://github.com/libexpat/libexpat/pull/891](https://github.com/libexpat/libexpat/pull/891)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -148,7 +172,7 @@
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `expat` package and not the `expat` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nAn issue was discovered in libexpat before 2.6.3. xmlparse.c does not reject a negative length for XML_ParseBuffer.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `expat`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45490](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45490)\n- [https://github.com/libexpat/libexpat/issues/887](https://github.com/libexpat/libexpat/issues/887)\n- [https://github.com/libexpat/libexpat/pull/890](https://github.com/libexpat/libexpat/pull/890)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `expat` package and not the `expat` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nAn issue was discovered in libexpat before 2.6.3. xmlparse.c does not reject a negative length for XML_ParseBuffer.\n## Remediation\nUpgrade `Ubuntu:24.04` `expat` to version 2.6.1-2ubuntu0.1 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45490](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45490)\n- [https://github.com/libexpat/libexpat/issues/887](https://github.com/libexpat/libexpat/issues/887)\n- [https://github.com/libexpat/libexpat/pull/890](https://github.com/libexpat/libexpat/pull/890)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -173,7 +197,7 @@
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `expat` package and not the `expat` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nAn issue was discovered in libexpat before 2.6.3. nextScaffoldPart in xmlparse.c can have an integer overflow for m_groupSize on 32-bit platforms (where UINT_MAX equals SIZE_MAX).\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `expat`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45492](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45492)\n- [https://github.com/libexpat/libexpat/issues/889](https://github.com/libexpat/libexpat/issues/889)\n- [https://github.com/libexpat/libexpat/pull/892](https://github.com/libexpat/libexpat/pull/892)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `expat` package and not the `expat` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nAn issue was discovered in libexpat before 2.6.3. nextScaffoldPart in xmlparse.c can have an integer overflow for m_groupSize on 32-bit platforms (where UINT_MAX equals SIZE_MAX).\n## Remediation\nUpgrade `Ubuntu:24.04` `expat` to version 2.6.1-2ubuntu0.1 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45492](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-45492)\n- [https://github.com/libexpat/libexpat/issues/889](https://github.com/libexpat/libexpat/issues/889)\n- [https://github.com/libexpat/libexpat/pull/892](https://github.com/libexpat/libexpat/pull/892)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -655,6 +679,30 @@
         },
         {
           "ruleId": "SNYK-UBUNTU2404-CURL-7575744",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable curl package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "curl@8.5.0-2ubuntu10.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2404-CURL-7931919",
           "level": "warning",
           "message": {
             "text": "This file introduces a vulnerable curl package with a medium severity vulnerability."
