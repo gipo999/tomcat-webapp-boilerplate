@@ -14,6 +14,31 @@
           },
           "rules": [
             {
+              "id": "SNYK-UBUNTU2404-APR-7838351",
+              "shortDescription": {
+                "text": "Medium severity - Incorrect Permission Assignment for Critical Resource vulnerability in apr"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-49582) apr/libapr1t64@1.7.2-3.1build2"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `apr` package and not the `apr` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nLax permissions set by the Apache Portable Runtime library on Unix platforms would allow local users read access to named shared memory segments, potentially revealing sensitive application data. \n\nThis issue does not affect non-Unix platforms, or builds with APR_USE_SHMEM_SHMGET=1 (apr.h)\n\nUsers are recommended to upgrade to APR version 1.7.5, which fixes this issue.\n## Remediation\nUpgrade `Ubuntu:24.04` `apr` to version 1.7.2-3.1ubuntu0.1 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-49582](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2023-49582)\n- [https://lists.apache.org/thread/sntjc04t1rvjhdzz2tzmtz2zdnmv7dc4](https://lists.apache.org/thread/sntjc04t1rvjhdzz2tzmtz2zdnmv7dc4)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-732",
+                  "deb"
+                ],
+                "cvssv3_baseScore": 5.5,
+                "security-severity": "5.5"
+              }
+            },
+            {
               "id": "SNYK-UBUNTU2404-BINUTILS-6721946",
               "shortDescription": {
                 "text": "Low severity - Missing Release of Resource after Effective Lifetime vulnerability in binutils"
@@ -605,6 +630,54 @@
         }
       },
       "results": [
+        {
+          "ruleId": "SNYK-UBUNTU2404-APR-7838351",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable apr package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "apr@1.7.2-3.1build2"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to apr/libapr1t64@1.7.2-3.1ubuntu0.1"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "apr/libapr1t64@1.7.2-3.1ubuntu0.1"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         {
           "ruleId": "SNYK-UBUNTU2404-BINUTILS-6721946",
           "level": "note",
