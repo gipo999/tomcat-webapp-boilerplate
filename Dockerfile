@@ -29,7 +29,7 @@
 # # downloading gradle every time which takes ALOT and allows for caching
 # RUN gradle war
 
-FROM tomcat:9-jdk21@sha256:8c247ee5bf39eaefcd6c457d468b04f11773e10a2bb0eb47281da9d91f0e4b44
+FROM tomcat:10-jdk21@sha256:9a09e6b3a2f978be30bbfb98aee0d377e1d83c4ed7b666f970dd6d937e7dfd09
 
 # If not using multistage: docker file expects the war file to be in the build/libs folder.
 # if we build it outside we can use github action gradle caching 
