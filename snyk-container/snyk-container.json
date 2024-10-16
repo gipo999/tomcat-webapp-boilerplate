@@ -556,7 +556,7 @@
             {
               "id": "SNYK-UBUNTU2404-OPENSSL-7838291",
               "shortDescription": {
-                "text": "Medium severity - CVE-2024-41996 vulnerability in openssl"
+                "text": "Low severity - CVE-2024-41996 vulnerability in openssl"
               },
               "fullDescription": {
                 "text": "(CVE-2024-41996) openssl/libssl3t64@3.0.13-0ubuntu3.1"
@@ -1280,9 +1280,9 @@
         },
         {
           "ruleId": "SNYK-UBUNTU2404-OPENSSL-7838291",
-          "level": "warning",
+          "level": "note",
           "message": {
-            "text": "This file introduces a vulnerable openssl package with a medium severity vulnerability."
+            "text": "This file introduces a vulnerable openssl package with a low severity vulnerability."
           },
           "locations": [
             {
