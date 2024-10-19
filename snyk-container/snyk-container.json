@@ -208,8 +208,8 @@
                   "CWE-611",
                   "deb"
                 ],
-                "cvssv3_baseScore": 9.8,
-                "security-severity": "9.8"
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
               }
             },
             {
