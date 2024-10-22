@@ -36,7 +36,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3
+        uses: github/codeql-action/init@662472033e021d55d94146f66f6058822b0b39fd # v3
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
@@ -50,7 +50,7 @@ jobs:
           echo '  make release'
           exit 1
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@afb54ba388a7dca6ecae48f608c4ff05ff4cc77a # v3
+        uses: github/codeql-action/analyze@662472033e021d55d94146f66f6058822b0b39fd # v3
         with:
           category: "/language:${{matrix.language}}"
           # we don't want to upload security vulns for code that is not merged yet
