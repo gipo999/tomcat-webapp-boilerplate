@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Mon, 21 Oct 2024 00:48:16",
+	"@generated": "Tue, 22 Oct 2024 00:47:25",
 	"site":[ 
 		{
 			"@name": "http://localhost:8080",
@@ -23,7 +23,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://9c4fdqXC.com",
+							"attack": "origin: http://VtasprrL.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -31,7 +31,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://9c4fdqXC.com",
+							"attack": "origin: http://VtasprrL.com",
 							"evidence": "",
 							"otherinfo": ""
 						}
@@ -42,7 +42,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</p><p>https://portswigger.net/web-security/cors</p>",
 					"cweid": "942",
 					"wascid": "14",
-					"sourceid": "547"
+					"sourceid": "551"
 				},
 				{
 					"pluginid": "10038",
@@ -651,7 +651,7 @@
 					"reference": "<p>https://owasp.org/wstg</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "299"
+					"sourceid": "292"
 				}
 			]
 		}
