@@ -163,6 +163,30 @@
               }
             },
             {
+              "id": "SNYK-UBUNTU2404-CURL-8344769",
+              "shortDescription": {
+                "text": "Low severity - CVE-2024-9681 vulnerability in curl"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-9681) curl/libcurl4t64@8.5.0-2ubuntu10.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `curl` package and not the `curl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nWhen curl is asked to use HSTS, the expiry time for a subdomain might\noverwrite a parent domain&#39;s cache entry, making it end sooner or later than\notherwise intended.\n\nThis affects curl using applications that enable HSTS and use URLs with the\ninsecure `HTTP://` scheme and perform transfers with hosts like\n`x.example.com` as well as `example.com` where the first host is a subdomain\nof the second host.\n\n(The HSTS cache either needs to have been populated manually or there needs to\nhave been previous HTTPS accesses done as the cache needs to have entries for\nthe domains involved to trigger this problem.)\n\nWhen `x.example.com` responds with `Strict-Transport-Security:` headers, this\nbug can make the subdomain&#39;s expiry timeout *bleed over* and get set for the\nparent domain `example.com` in curl&#39;s HSTS cache.\n\nThe result of a triggered bug is that HTTP accesses to `example.com` get\nconverted to HTTPS for a different period of time than what was asked for by\nthe origin server. If `example.com` for example stops supporting HTTPS at its\nexpiry time, curl might then fail to access `http://example.com` until the\n(wrongly set) timeout expires. This bug can also expire the parent&#39;s entry\n*earlier*, thus making curl inadvertently switch back to insecure HTTP earlier\nthan otherwise intended.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `curl`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-9681](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-9681)\n- [https://curl.se/docs/CVE-2024-9681.html](https://curl.se/docs/CVE-2024-9681.html)\n- [https://curl.se/docs/CVE-2024-9681.json](https://curl.se/docs/CVE-2024-9681.json)\n- [https://hackerone.com/reports/2764830](https://hackerone.com/reports/2764830)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
               "id": "SNYK-UBUNTU2404-EXPAT-7885392",
               "shortDescription": {
                 "text": "Medium severity - Integer Overflow or Wraparound vulnerability in expat"
@@ -779,6 +803,30 @@
           "level": "warning",
           "message": {
             "text": "This file introduces a vulnerable curl package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "curl@8.5.0-2ubuntu10.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2404-CURL-8344769",
+          "level": "note",
+          "message": {
+            "text": "This file introduces a vulnerable curl package with a low severity vulnerability."
           },
           "locations": [
             {
