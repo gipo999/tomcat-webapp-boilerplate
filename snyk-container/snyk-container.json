@@ -172,7 +172,7 @@
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `curl` package and not the `curl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nWhen curl is asked to use HSTS, the expiry time for a subdomain might\noverwrite a parent domain&#39;s cache entry, making it end sooner or later than\notherwise intended.\n\nThis affects curl using applications that enable HSTS and use URLs with the\ninsecure `HTTP://` scheme and perform transfers with hosts like\n`x.example.com` as well as `example.com` where the first host is a subdomain\nof the second host.\n\n(The HSTS cache either needs to have been populated manually or there needs to\nhave been previous HTTPS accesses done as the cache needs to have entries for\nthe domains involved to trigger this problem.)\n\nWhen `x.example.com` responds with `Strict-Transport-Security:` headers, this\nbug can make the subdomain&#39;s expiry timeout *bleed over* and get set for the\nparent domain `example.com` in curl&#39;s HSTS cache.\n\nThe result of a triggered bug is that HTTP accesses to `example.com` get\nconverted to HTTPS for a different period of time than what was asked for by\nthe origin server. If `example.com` for example stops supporting HTTPS at its\nexpiry time, curl might then fail to access `http://example.com` until the\n(wrongly set) timeout expires. This bug can also expire the parent&#39;s entry\n*earlier*, thus making curl inadvertently switch back to insecure HTTP earlier\nthan otherwise intended.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `curl`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-9681](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-9681)\n- [https://curl.se/docs/CVE-2024-9681.html](https://curl.se/docs/CVE-2024-9681.html)\n- [https://curl.se/docs/CVE-2024-9681.json](https://curl.se/docs/CVE-2024-9681.json)\n- [https://hackerone.com/reports/2764830](https://hackerone.com/reports/2764830)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `curl` package and not the `curl` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nWhen curl is asked to use HSTS, the expiry time for a subdomain might\noverwrite a parent domain&#39;s cache entry, making it end sooner or later than\notherwise intended.\n\nThis affects curl using applications that enable HSTS and use URLs with the\ninsecure `HTTP://` scheme and perform transfers with hosts like\n`x.example.com` as well as `example.com` where the first host is a subdomain\nof the second host.\n\n(The HSTS cache either needs to have been populated manually or there needs to\nhave been previous HTTPS accesses done as the cache needs to have entries for\nthe domains involved to trigger this problem.)\n\nWhen `x.example.com` responds with `Strict-Transport-Security:` headers, this\nbug can make the subdomain&#39;s expiry timeout *bleed over* and get set for the\nparent domain `example.com` in curl&#39;s HSTS cache.\n\nThe result of a triggered bug is that HTTP accesses to `example.com` get\nconverted to HTTPS for a different period of time than what was asked for by\nthe origin server. If `example.com` for example stops supporting HTTPS at its\nexpiry time, curl might then fail to access `http://example.com` until the\n(wrongly set) timeout expires. This bug can also expire the parent&#39;s entry\n*earlier*, thus making curl inadvertently switch back to insecure HTTP earlier\nthan otherwise intended.\n## Remediation\nUpgrade `Ubuntu:24.04` `curl` to version 8.5.0-2ubuntu10.5 or higher.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-9681](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-9681)\n- [https://curl.se/docs/CVE-2024-9681.html](https://curl.se/docs/CVE-2024-9681.html)\n- [https://curl.se/docs/CVE-2024-9681.json](https://curl.se/docs/CVE-2024-9681.json)\n- [https://hackerone.com/reports/2764830](https://hackerone.com/reports/2764830)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -1464,10 +1464,85 @@
           "properties": {
             "artifactsScanned": 32
           },
-          "rules": []
+          "rules": [
+            {
+              "id": "SNYK-JAVA-ORGAPACHETOMCAT-8383919",
+              "shortDescription": {
+                "text": "Critical severity - Uncaught Exception vulnerability in org.apache.tomcat:tomcat-catalina"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-52316) org.apache.tomcat:tomcat-catalina@9.0.91"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## Overview\n[org.apache.tomcat:tomcat-catalina](https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina) is a Tomcat Servlet Engine Core Classes and Standard implementations.\n\nAffected versions of this package are vulnerable to Uncaught Exception due to the custom Jakarta Authentication `ServerAuthContext` component which may throw an exception during the authentication process without setting an HTTP status to indicate failure. An attacker can gain unauthorized access by exploiting this unchecked error condition.\r\n\r\n**Note:**\r\n\r\nThis is only exploitable if Tomcat is configured to use a custom Jakarta Authentication\r\n`ServerAuthContext` component that behaves in this way. According to the maintainers, no such cases are known.\n## Remediation\nUpgrade `org.apache.tomcat:tomcat-catalina` to version 9.0.96, 10.1.31, 11.0.0 or higher.\n## References\n- [Apache Advisory](https://lists.apache.org/thread/lopzlqh91jj9n334g02om08sbysdb928)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/6d097a66746635df6880fe7662a792156b0eca14)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/7532f9dc4a8c37ec958f79dc82c4924a6c539223)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/acc2f01395f895980f5d8a64573fcc1bade13369)\n"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-248",
+                  "maven"
+                ],
+                "cvssv3_baseScore": 9.2,
+                "security-severity": "9.2"
+              }
+            }
+          ]
         }
       },
-      "results": []
+      "results": [
+        {
+          "ruleId": "SNYK-JAVA-ORGAPACHETOMCAT-8383919",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable org.apache.tomcat:tomcat-catalina package with a critical severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/local/tomcat/lib"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "org.apache.tomcat:tomcat-catalina@9.0.91"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to org.apache.tomcat:tomcat-catalina@9.0.96"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "/usr/local/tomcat/lib"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "org.apache.tomcat:tomcat-catalina@9.0.96"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "tool": {
