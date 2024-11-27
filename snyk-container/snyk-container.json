@@ -6,8 +6,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1294.1",
-          "version": "1.1294.1",
+          "semanticVersion": "1.1294.2",
+          "version": "1.1294.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 132
@@ -434,14 +434,14 @@
             {
               "id": "SNYK-UBUNTU2404-LIBGCRYPT20-6693674",
               "shortDescription": {
-                "text": "Medium severity - Information Exposure vulnerability in libgcrypt20"
+                "text": "Low severity - Information Exposure vulnerability in libgcrypt20"
               },
               "fullDescription": {
                 "text": "(CVE-2024-2236) libgcrypt20@1.10.3-2build1"
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `libgcrypt20` package and not the `libgcrypt20` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nA timing-based side-channel flaw was found in libgcrypt&#39;s RSA implementation. This issue may allow a remote attacker to initiate a Bleichenbacher-style attack, which can lead to the decryption of RSA ciphertexts.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `libgcrypt20`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2236](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2236)\n- [https://access.redhat.com/security/cve/CVE-2024-2236](https://access.redhat.com/security/cve/CVE-2024-2236)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2268268](https://bugzilla.redhat.com/show_bug.cgi?id=2268268)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2245218](https://bugzilla.redhat.com/show_bug.cgi?id=2245218)\n- [https://access.redhat.com/errata/RHSA-2024:9404](https://access.redhat.com/errata/RHSA-2024:9404)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `libgcrypt20` package and not the `libgcrypt20` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nA timing-based side-channel flaw was found in libgcrypt&#39;s RSA implementation. This issue may allow a remote attacker to initiate a Bleichenbacher-style attack, which can lead to the decryption of RSA ciphertexts.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `libgcrypt20`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2236](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-2236)\n- [https://access.redhat.com/errata/RHSA-2024:9404](https://access.redhat.com/errata/RHSA-2024:9404)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2268268](https://bugzilla.redhat.com/show_bug.cgi?id=2268268)\n- [https://access.redhat.com/security/cve/CVE-2024-2236](https://access.redhat.com/security/cve/CVE-2024-2236)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2245218](https://bugzilla.redhat.com/show_bug.cgi?id=2245218)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -635,7 +635,7 @@
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `pam` package and not the `pam` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nA vulnerability was found in PAM. The secret information is stored in memory, where the attacker can trigger the victim program to execute by sending characters to its standard input (stdin). As this occurs, the attacker can train the branch predictor to execute an ROP chain speculatively. This flaw could result in leaked passwords, such as those found in /etc/shadow while performing authentications.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `pam`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-10041](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-10041)\n- [https://access.redhat.com/security/cve/CVE-2024-10041](https://access.redhat.com/security/cve/CVE-2024-10041)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2319212](https://bugzilla.redhat.com/show_bug.cgi?id=2319212)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `pam` package and not the `pam` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nA vulnerability was found in PAM. The secret information is stored in memory, where the attacker can trigger the victim program to execute by sending characters to its standard input (stdin). As this occurs, the attacker can train the branch predictor to execute an ROP chain speculatively. This flaw could result in leaked passwords, such as those found in /etc/shadow while performing authentications.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `pam`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-10041](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-10041)\n- [https://access.redhat.com/security/cve/CVE-2024-10041](https://access.redhat.com/security/cve/CVE-2024-10041)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2319212](https://bugzilla.redhat.com/show_bug.cgi?id=2319212)\n- [https://access.redhat.com/errata/RHSA-2024:9941](https://access.redhat.com/errata/RHSA-2024:9941)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
@@ -1138,9 +1138,9 @@
         },
         {
           "ruleId": "SNYK-UBUNTU2404-LIBGCRYPT20-6693674",
-          "level": "warning",
+          "level": "note",
           "message": {
-            "text": "This file introduces a vulnerable libgcrypt20 package with a medium severity vulnerability."
+            "text": "This file introduces a vulnerable libgcrypt20 package with a low severity vulnerability."
           },
           "locations": [
             {
@@ -1526,8 +1526,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1294.1",
-          "version": "1.1294.1",
+          "semanticVersion": "1.1294.2",
+          "version": "1.1294.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 23
@@ -1541,8 +1541,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1294.1",
-          "version": "1.1294.1",
+          "semanticVersion": "1.1294.2",
+          "version": "1.1294.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
@@ -1556,8 +1556,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1294.1",
-          "version": "1.1294.1",
+          "semanticVersion": "1.1294.2",
+          "version": "1.1294.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 32
@@ -1646,8 +1646,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1294.1",
-          "version": "1.1294.1",
+          "semanticVersion": "1.1294.2",
+          "version": "1.1294.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
@@ -1661,8 +1661,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1294.1",
-          "version": "1.1294.1",
+          "semanticVersion": "1.1294.2",
+          "version": "1.1294.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 2
@@ -1676,8 +1676,8 @@
       "tool": {
         "driver": {
           "name": "Snyk Container",
-          "semanticVersion": "1.1294.1",
-          "version": "1.1294.1",
+          "semanticVersion": "1.1294.2",
+          "version": "1.1294.2",
           "informationUri": "https://docs.snyk.io/",
           "properties": {
             "artifactsScanned": 0
