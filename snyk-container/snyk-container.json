@@ -165,7 +165,7 @@
             {
               "id": "SNYK-UBUNTU2404-CURL-8344769",
               "shortDescription": {
-                "text": "Low severity - CVE-2024-9681 vulnerability in curl"
+                "text": "Low severity - Insufficient Comparison vulnerability in curl"
               },
               "fullDescription": {
                 "text": "(CVE-2024-9681) curl/libcurl4t64@8.5.0-2ubuntu10.1"
@@ -180,10 +180,11 @@
               "properties": {
                 "tags": [
                   "security",
+                  "CWE-697",
                   "deb"
                 ],
-                "cvssv3_baseScore": null,
-                "security-severity": "null"
+                "cvssv3_baseScore": 6.5,
+                "security-severity": "6.5"
               }
             },
             {
@@ -635,7 +636,7 @@
               },
               "help": {
                 "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `pam` package and not the `pam` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nA vulnerability was found in PAM. The secret information is stored in memory, where the attacker can trigger the victim program to execute by sending characters to its standard input (stdin). As this occurs, the attacker can train the branch predictor to execute an ROP chain speculatively. This flaw could result in leaked passwords, such as those found in /etc/shadow while performing authentications.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `pam`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-10041](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-10041)\n- [https://access.redhat.com/security/cve/CVE-2024-10041](https://access.redhat.com/security/cve/CVE-2024-10041)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2319212](https://bugzilla.redhat.com/show_bug.cgi?id=2319212)\n- [https://access.redhat.com/errata/RHSA-2024:9941](https://access.redhat.com/errata/RHSA-2024:9941)\n"
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `pam` package and not the `pam` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nA vulnerability was found in PAM. The secret information is stored in memory, where the attacker can trigger the victim program to execute by sending characters to its standard input (stdin). As this occurs, the attacker can train the branch predictor to execute an ROP chain speculatively. This flaw could result in leaked passwords, such as those found in /etc/shadow while performing authentications.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `pam`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-10041](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-10041)\n- [https://access.redhat.com/security/cve/CVE-2024-10041](https://access.redhat.com/security/cve/CVE-2024-10041)\n- [https://bugzilla.redhat.com/show_bug.cgi?id=2319212](https://bugzilla.redhat.com/show_bug.cgi?id=2319212)\n- [https://access.redhat.com/errata/RHSA-2024:9941](https://access.redhat.com/errata/RHSA-2024:9941)\n- [https://access.redhat.com/errata/RHSA-2024:10379](https://access.redhat.com/errata/RHSA-2024:10379)\n"
               },
               "defaultConfiguration": {
                 "level": "warning"
