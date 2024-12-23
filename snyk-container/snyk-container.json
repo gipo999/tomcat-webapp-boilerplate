@@ -1647,7 +1647,32 @@
               },
               "help": {
                 "text": "",
-                "markdown": "## Overview\n[org.apache.tomcat:tomcat-catalina](https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina) is a Tomcat Servlet Engine Core Classes and Standard implementations.\n\nAffected versions of this package are vulnerable to Time-of-check Time-of-use (TOCTOU) Race Condition. On case insensitive file systems, when the default servlet is write-enabled, an attacker can upload a malicious file containing executable code and bypass case sensitivity checks, causing it to be treated as a JSP and executed.\r\n\r\nThis vector has been observed when the application is under load and read and upload operations are performed on the same file simultaneously.\r\n\r\n**Note:**\r\n\r\nThe default `readonly` initialization parameter value of `true` is not vulnerable.\n## Remediation\nUpgrade `org.apache.tomcat:tomcat-catalina` to version 9.0.98, 10.1.34, 11.0.2 or higher.\n## References\n- [Apache Advisory](https://lists.apache.org/thread/y6lj6q1xnp822g6ro70tn19sgtjmr80r)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-10.html#Fixed_in_Apache_Tomcat_10.1.34)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-11.html#Fixed_in_Apache_Tomcat_11.0.2)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-9.html#Fixed_in_Apache_Tomcat_9.0.98)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/05ddeeaa54df1e2dc427d0164bedd6b79f78d81f)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/43b507ebac9d268b1ea3d908e296cc6e46795c00)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/631500b0c9b2a2a2abb707e3de2e10a5936e5d41)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/684247ae85fa633b9197b32391de59fc54703842)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/8554f6b1722b33a2ce8b0a3fad37825f3a75f2d2)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/cc7a98b57c6dc1df21979fcff94a36e068f4456c)\n"
+                "markdown": "## Overview\n[org.apache.tomcat:tomcat-catalina](https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina) is a Tomcat Servlet Engine Core Classes and Standard implementations.\n\nAffected versions of this package are vulnerable to Time-of-check Time-of-use (TOCTOU) Race Condition. On case insensitive file systems, when the default servlet is write-enabled, an attacker can upload a malicious file containing executable code and bypass case sensitivity checks, causing it to be treated as a JSP and executed.\r\n\r\nThis vector has been observed when the application is under load and read and upload operations are performed on the same file simultaneously.\r\n\r\n**Note:**\r\n\r\nThe default `readonly` initialization parameter value of `true` is not vulnerable.\r\n\r\nThis is related to [CVE-2024-56337](https://security.snyk.io/vuln/SNYK-JAVA-ORGAPACHETOMCAT-8547998) where additional configurations are defined to fully mitigate this issue as upgrading to the fixed version doesn't fully mitigate this vulnerability;\r\n\r\nIn addition to upgrading to the fixed version, users are advised to apply the following mitigations, depending on which version of Java they are using with Tomcat :\r\n\r\n1) running on Java 8 or Java 11: the system property `sun.io.useCanonCaches` must be explicitly set to false (it defaults\r\nto true)\r\n\r\n2) running on Java 17: the system property `sun.io.useCanonCaches`, if set, must be set to false (it defaults to false)\r\n\r\n3) running on Java 21 onwards: no further configuration is required (the system property and the problematic cache have been removed)\n## Remediation\nUpgrade `org.apache.tomcat:tomcat-catalina` to version 9.0.98, 10.1.34, 11.0.2 or higher.\n## References\n- [Apache Advisory](https://lists.apache.org/thread/y6lj6q1xnp822g6ro70tn19sgtjmr80r)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-10.html#Fixed_in_Apache_Tomcat_10.1.34)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-11.html#Fixed_in_Apache_Tomcat_11.0.2)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-9.html#Fixed_in_Apache_Tomcat_9.0.98)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/05ddeeaa54df1e2dc427d0164bedd6b79f78d81f)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/43b507ebac9d268b1ea3d908e296cc6e46795c00)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/631500b0c9b2a2a2abb707e3de2e10a5936e5d41)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/684247ae85fa633b9197b32391de59fc54703842)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/8554f6b1722b33a2ce8b0a3fad37825f3a75f2d2)\n- [GitHub Commit](https://github.com/apache/tomcat/commit/cc7a98b57c6dc1df21979fcff94a36e068f4456c)\n"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-367",
+                  "maven"
+                ],
+                "cvssv3_baseScore": 9.2,
+                "security-severity": "9.2"
+              }
+            },
+            {
+              "id": "SNYK-JAVA-ORGAPACHETOMCAT-8547998",
+              "shortDescription": {
+                "text": "Critical severity - Time-of-check Time-of-use (TOCTOU) Race Condition vulnerability in org.apache.tomcat:tomcat-catalina"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-56337) org.apache.tomcat:tomcat-catalina@9.0.91"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## Overview\n[org.apache.tomcat:tomcat-catalina](https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina) is a Tomcat Servlet Engine Core Classes and Standard implementations.\n\nAffected versions of this package are vulnerable to Time-of-check Time-of-use (TOCTOU) Race Condition due to imcomplete mitigation advice associated with [CVE-2024-50379](https://security.snyk.io/vuln/SNYK-JAVA-ORGAPACHETOMCAT-8523184) in the file-handling process with servlet write enabled.\n\nIn addition to upgrading to the fixed version, users are advised to apply the following mitigations, depending on which version of Java they are using with Tomcat :\n\n1) running on Java 8 or Java 11: the system property `sun.io.useCanonCaches` must be explicitly set to false (it defaults to true)\n\n2) running on Java 17: the system property `sun.io.useCanonCaches`, if set, must be set to false (it defaults to false)\n\n3) running on Java 21 onwards: no further configuration is required (the system property and the problematic cache have been removed)\n## Remediation\nUpgrade `org.apache.tomcat:tomcat-catalina` to version 9.0.98, 10.1.34, 11.0.2 or higher.\n## References\n- [Apache Thread](https://lists.apache.org/thread/b2b9qrgjrz1kvo4ym8y2wkfdvwoq6qbp)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-10.html#Fixed_in_Apache_Tomcat_10.1.34)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-11.html#Fixed_in_Apache_Tomcat_11.0.2)\n- [Apache Tomcat Advisory](https://tomcat.apache.org/security-9.html#Fixed_in_Apache_Tomcat_9.0.98)\n"
               },
               "defaultConfiguration": {
                 "level": "error"
@@ -1716,6 +1741,54 @@
         },
         {
           "ruleId": "SNYK-JAVA-ORGAPACHETOMCAT-8523184",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable org.apache.tomcat:tomcat-catalina package with a critical severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/local/tomcat/lib"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "org.apache.tomcat:tomcat-catalina@9.0.91"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to org.apache.tomcat:tomcat-catalina@9.0.98"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "/usr/local/tomcat/lib"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "org.apache.tomcat:tomcat-catalina@9.0.98"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-JAVA-ORGAPACHETOMCAT-8547998",
           "level": "error",
           "message": {
             "text": "This file introduces a vulnerable org.apache.tomcat:tomcat-catalina package with a critical severity vulnerability."
