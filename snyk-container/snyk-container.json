@@ -701,6 +701,30 @@
               }
             },
             {
+              "id": "SNYK-UBUNTU2404-SHADOW-8600509",
+              "shortDescription": {
+                "text": "Medium severity - CVE-2024-56433 vulnerability in shadow"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-56433) shadow/passwd@1:4.13+dfsg1-4ubuntu3"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `shadow` package and not the `shadow` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nshadow-utils (aka shadow) 4.4 through 4.17.0 establishes a default /etc/subuid behavior (e.g., uid 100000 through 165535 for the first user account) that can realistically conflict with the uids of users defined on locally administered networks, potentially leading to account takeover, e.g., by leveraging newuidmap for access to an NFS home directory (or same-host resources in the case of remote logins by these local network users). NOTE: it may also be argued that system administrators should not have assigned uids, within local networks, that are within the range that can occur in /etc/subuid.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `shadow`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-56433](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2024-56433)\n- [https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241](https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241)\n- [https://github.com/shadow-maint/shadow/issues/1157](https://github.com/shadow-maint/shadow/issues/1157)\n- [https://github.com/shadow-maint/shadow/releases/tag/4.4](https://github.com/shadow-maint/shadow/releases/tag/4.4)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
               "id": "SNYK-UBUNTU2404-WGET-6709170",
               "shortDescription": {
                 "text": "Medium severity - Open Redirect vulnerability in wget"
@@ -1540,6 +1564,30 @@
               "logicalLocations": [
                 {
                   "fullyQualifiedName": "pam@1.5.3-5ubuntu5.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2404-SHADOW-8600509",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable shadow package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "shadow@1:4.13+dfsg1-4ubuntu3"
                 }
               ]
             }
