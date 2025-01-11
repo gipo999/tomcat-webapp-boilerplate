@@ -39,31 +39,6 @@
               }
             },
             {
-              "id": "SNYK-UBUNTU2404-BINUTILS-6721946",
-              "shortDescription": {
-                "text": "Low severity - Missing Release of Resource after Effective Lifetime vulnerability in binutils"
-              },
-              "fullDescription": {
-                "text": "(CVE-2018-20657) binutils/binutils-common@2.42-4ubuntu2"
-              },
-              "help": {
-                "text": "",
-                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `binutils` package and not the `binutils` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nThe demangle_template function in cplus-dem.c in GNU libiberty, as distributed in GNU Binutils 2.31.1, has a memory leak via a crafted string, leading to a denial of service (memory consumption), as demonstrated by cxxfilt, a related issue to CVE-2018-12698.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `binutils`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-20657](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2018-20657)\n- [http://www.securityfocus.com/bid/106444](http://www.securityfocus.com/bid/106444)\n- [https://support.f5.com/csp/article/K62602089](https://support.f5.com/csp/article/K62602089)\n- [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88539](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88539)\n- [https://access.redhat.com/errata/RHSA-2019:3352](https://access.redhat.com/errata/RHSA-2019:3352)\n"
-              },
-              "defaultConfiguration": {
-                "level": "warning"
-              },
-              "properties": {
-                "tags": [
-                  "security",
-                  "CWE-772",
-                  "deb"
-                ],
-                "cvssv3_baseScore": 7.5,
-                "security-severity": "7.5"
-              }
-            },
-            {
               "id": "SNYK-UBUNTU2404-BINUTILS-6725747",
               "shortDescription": {
                 "text": "Low severity - Allocation of Resources Without Limits or Throttling vulnerability in binutils"
@@ -820,30 +795,6 @@
                       }
                     }
                   ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "ruleId": "SNYK-UBUNTU2404-BINUTILS-6721946",
-          "level": "note",
-          "message": {
-            "text": "This file introduces a vulnerable binutils package with a low severity vulnerability."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "Dockerfile"
-                },
-                "region": {
-                  "startLine": 1
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "binutils@2.42-4ubuntu2"
                 }
               ]
             }
