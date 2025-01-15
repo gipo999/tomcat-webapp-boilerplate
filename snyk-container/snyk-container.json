@@ -286,6 +286,30 @@
               }
             },
             {
+              "id": "SNYK-UBUNTU2404-FREETYPE-8620886",
+              "shortDescription": {
+                "text": "Medium severity - CVE-2025-23022 vulnerability in freetype"
+              },
+              "fullDescription": {
+                "text": "(CVE-2025-23022) freetype/libfreetype6@2.13.2+dfsg-1build3"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `freetype` package and not the `freetype` package as distributed by `Ubuntu`._\n_See `How to fix?` for `Ubuntu:24.04` relevant fixed versions and status._\n\nFreeType 2.8.1 has a signed integer overflow in cf2_doFlex in cff/cf2intrp.c.\n## Remediation\nThere is no fixed version for `Ubuntu:24.04` `freetype`.\n## References\n- [http://people.ubuntu.com/~ubuntu-security/cve/CVE-2025-23022](http://people.ubuntu.com/~ubuntu-security/cve/CVE-2025-23022)\n- [https://gitlab.freedesktop.org/freetype/freetype/-/issues/1312](https://gitlab.freedesktop.org/freetype/freetype/-/issues/1312)\n- [https://security-tracker.debian.org/tracker/CVE-2025-23022](https://security-tracker.debian.org/tracker/CVE-2025-23022)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "deb"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
               "id": "SNYK-UBUNTU2404-GLIBC-6727419",
               "shortDescription": {
                 "text": "Low severity - Allocation of Resources Without Limits or Throttling vulnerability in glibc"
@@ -1035,6 +1059,30 @@
               "logicalLocations": [
                 {
                   "fullyQualifiedName": "expat@2.6.1-2build1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-UBUNTU2404-FREETYPE-8620886",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable freetype package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "freetype@2.13.2+dfsg-1build3"
                 }
               ]
             }
