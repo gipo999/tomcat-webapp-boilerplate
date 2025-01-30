@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.0",
-	"@generated": "Wed, 29 Jan 2025 00:46:10",
+	"@generated": "Thu, 30 Jan 2025 00:45:16",
 	"site":[ 
 		{
 			"@name": "http://localhost:8080",
@@ -24,7 +24,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://xWNei948.com",
+							"attack": "origin: http://zmm6nmS5.com",
 							"evidence": "",
 							"otherinfo": ""
 						},
@@ -33,7 +33,7 @@
 							"uri": "http://localhost:8080/tomcat-webapp-boilerplate/app",
 							"method": "GET",
 							"param": "",
-							"attack": "origin: http://xWNei948.com",
+							"attack": "origin: http://zmm6nmS5.com",
 							"evidence": "",
 							"otherinfo": ""
 						}
@@ -44,7 +44,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</p><p>https://portswigger.net/web-security/cors</p>",
 					"cweid": "942",
 					"wascid": "14",
-					"sourceid": "566"
+					"sourceid": "582"
 				},
 				{
 					"pluginid": "10038",
@@ -108,7 +108,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "9"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10098",
@@ -149,7 +149,7 @@
 					"desc": "<p>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</p>",
 					"instances":[ 
 						{
-							"id": "18",
+							"id": "13",
 							"uri": "http://localhost:8080/",
 							"method": "GET",
 							"param": "",
@@ -158,7 +158,7 @@
 							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
 						},
 						{
-							"id": "35",
+							"id": "36",
 							"uri": "http://localhost:8080/favicon.ico",
 							"method": "GET",
 							"param": "",
@@ -167,7 +167,7 @@
 							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
 						},
 						{
-							"id": "17",
+							"id": "18",
 							"uri": "http://localhost:8080/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -176,7 +176,7 @@
 							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
 						},
 						{
-							"id": "13",
+							"id": "16",
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -200,7 +200,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "9"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10063",
@@ -213,7 +213,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "19",
+							"id": "14",
 							"uri": "http://localhost:8080/",
 							"method": "GET",
 							"param": "",
@@ -222,7 +222,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
+							"id": "38",
 							"uri": "http://localhost:8080/favicon.ico",
 							"method": "GET",
 							"param": "",
@@ -231,7 +231,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "21",
+							"id": "22",
 							"uri": "http://localhost:8080/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -240,7 +240,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "20",
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -264,7 +264,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "9"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -277,7 +277,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "23",
 							"uri": "http://localhost:8080/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -295,7 +295,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
+							"id": "28",
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -319,7 +319,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "9"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -332,7 +332,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "24",
+							"id": "21",
 							"uri": "http://localhost:8080/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -341,7 +341,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "30",
+							"id": "29",
 							"uri": "http://localhost:8080/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -350,7 +350,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "22",
+							"id": "26",
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -374,7 +374,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "9"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -387,7 +387,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "23",
+							"id": "19",
 							"uri": "http://localhost:8080/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -396,7 +396,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
+							"id": "27",
 							"uri": "http://localhost:8080/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -405,7 +405,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
+							"id": "25",
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -429,7 +429,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "9"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -442,7 +442,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "26",
+							"id": "24",
 							"uri": "http://localhost:8080/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -460,7 +460,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
+							"id": "30",
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -484,7 +484,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "9"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -497,7 +497,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "14",
+							"id": "12",
 							"uri": "http://localhost:8080/",
 							"method": "GET",
 							"param": "",
@@ -506,7 +506,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "34",
+							"id": "35",
 							"uri": "http://localhost:8080/favicon.ico",
 							"method": "GET",
 							"param": "",
@@ -515,7 +515,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "15",
+							"id": "17",
 							"uri": "http://localhost:8080/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -524,7 +524,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "12",
+							"id": "15",
 							"uri": "http://localhost:8080/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -548,7 +548,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "9"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10104",
@@ -675,7 +675,7 @@
 					"reference": "<p>https://owasp.org/wstg</p>",
 					"cweid": "0",
 					"wascid": "0",
-					"sourceid": "315"
+					"sourceid": "327"
 				}
 			]
 		}
