@@ -52,7 +52,7 @@ services:
   ########## redis
   redisdev:
     env_file: ./.env
-    image: redis/redis-stack:latest@sha256:dabd731cfebd2a7721ff1918257e08bff2b66963b938e796916cac53542ad003
+    image: redis/redis-stack:latest@sha256:5d5154123426693540ea6c1d9e638eae2bf2024879c839db6fcfdd7717e817c7
     # user: redis
     # restart: unless-stopped
     network_mode: host
