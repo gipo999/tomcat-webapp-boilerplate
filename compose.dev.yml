@@ -38,7 +38,7 @@ services:
       POSTGRES_DB: ${PSQL_DATABASE_NAME}
   pgadmin:
     container_name: pgadmin4_container
-    image: dpage/pgadmin4:latest@sha256:61fd25f428c155027fb2aa74b913d317af11a14f55e6135484b5e86a8840520b
+    image: dpage/pgadmin4:latest@sha256:c332c5f6dfba995d9ebc4af261d93506d6876085d712eaaa3defc8dd1a3f26de
     # restart: unless-stopped
     network_mode: host
     depends_on:
